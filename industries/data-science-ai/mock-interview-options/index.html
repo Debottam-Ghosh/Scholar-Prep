@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mock Interview Modes</title>
+  <style>
+    :root {
+      --bg1: #f7fbff;
+      --bg2: #eef7f2;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #dbe5ef;
+      --accent: #0ea5a4;
+      --accent-strong: #0b8b89;
+      --chip-bg: #e6fffb;
+      --chip-text: #115e59;
+      --shadow: 0 14px 32px rgba(15, 23, 42, 0.1);
+      --hover-shadow: 0 26px 46px rgba(14, 165, 164, 0.18);
+      --hover-border: rgba(14, 165, 164, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 8%, #dff9f3 0%, transparent 35%),
+        radial-gradient(circle at 90% 20%, #e4f0ff 0%, transparent 40%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      min-height: 100vh;
+      padding: 30px 18px 40px;
+    }
+
+    .shell {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      letter-spacing: 0.01em;
+    }
+
+    .subtitle {
+      margin: 10px 0 26px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .mode-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.26s ease, box-shadow 0.26s ease, border-color 0.26s ease;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mode-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40% -55% -40%;
+      height: 180px;
+      background: radial-gradient(circle, rgba(14, 165, 164, 0.14) 0%, rgba(14, 165, 164, 0) 75%);
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: transform 0.26s ease;
+    }
+
+    .mode-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--hover-shadow);
+      border-color: var(--hover-border);
+    }
+
+    .mode-card:hover::after {
+      transform: translateY(0);
+    }
+
+    .mode-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .mode-logo {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+
+    .mode-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-align: left;
+    align-self: flex-start;  /* ensures left alignment */
+    width: 100%;
+    margin: 0;
+    }
+
+    .mode-subtitle {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.95rem;
+      min-height: 48px;
+    }
+
+    .feature-list {
+      margin: 0;
+      padding-left: 1rem;
+      color: #1f2937;
+      line-height: 1.7;
+      font-size: 0.92rem;
+      flex-grow: 1;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      background: var(--chip-bg);
+      color: var(--chip-text);
+      border: 1px solid #b7efe6;
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 9px 14px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      margin-top: 2px;
+      width: fit-content;
+    }
+
+    .mode-card.is-disabled {
+      opacity: 0.92;
+      cursor: default;
+    }
+
+    .beta-badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #ffffff;
+      vertical-align: middle;
+      margin-left: 6px;
+      box-shadow: 0 2px 6px rgba(99,102,241,0.35);
+      position: relative;
+      top: -1px;
+    }
+
+
+
+
+    @media (max-width: 900px) {
+      .mode-grid { grid-template-columns: 1fr; }
+      .mode-subtitle { min-height: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <a class="back-link" href="../">&#8592; Back to Industry</a>
+    <h1>Mock Interview Modes</h1>
+    <p class="subtitle">Pick a mode that matches your interview prep style.</p>
+
+    <div class="mode-grid">
+      <div class="mode-card">
+        <div class="mode-top">
+          <img src="../../../icons/1-1 Video Interview.png" class="mode-logo" alt="1-1 Video Interview" />
+          <div class="mode-title">1-1 Video Interview <span class="beta-badge">BETA</span></div>
+        </div>
+        <p class="mode-subtitle">Experience a real interview with camera, voice, and AI feedback</p>
+
+        <ul class="feature-list">
+          <li>&#127908; Voice or &#9000;&#65039; text answers</li>
+          <li>&#129504; AI evaluates your response</li>
+          <li>&#128257; Retry and improve instantly</li>
+          <li>&#9889; No pressure, self-paced</li>
+          <li>&#128196; Focus on concepts and clarity</li>
+        </ul>
+
+        <div class="chips">
+          <span class="chip">Beginner Friendly</span>
+          <span class="chip">Fast Practice</span>
+        </div>
+
+        <span class="cta">Start Practice</span>
+      </div>
+
+      <div class="mode-card ">
+        <div class="mode-top">
+          <img src="../../../icons/Quick Practice.png" class="mode-logo" alt="Quick Practice" />
+          <div class="mode-title">Quick Practice (Text + Voice)</div>
+        </div>
+        <p class="mode-subtitle">Practice answers without camera in a flexible environment</p>
+
+        <ul class="feature-list">
+          <li>&#127908; Voice or &#9000;&#65039; text answers</li>
+          <li>&#129504; AI evaluates your response</li>
+          <li>&#128257; Retry and improve instantly</li>
+          <li>&#9889; No pressure, self-paced</li>
+          <li>&#128196; Focus on concepts and clarity</li>
+        </ul>
+
+        <div class="chips">
+          <span class="chip">Beginner Friendly</span>
+          <span class="chip">Fast Practice</span>
+        </div>
+
+        <a class="cta" href="../mock-interview/">Start Practice</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

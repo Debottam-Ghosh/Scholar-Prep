@@ -1,0 +1,3577 @@
+[
+  {
+    "subject": "Linear Algebra",
+    "questions": [
+      {
+        "topic": "Vectors & vector spaces",
+        "num": 1,
+        "text": "What is a vector space? State all axioms.",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Which of the 8 axioms are most commonly violated when checking if something is a vector space?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Is the set of all polynomials of degree exactly 3 a vector space? Why not?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Is the set of all 2×2 matrices a vector space?",
+            "difficulty": "basic"
+          }
+        ],
+        "hint": "Professors test whether you can verify axioms, not just recite them. Always check closure under addition and scalar multiplication first."
+      },
+      {
+        "topic": "Vectors & vector spaces",
+        "num": 2,
+        "text": "What is a subspace? How do you verify something is a subspace?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Is the set of all vectors (x,y) with x+y=1 a subspace? Why not?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Is the intersection of two subspaces always a subspace?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Is the union of two subspaces always a subspace?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "The 3-condition shortcut: non-empty, closed under addition, closed under scalar multiplication. The union of two subspaces is NOT generally a subspace — give a counterexample."
+      },
+      {
+        "topic": "Vectors & vector spaces",
+        "num": 3,
+        "text": "What is the span of a set of vectors? Give a geometric interpretation.",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "When does adding one more vector to a set NOT increase the span?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the span of the zero vector?",
+            "difficulty": "basic"
+          }
+        ],
+        "hint": ""
+      },
+      {
+        "topic": "Vectors & vector spaces",
+        "num": 4,
+        "text": "Define linear independence. How do you test it?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Can a set containing the zero vector be linearly independent?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "If {v1,v2,v3} is linearly dependent, is {v1,v2} necessarily dependent?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the maximum number of linearly independent vectors in R^n?",
+            "difficulty": "basic"
+          }
+        ],
+        "hint": "The zero vector makes any set immediately dependent. Independence of subsets is not guaranteed."
+      },
+      {
+        "topic": "Vectors & vector spaces",
+        "num": 5,
+        "text": "What is a basis? What makes a basis unique (or not)?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Is a basis of a vector space unique?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "Can a vector space have bases of different sizes?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the standard basis of R^n?",
+            "difficulty": "basic"
+          }
+        ],
+        "hint": "The basis is NOT unique, but all bases of a finite-dimensional space have the same number of elements — that number is the dimension."
+      },
+      {
+        "topic": "Vectors & vector spaces",
+        "num": 6,
+        "text": "Define the dimension of a vector space. How is it related to basis?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is the dimension of the space of all n×n matrices?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the dimension of the space of all symmetric n×n matrices?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Can a vector space have infinite dimension?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "dim of symmetric n×n matrices = n(n+1)/2. This often appears in ML questions about covariance matrices."
+      },
+      {
+        "topic": "Vectors & vector spaces",
+        "num": 7,
+        "text": "What is the rank-nullity theorem? State and prove it.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What does it say about a square matrix whose null space contains only the zero vector?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "If A is a 5×3 matrix, what are the possible values of rank(A)?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "If rank(A)=3 for a 4×3 matrix, what is the nullity?",
+            "difficulty": "basic"
+          }
+        ],
+        "hint": "Rank + Nullity = number of columns. This is one of the most fundamental results — professors expect a proof sketch, not just the statement."
+      },
+      {
+        "topic": "Matrices & operations",
+        "num": 8,
+        "text": "What is matrix rank? How do you compute it?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is the rank of a zero matrix?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "Can the rank of A+B exceed rank(A)+rank(B)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What happens to rank when you multiply by an invertible matrix?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": ""
+      },
+      {
+        "topic": "Matrices & operations",
+        "num": 9,
+        "text": "When is a matrix invertible? Give three equivalent conditions.",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "If A and B are invertible, is AB invertible? What is (AB)^-1?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "Is the inverse of a symmetric matrix symmetric?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the inverse of an orthogonal matrix?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Key equivalent conditions: det≠0, all eigenvalues nonzero, full rank, columns are linearly independent. Knowing multiple equivalences impresses panels."
+      },
+      {
+        "topic": "Matrices & operations",
+        "num": 10,
+        "text": "What is the determinant, and what does it represent geometrically?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What does it mean geometrically if det(A) = 0?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does det(AB) relate to det(A) and det(B)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is det(cA) for an n×n matrix?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "If you transpose a matrix, what happens to the determinant?",
+            "difficulty": "basic"
+          }
+        ],
+        "hint": "Geometrically: det is the signed volume scaling factor of the linear transformation. det=0 means the transformation collapses space into lower dimensions."
+      },
+      {
+        "topic": "Matrices & operations",
+        "num": 11,
+        "text": "What is the trace of a matrix? What is its relationship to eigenvalues?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Is the trace invariant under similarity transformations?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the trace of a projection matrix?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "trace(A) = sum of eigenvalues. det(A) = product of eigenvalues. Both are similarity invariants — very commonly asked in pair."
+      },
+      {
+        "topic": "Matrices & operations",
+        "num": 12,
+        "text": "What is a symmetric matrix? What special properties does it have?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Are all eigenvalues of a symmetric matrix real?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Are eigenvectors of a symmetric matrix from different eigenvalues always orthogonal?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Can a symmetric matrix have negative eigenvalues?",
+            "difficulty": "basic"
+          }
+        ],
+        "hint": "The spectral theorem for symmetric matrices is crucial: they are always orthogonally diagonalizable. This connects directly to PCA and covariance matrices."
+      },
+      {
+        "topic": "Matrices & operations",
+        "num": 13,
+        "text": "What is an orthogonal matrix? Give examples.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What are the possible determinant values of an orthogonal matrix?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "Is the product of two orthogonal matrices orthogonal?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What does an orthogonal matrix do geometrically?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "det(Q)=±1. Orthogonal matrices preserve lengths and angles — they represent rotations (+1) and reflections (-1)."
+      },
+      {
+        "topic": "Matrices & operations",
+        "num": 14,
+        "text": "What is the null space of a matrix? Give a geometric interpretation.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the null space of an invertible matrix?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "If Ax=b has a solution, how many solutions does it have?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does the null space relate to the solutions of Ax=0 vs Ax=b?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": ""
+      },
+      {
+        "topic": "Eigenvalues & eigenvectors",
+        "num": 15,
+        "text": "What is an eigenvector? Explain geometrically — do NOT give just the equation Av=λv.",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Can the zero vector be an eigenvector?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "Can two different eigenvalues share the same eigenvector?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "If v is an eigenvector of A with eigenvalue λ, is v an eigenvector of A²?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Geometrically: an eigenvector is a vector whose direction is unchanged by the transformation A — it only gets scaled. The zero vector is excluded by definition."
+      },
+      {
+        "topic": "Eigenvalues & eigenvectors",
+        "num": 16,
+        "text": "How do you find eigenvalues of a matrix?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Why do we solve det(A-λI)=0?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "A 3×3 matrix has eigenvalues 1,2,3. What are the eigenvalues of A²? of A^-1? of A+5I?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How many eigenvalues does an n×n matrix have (counting multiplicity)?",
+            "difficulty": "basic"
+          }
+        ],
+        "hint": "Eigenvalues of f(A) follow: if λ is eigenvalue of A, then f(λ) is eigenvalue of f(A). Professors love asking this — it tests deep understanding."
+      },
+      {
+        "topic": "Eigenvalues & eigenvectors",
+        "num": 17,
+        "text": "What is the characteristic polynomial? What information does it encode?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What are the coefficients of the characteristic polynomial related to?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the degree of the characteristic polynomial for an n×n matrix?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "Can two different matrices have the same characteristic polynomial?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "The char. polynomial encodes trace (coeff of λ^(n-1)) and determinant (constant term). Two matrices with the same char. poly are NOT necessarily similar."
+      },
+      {
+        "topic": "Eigenvalues & eigenvectors",
+        "num": 18,
+        "text": "What is geometric vs algebraic multiplicity of an eigenvalue?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "When is a matrix diagonalizable?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Give an example of a matrix that is NOT diagonalizable.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the relationship between geometric and algebraic multiplicity?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Geometric multiplicity ≤ Algebraic multiplicity always. A matrix is diagonalizable iff they are EQUAL for every eigenvalue. The classic non-diagonalizable example: [[1,1],[0,1]]."
+      },
+      {
+        "topic": "Eigenvalues & eigenvectors",
+        "num": 19,
+        "text": "When is a matrix diagonalizable? What is the significance of diagonalizability?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Is every symmetric matrix diagonalizable?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Is a matrix with distinct eigenvalues always diagonalizable?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "What does diagonalization give you computationally?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Distinct eigenvalues → always diagonalizable. Symmetric → always orthogonally diagonalizable (spectral theorem). Diagonalization makes computing A^n trivial."
+      },
+      {
+        "topic": "Eigenvalues & eigenvectors",
+        "num": 20,
+        "text": "What are the eigenvalues of a triangular matrix?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Why is this the case? Give a proof sketch.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What are the eigenvalues of a diagonal matrix?",
+            "difficulty": "basic"
+          }
+        ],
+        "hint": "The diagonal entries ARE the eigenvalues. Simple but often asked to check whether you understand WHY."
+      },
+      {
+        "topic": "Eigenvalues & eigenvectors",
+        "num": 21,
+        "text": "If A has eigenvalue λ, what is the eigenvalue of: A^T, A^-1, A^2, A+cI, cA?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Do A and A^T have the same eigenvectors?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Do A and A^-1 share eigenvectors?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "A and A^T have the same eigenvalues but generally different eigenvectors. A^-1 has eigenvalue 1/λ with the same eigenvectors."
+      },
+      {
+        "topic": "Eigenvalues & eigenvectors",
+        "num": 22,
+        "text": "What is the Cayley-Hamilton theorem? State it and give one application.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "Use it to compute the inverse of a 2×2 matrix.",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Use it to show that any power of A can be expressed as a polynomial in A of degree less than n.",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Every matrix satisfies its own characteristic polynomial: p(A)=0. One application: finding A^-1 without direct computation."
+      },
+      {
+        "topic": "SVD & matrix decompositions",
+        "num": 23,
+        "text": "What is the Singular Value Decomposition (SVD)? Write it out and explain each component.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What are singular values? How do they relate to eigenvalues?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the relationship between SVD and the eigendecomposition of A^T A?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "For a symmetric positive definite matrix, how does SVD relate to eigendecomposition?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "A = UΣV^T. U and V are orthogonal, Σ is diagonal with non-negative entries. Singular values = sqrt of eigenvalues of A^T A. This is the MOST important decomposition for ML."
+      },
+      {
+        "topic": "SVD & matrix decompositions",
+        "num": 24,
+        "text": "What is the geometric interpretation of SVD?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Every matrix transformation can be broken into what 3 simple operations?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What do the columns of U and V represent?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "SVD says every linear map = rotate → stretch → rotate. The columns of V are the input directions that get stretched; U gives the output directions."
+      },
+      {
+        "topic": "SVD & matrix decompositions",
+        "num": 25,
+        "text": "How is SVD used in PCA?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "Is PCA equivalent to eigendecomposition of the covariance matrix?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What do the singular values tell you about variance explained?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the low-rank approximation property of SVD?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "PCA via SVD on the centered data matrix X directly gives principal components. The relationship: singular values of X = sqrt(n-1) × std deviations of PCs."
+      },
+      {
+        "topic": "SVD & matrix decompositions",
+        "num": 26,
+        "text": "What is the best rank-k approximation to a matrix? What theorem guarantees this?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "In what norm does the Eckart-Young theorem hold?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the approximation error in terms of singular values?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Where is this used in practice?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Eckart-Young theorem: truncated SVD gives the best rank-k approximation in both Frobenius and spectral norm. Error = σ_{k+1} (next singular value). Used in image compression, collaborative filtering."
+      },
+      {
+        "topic": "SVD & matrix decompositions",
+        "num": 27,
+        "text": "What is the LU decomposition? When does it exist?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Why do we need partial pivoting?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is LU decomposition used for computationally?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the computational complexity of LU decomposition?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "LU without pivoting can fail (zero pivot). PA=LU with permutation matrix P always exists. LU decomposition makes solving Ax=b for multiple b values efficient: O(n²) per b after O(n³) factorization."
+      },
+      {
+        "topic": "SVD & matrix decompositions",
+        "num": 28,
+        "text": "What is QR decomposition? How is it computed?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the Gram-Schmidt process?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why is QR preferred over normal equations for least squares?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is QR used for beyond least squares?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "QR is more numerically stable than inverting A^T A. Also used to compute eigenvalues (QR algorithm)."
+      },
+      {
+        "topic": "SVD & matrix decompositions",
+        "num": 29,
+        "text": "What is the Cholesky decomposition? When can you use it?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Why is Cholesky preferred for positive definite systems?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How is it related to covariance matrices in ML?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "A = LL^T, exists only for positive definite (or semi-definite) matrices. Twice as efficient as LU for PD matrices. Critical for sampling from multivariate Gaussians."
+      },
+      {
+        "topic": "Linear systems & solutions",
+        "num": 30,
+        "text": "When does Ax=b have a solution? No solution? Infinitely many solutions?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "State the conditions using rank.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the role of the augmented matrix [A|b]?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "If A is square and full rank, how many solutions does Ax=b have?",
+            "difficulty": "basic"
+          }
+        ],
+        "hint": "Solution exists iff rank(A)=rank([A|b]). Unique solution iff additionally rank=n (full column rank). The Rouché-Capelli theorem."
+      },
+      {
+        "topic": "Linear systems & solutions",
+        "num": 31,
+        "text": "What is Gaussian elimination? What are its limitations numerically?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is partial pivoting and why is it needed?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the complexity of Gaussian elimination?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does it relate to LU decomposition?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": ""
+      },
+      {
+        "topic": "Linear systems & solutions",
+        "num": 32,
+        "text": "What is the pseudoinverse of a matrix? When is it used?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "How is the Moore-Penrose pseudoinverse computed using SVD?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "When does A^+ equal A^-1?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What does A^+b give you when Ax=b has no exact solution?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "A^+ = V Σ^+ U^T where Σ^+ inverts non-zero singular values. A^+b gives the minimum-norm least-squares solution — fundamental in regression and optimization."
+      },
+      {
+        "topic": "Linear systems & solutions",
+        "num": 33,
+        "text": "What is the condition number of a matrix? Why does it matter?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the condition number of an orthogonal matrix?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "A matrix has condition number 10^6. What does this mean practically?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does condition number relate to singular values?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "κ(A) = σ_max / σ_min. Condition number = 1 (best case, orthogonal matrices). A large condition number means the system is ill-conditioned — small errors in b can cause large errors in x. Critical for understanding numerical stability in ML."
+      },
+      {
+        "topic": "Projections, least squares & OLS",
+        "num": 34,
+        "text": "What is a projection matrix? What properties does it have?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Prove that P² = P.",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What are the eigenvalues of a projection matrix?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the projection matrix onto the column space of A?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "P²=P (idempotent) and P^T=P (for orthogonal projections). Eigenvalues are only 0 and 1. P = A(A^T A)^-1 A^T for projection onto col(A)."
+      },
+      {
+        "topic": "Projections, least squares & OLS",
+        "num": 35,
+        "text": "Derive the least-squares solution to Ax=b when the system is overdetermined.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What are the normal equations?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why does (A^T A)^-1 A^T b minimize ||Ax-b||²?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "When does the normal equation solution fail?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Minimize ||Ax-b||² → take gradient → A^T A x = A^T b. This fails when A^T A is singular (columns of A are linearly dependent). Use SVD/pseudoinverse instead."
+      },
+      {
+        "topic": "Projections, least squares & OLS",
+        "num": 36,
+        "text": "What is the four fundamental subspaces of a matrix?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "How are they related in dimension (rank-nullity)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Are the row space and null space orthogonal?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Gilbert Strang famously described this — can you draw it?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Column space, null space, row space, left null space. Row space ⊥ Null space. Column space ⊥ Left null space. Dimensions: r, n-r, r, m-r where r=rank."
+      },
+      {
+        "topic": "Positive definite matrices",
+        "num": 37,
+        "text": "What is a positive definite matrix? Give three equivalent definitions.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Is the covariance matrix always positive semi-definite? Prove it.",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Can a positive definite matrix have negative entries?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "Give an example of a 2×2 positive definite matrix.",
+            "difficulty": "basic"
+          }
+        ],
+        "hint": "Equivalent definitions: (1) x^T Ax > 0 for all x≠0, (2) all eigenvalues positive, (3) all leading principal minors positive (Sylvester's criterion), (4) Cholesky decomposition exists. Covariance = X^T X (up to scaling) is always PSD."
+      },
+      {
+        "topic": "Positive definite matrices",
+        "num": 38,
+        "text": "How do you verify if a matrix is positive definite?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Is the identity matrix PD?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "If A and B are PD, is A+B PD?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "If A is PD, is A^-1 PD?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Fastest check: compute eigenvalues (all positive → PD). For small matrices, Sylvester's criterion (leading minors) is practical."
+      },
+      {
+        "topic": "Positive definite matrices",
+        "num": 39,
+        "text": "Why do covariance matrices have to be positive semi-definite?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "Can a covariance matrix be strictly positive definite?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What happens numerically when a covariance matrix is ill-conditioned?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does this relate to the geometry of a multivariate Gaussian distribution?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Variance of any linear combination a^T X must be ≥ 0, and Var(a^T X) = a^T Σ a. So Σ must be PSD. If rank-deficient, some directions have zero variance."
+      },
+      {
+        "topic": "Norms, distances & inner products",
+        "num": 40,
+        "text": "What is a norm? State the three axioms.",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Is the L0 'norm' actually a norm?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the difference between L1, L2, and L∞ norms?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Draw the unit balls for L1 and L2 norms in 2D.",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Three axioms: non-negativity, homogeneity, triangle inequality. L0 fails homogeneity — it's not a true norm. Unit ball of L1 is a diamond; L2 is a circle."
+      },
+      {
+        "topic": "Norms, distances & inner products",
+        "num": 41,
+        "text": "What is the Frobenius norm? How does it relate to singular values?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the spectral norm of a matrix?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "||A||_F² = ?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "Which norm is easier to compute?",
+            "difficulty": "basic"
+          }
+        ],
+        "hint": "||A||_F = sqrt(sum of squares of all entries) = sqrt(sum of squared singular values). ||A||_spectral = largest singular value."
+      },
+      {
+        "topic": "Norms, distances & inner products",
+        "num": 42,
+        "text": "What is an inner product space? What properties must an inner product satisfy?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Is the dot product the only inner product on R^n?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the Cauchy-Schwarz inequality? Prove it.",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the angle between two vectors in terms of their inner product?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Cauchy-Schwarz: |⟨u,v⟩| ≤ ||u|| ||v||. Equality iff vectors are parallel. This is used everywhere in ML — bounding approximation errors, cosine similarity, etc."
+      },
+      {
+        "topic": "Connections to ML & data science",
+        "num": 43,
+        "text": "How does PCA use Linear Algebra? Derive it from first principles.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the role of eigendecomposition in PCA?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why do we centre the data before PCA?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What does it mean if the first PC explains 95% of the variance?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How many principal components should you keep?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "PCA = eigendecomposition of covariance matrix (or SVD of data matrix). PC directions = eigenvectors. Variance explained = eigenvalue / sum of eigenvalues. This is guaranteed to appear in PhD interviews."
+      },
+      {
+        "topic": "Connections to ML & data science",
+        "num": 44,
+        "text": "How does Linear Algebra underpin linear regression?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Write the closed-form solution using matrix notation.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What if X^T X is not invertible — what happens?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Connect the regression solution to a projection.",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "β = (X^T X)^-1 X^T y. The predicted values Ŷ = Xβ = X(X^T X)^-1 X^T y = Hy, where H is the hat/projection matrix. X^T X singular → multicollinearity."
+      },
+      {
+        "topic": "Connections to ML & data science",
+        "num": 45,
+        "text": "What is the role of the covariance matrix in machine learning?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "How is the covariance matrix related to the scatter of data?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why is the covariance matrix always PSD?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does it appear in LDA, Gaussian processes, and Kalman filters?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": ""
+      },
+      {
+        "topic": "Connections to ML & data science",
+        "num": 46,
+        "text": "How does the kernel trick connect to Linear Algebra?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is a kernel matrix (Gram matrix)? What properties must it have?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why must the Gram matrix be positive semi-definite?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What does Mercer's theorem say?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "A valid kernel must produce a PSD Gram matrix. This ensures the implicit feature space has a valid inner product. Mercer's theorem: a symmetric function k(x,y) is a valid kernel iff its Gram matrix is PSD."
+      },
+      {
+        "topic": "Connections to ML & data science",
+        "num": 47,
+        "text": "What is gradient descent, and what does the Hessian matrix tell you about convergence?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "Why does gradient descent converge slowly when the Hessian is ill-conditioned?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the condition number of the Hessian and why does it matter?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is Newton's method and how does it use the Hessian?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "The convergence rate of gradient descent depends on the condition number κ of the Hessian. Large κ → elongated loss landscape → slow convergence. This is why normalizing features helps."
+      },
+      {
+        "topic": "Connections to ML & data science",
+        "num": 48,
+        "text": "Why does normalizing/scaling features matter from a linear algebra perspective?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "How does feature scaling affect the condition number of X^T X?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Connect this to gradient descent convergence.",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Without scaling, X^T X can be very ill-conditioned. Feature scaling reduces κ(X^T X), making both analytical solutions more numerically stable and gradient descent converge faster."
+      },
+      {
+        "topic": "Connections to ML & data science",
+        "num": 49,
+        "text": "What is the relationship between matrix rank and model complexity?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "If the feature matrix X has rank < p, what does this imply for OLS?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "How does rank relate to the identifiability of a model?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is multicollinearity, and why is it a rank problem?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Rank deficiency in X means X^T X is singular → OLS has no unique solution. This is exactly multicollinearity. Ridge regression fixes this by adding λI, making X^T X + λI always invertible."
+      }
+    ]
+  },
+  {
+    "subject": "Machine Learning",
+    "questions": [
+      {
+        "topic": "Foundations of machine learning",
+        "num": 1,
+        "text": "What is machine learning? How does it differ from traditional programming?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What are the three main types of ML? How do they differ fundamentally?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "What is the difference between a model, an algorithm, and a hypothesis?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Give an example where ML is the wrong tool to use.",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "PhD panels expect you to articulate what ML fundamentally does — learning a mapping from data — and to know its limits. Being able to say when NOT to use ML signals research maturity."
+      },
+      {
+        "topic": "Foundations of machine learning",
+        "num": 2,
+        "text": "What is the bias-variance tradeoff? Derive the MSE decomposition formally.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "Draw the bias-variance-complexity curve. What happens at both extremes?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Does the bias-variance tradeoff apply to deep neural networks? What is double descent?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "How does ensemble learning reduce variance without increasing bias?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "MSE = Bias² + Variance + Irreducible noise. This derivation is mandatory. Double descent is a modern challenge to classical wisdom — mention it to impress. Formula: decompose E[(f̂(x)-y)²] by adding and subtracting E[f̂(x)]."
+      },
+      {
+        "topic": "Foundations of machine learning",
+        "num": 3,
+        "text": "What is the No Free Lunch theorem? What does it imply for ML research?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Does NFL mean all algorithms are equally good in practice?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does NFL motivate the importance of inductive bias?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is inductive bias? Give examples for different algorithms.",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "NFL: no single algorithm outperforms all others averaged over all possible problems. In practice, we exploit structure in real data. Inductive bias (assumptions built into an algorithm) is what makes learning possible."
+      },
+      {
+        "topic": "Foundations of machine learning",
+        "num": 4,
+        "text": "What is the curse of dimensionality? How does it affect ML algorithms?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "How does the volume of a hypersphere behave as dimension increases?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why does nearest-neighbour search break down in high dimensions?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What techniques help combat the curse of dimensionality?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "In high dimensions: (1) data becomes sparse, (2) distances become uniformly large and uninformative, (3) exponentially more data needed. Mitigation: dimensionality reduction (PCA, autoencoders), feature selection, domain-specific structure."
+      },
+      {
+        "topic": "Foundations of machine learning",
+        "num": 5,
+        "text": "What is the PAC learning framework? What does it mean for a concept to be PAC learnable?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the VC dimension? What does it measure?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "State the fundamental theorem of statistical learning.",
+            "difficulty": "hard"
+          },
+          {
+            "text": "How does VC dimension relate to overfitting?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "PAC = Probably Approximately Correct. A concept class is PAC learnable if a polynomial-time algorithm can learn an ε-approximate hypothesis with probability ≥ 1-δ. VC dimension measures the complexity/capacity of a hypothesis class."
+      },
+      {
+        "topic": "Foundations of machine learning",
+        "num": 6,
+        "text": "What is generalisation? What is the difference between training error and generalisation error?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is the generalisation gap?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does sample size affect generalisation?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What does it mean for a model to overfit? Underfit?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": ""
+      },
+      {
+        "topic": "Supervised learning — core concepts",
+        "num": 7,
+        "text": "Explain linear regression from scratch. Derive the closed-form solution.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What assumptions does linear regression make about errors?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What happens when X^TX is not invertible?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the geometric interpretation of the OLS solution?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "When is the closed-form solution impractical?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "β = (X^TX)^{-1}X^Ty. Assumptions: linearity, independence, homoscedasticity, normality of errors (for inference). X^TX singular = multicollinearity. Closed-form is O(n³) — impractical for large n; use gradient descent instead."
+      },
+      {
+        "topic": "Supervised learning — core concepts",
+        "num": 8,
+        "text": "Explain logistic regression. Derive its loss function from probabilistic principles.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Why can't we use MSE loss for classification?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the decision boundary of logistic regression?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How do you extend logistic regression to multi-class problems?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Is logistic regression a linear classifier?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Loss = -[y log σ(w^Tx) + (1-y) log(1-σ(w^Tx))] derived from MLE under Bernoulli assumption. Decision boundary is linear (hyperplane). Multi-class: softmax regression. Yes, it is a linear classifier — the decision boundary is linear in feature space."
+      },
+      {
+        "topic": "Supervised learning — core concepts",
+        "num": 9,
+        "text": "What is the kernel trick? Derive it and explain when it is useful.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the Mercer condition for a valid kernel?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Name five commonly used kernels and describe their properties.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the feature map corresponding to the RBF kernel?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the computational advantage of the kernel trick?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Instead of explicitly computing φ(x), compute K(xi,xj) = φ(xi)·φ(xj). Valid kernels must have a PSD Gram matrix (Mercer's theorem). RBF kernel maps to infinite-dimensional space. Complexity: O(n²) kernel matrix vs O(nd) explicit features."
+      },
+      {
+        "topic": "Supervised learning — core concepts",
+        "num": 10,
+        "text": "What is the decision tree algorithm? How are splits chosen?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is information gain? Derive it from entropy.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is Gini impurity? How does it compare to entropy?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How do you handle continuous features in a decision tree?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What are the main hyperparameters of a decision tree?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Split criterion: information gain = H(parent) - weighted H(children). Gini = 1 - Σp_i². Both measure impurity. Gini is faster to compute; entropy can give slightly different trees. Key hyperparams: max_depth, min_samples_split, min_samples_leaf."
+      },
+      {
+        "topic": "Supervised learning — core concepts",
+        "num": 11,
+        "text": "What is a support vector machine? Derive the optimisation problem for a hard-margin SVM.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the soft-margin SVM? What does the C parameter control?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the support vector and why is it significant?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why does the SVM maximise the margin?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the dual formulation of SVM and why is it used?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Hard margin: min ½||w||² subject to y_i(w^Tx_i+b)≥1. Dual formulation (via Lagrangians) allows the kernel trick. Only support vectors (points on the margin) define the solution — sparse representation. C controls bias-variance tradeoff in soft-margin."
+      },
+      {
+        "topic": "Supervised learning — core concepts",
+        "num": 12,
+        "text": "What is the k-nearest neighbours (KNN) algorithm? What are its properties?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is the complexity of KNN at inference time?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does KNN behave as k→1 vs k→n?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Is KNN a parametric or non-parametric model?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the curse of dimensionality's impact on KNN?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "KNN is non-parametric (no training, all computation at inference). k=1: low bias, high variance. k=n: high bias, low variance. Inference: O(nd) per query. In high dimensions distances concentrate and KNN loses discriminative power."
+      },
+      {
+        "topic": "Key classifiers & regressors in depth",
+        "num": 13,
+        "text": "What is a Random Forest? How does it reduce variance compared to a single decision tree?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is bagging? How does it differ from boosting?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is feature subsampling in Random Forests and why is it important?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How do you measure feature importance in a Random Forest?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is out-of-bag error and how is it computed?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "RF = bagging + random feature subsampling. Bagging reduces variance by averaging. Feature subsampling decorrelates trees — key insight: correlated trees don't reduce variance as much. OOB error uses ~37% of data not sampled per tree as a validation set."
+      },
+      {
+        "topic": "Key classifiers & regressors in depth",
+        "num": 14,
+        "text": "What is gradient boosting? Derive the update rule.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the difference between AdaBoost and gradient boosting?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What does XGBoost add over vanilla gradient boosting?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the learning rate in boosting and what does it control?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why is boosting prone to overfitting and how do you control it?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "GB fits each new tree to the negative gradient (pseudo-residuals) of the loss. AdaBoost: re-weights misclassified samples. XGBoost adds: regularisation on tree weights, second-order Taylor expansion, column subsampling. Learning rate shrinks each tree's contribution."
+      },
+      {
+        "topic": "Key classifiers & regressors in depth",
+        "num": 15,
+        "text": "What is AdaBoost? Derive the sample weights update.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What loss function does AdaBoost implicitly minimise?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Why does AdaBoost overfit less than a single deep tree (historically)?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What happens when a weak learner is slightly worse than random?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Weight update: w_i ← w_i · exp(α_t · 1[h_t(x_i)≠y_i]) where α_t = ½ log((1-ε_t)/ε_t). AdaBoost minimises exponential loss. If ε_t > 0.5 (worse than random), α_t becomes negative — the learner's vote is flipped."
+      },
+      {
+        "topic": "Key classifiers & regressors in depth",
+        "num": 16,
+        "text": "What is a Naive Bayes classifier? When does it work well despite its strong assumption?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Derive the Naive Bayes decision rule.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the Gaussian Naive Bayes model?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is Laplace smoothing and why is it needed?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the relationship between Naive Bayes and logistic regression?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Despite the independence assumption being almost always violated, NB works well when: features are truly independent, data is scarce (low variance), or you need calibrated probabilities. Laplace smoothing: add α to counts to avoid zero probabilities."
+      },
+      {
+        "topic": "Key classifiers & regressors in depth",
+        "num": 17,
+        "text": "What is a Gaussian Process? How is it used for regression?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the role of the kernel in a Gaussian Process?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "How do you make predictions with a GP?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the computational complexity of GP inference?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the difference between GP and Bayesian linear regression?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "GP is a distribution over functions. Prior: f(x) ~ GP(m(x), k(x,x')). Posterior after observing data is also a GP — gives uncertainty estimates. Inference: O(n³) due to matrix inversion. GP is exact Bayesian inference; BLR is a special case with a linear kernel."
+      },
+      {
+        "topic": "Unsupervised learning",
+        "num": 18,
+        "text": "Describe the k-means clustering algorithm. What is it optimising?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is the objective function of k-means? Is it convex?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Does k-means always converge? To what?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is k-means++? Why is it better?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What are the main weaknesses of k-means?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Minimises within-cluster sum of squared distances (WCSS). Non-convex — converges to local minima. k-means++ selects initial centroids with probability proportional to squared distance — reduces bad initialisations. Weaknesses: assumes spherical clusters, sensitive to outliers, requires k."
+      },
+      {
+        "topic": "Unsupervised learning",
+        "num": 19,
+        "text": "What is PCA? Derive it from first principles using variance maximisation.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the relationship between PCA and SVD?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How do you choose the number of principal components?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What are the assumptions of PCA?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is kernel PCA?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Maximise var(w^Tx) subject to ||w||=1 → eigenvector of covariance matrix with largest eigenvalue. PCA via SVD of centred data X: columns of V are PCs. Choose k using explained variance ratio (e.g., 95% threshold) or scree plot elbow."
+      },
+      {
+        "topic": "Unsupervised learning",
+        "num": 20,
+        "text": "What is the Expectation-Maximisation (EM) algorithm? Apply it to Gaussian Mixture Models.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What does EM optimise at each step?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Does EM guarantee convergence to the global optimum?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the relationship between EM and the ELBO?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What happens when a Gaussian in a GMM collapses to a single point?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "E-step: compute responsibilities r_ic = π_c N(x_i|μ_c,Σ_c) / Σ_c' π_c' N(x_i|μ_c',Σ_c'). M-step: update parameters using weighted MLE. EM monotonically increases log-likelihood but only finds local optima. Degenerate solutions (singularities) possible when a cluster captures one point."
+      },
+      {
+        "topic": "Unsupervised learning",
+        "num": 21,
+        "text": "What is hierarchical clustering? Compare agglomerative vs divisive approaches.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What are the different linkage criteria (single, complete, average, Ward)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is a dendrogram and how do you interpret it?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the time complexity of agglomerative clustering?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "When would you prefer hierarchical clustering over k-means?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Single linkage (nearest neighbour) is prone to chaining. Complete linkage gives compact clusters. Ward's method minimises within-cluster variance — most similar to k-means. Agglomerative: O(n³) naive, O(n² log n) with priority queue."
+      },
+      {
+        "topic": "Unsupervised learning",
+        "num": 22,
+        "text": "What is DBSCAN? How does it differ fundamentally from k-means?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What are the two hyperparameters of DBSCAN?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the difference between a core point, border point, and noise point?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What shapes of clusters can DBSCAN find that k-means cannot?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the main weakness of DBSCAN?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "DBSCAN doesn't assume spherical clusters, doesn't require k, and handles noise/outliers as a first-class concept. Weakness: struggles with varying-density clusters and scales poorly to high dimensions."
+      },
+      {
+        "topic": "Unsupervised learning",
+        "num": 23,
+        "text": "What is an autoencoder? How is it used for dimensionality reduction?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "How does an autoencoder differ from PCA?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is a variational autoencoder (VAE)?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the reconstruction loss vs the KL term in the VAE objective?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "How are autoencoders used for anomaly detection?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Autoencoder = encoder + bottleneck + decoder. Unlike PCA (linear), autoencoders learn non-linear representations. VAE adds probabilistic latent space (Gaussian). VAE loss = reconstruction loss + KL(q(z|x) || p(z)). Anomaly detection: high reconstruction error = anomaly."
+      },
+      {
+        "topic": "Optimisation for ML",
+        "num": 24,
+        "text": "Derive the gradient descent update rule. What is the intuition behind it?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is the role of the learning rate? What happens if it is too large or too small?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the difference between batch, mini-batch, and stochastic gradient descent?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the convergence rate of gradient descent for convex vs strongly convex functions?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "θ ← θ - η∇L(θ). Too large η: oscillates or diverges. Too small: very slow. SGD is noisy but can escape local minima and is faster per update. Mini-batch balances noise and efficiency. Convex: O(1/t) convergence. Strongly convex: O(ρ^t) linear convergence."
+      },
+      {
+        "topic": "Optimisation for ML",
+        "num": 25,
+        "text": "What is momentum in gradient descent? What problem does it solve?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the difference between classical momentum and Nesterov momentum?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the intuition of momentum in terms of a moving average?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does momentum affect convergence in ill-conditioned loss surfaces?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Momentum accumulates a velocity vector in directions of persistent gradient — accelerates through flat regions, dampens oscillations in ravines. Nesterov computes gradient at the lookahead position — slightly better convergence guarantees."
+      },
+      {
+        "topic": "Optimisation for ML",
+        "num": 26,
+        "text": "Explain the Adam optimiser. Derive its update rule.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What are the two moment estimates in Adam?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the bias correction step and why is it necessary?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What are common failure modes of Adam?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "How does AdaGrad differ from Adam?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Adam = RMSProp + momentum. m_t = β1·m_{t-1} + (1-β1)·g_t (1st moment). v_t = β2·v_{t-1} + (1-β2)·g_t² (2nd moment). Bias correction: m̂_t = m_t/(1-β1^t). Update: θ ← θ - η·m̂_t/(√v̂_t + ε). Failure: Adam can generalise worse than SGD (Wilson et al. 2017)."
+      },
+      {
+        "topic": "Optimisation for ML",
+        "num": 27,
+        "text": "What is convexity? Why does it matter for optimisation in ML?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Is the loss function of logistic regression convex?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Is the loss of a neural network convex?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is a saddle point? How common are they in deep learning?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the difference between a local and global minimum for deep networks?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Logistic regression loss is convex (sum of log-sum-exp). Neural network loss is highly non-convex. Empirical finding: local minima in deep networks are often near-global minima (Dauphin et al.). Saddle points are more problematic than local minima in high dimensions."
+      },
+      {
+        "topic": "Optimisation for ML",
+        "num": 28,
+        "text": "What is the vanishing gradient problem? What causes it and how is it addressed?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "Which activation functions cause vanishing gradients?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does batch normalisation help?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How do residual connections (ResNets) address this problem?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the exploding gradient problem and how is it handled?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Sigmoid/tanh saturate → gradients near 0 → early layers don't learn. Solutions: ReLU activations, batch norm, residual connections, careful weight initialisation (Xavier/He). Exploding gradients: gradient clipping. ResNets provide gradient highways through skip connections."
+      },
+      {
+        "topic": "Optimisation for ML",
+        "num": 29,
+        "text": "What is second-order optimisation? How does Newton's method work?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the Hessian and why is it expensive to compute?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the quasi-Newton method? What is L-BFGS?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Why is Newton's method rarely used in deep learning?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Newton's method: θ ← θ - H^{-1}∇L. Requires O(d²) storage and O(d³) inversion of Hessian — infeasible for large models. L-BFGS approximates the inverse Hessian using a limited history of gradient differences. Used for small/medium ML problems."
+      },
+      {
+        "topic": "Regularisation & generalisation",
+        "num": 30,
+        "text": "What is regularisation? Explain L1 and L2 regularisation with their effects on weights.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Why does L1 produce sparse solutions but L2 does not?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the Bayesian interpretation of L1 and L2 regularisation?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is elastic net and when is it preferred?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "L2 (ridge): pushes all weights towards zero equally. L1 (lasso): pushes some weights to exactly zero (sparse). Geometrically: L1 ball has corners at axes → solution likely at corner → sparsity. L2 ball is smooth → solution rarely on axis. L1 ↔ Laplace prior, L2 ↔ Gaussian prior."
+      },
+      {
+        "topic": "Regularisation & generalisation",
+        "num": 31,
+        "text": "What is dropout? How does it act as a regulariser?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the expected output of a neuron at test time with dropout?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the connection between dropout and model ensembling?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the Bayesian interpretation of dropout?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "At what layers/rates is dropout typically applied?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "At test time: multiply weights by keep-probability (scaling). Ensemble interpretation: training with dropout ≈ training exponentially many sub-networks. Bayesian interpretation: approximate variational inference (Gal & Ghahramani, 2016). Typical rate: 0.5 for hidden layers."
+      },
+      {
+        "topic": "Regularisation & generalisation",
+        "num": 32,
+        "text": "What is early stopping? Why does it work as regularisation?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the equivalence between early stopping and L2 regularisation (for linear models)?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "How do you implement early stopping in practice?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the relationship between the stopping point and the effective model complexity?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "For linear models with gradient descent, early stopping is equivalent to L2 regularisation — both constrain the effective parameter space. Monitor validation loss; stop when it starts increasing. Use a patience parameter to avoid stopping prematurely."
+      },
+      {
+        "topic": "Regularisation & generalisation",
+        "num": 33,
+        "text": "What is data augmentation? Why does it improve generalisation?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Give examples of augmentation strategies for images, text, and tabular data.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Can data augmentation be harmful?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is mixup and CutMix?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Augmentation implicitly encodes invariances (e.g., translation invariance via random crops). Can be harmful if augmentation destroys the signal (e.g., flipping text). Mixup: linear interpolation of training examples and labels — regularises the model to behave linearly between training points."
+      },
+      {
+        "topic": "Regularisation & generalisation",
+        "num": 34,
+        "text": "What is batch normalisation? How does it work and why does it help?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What are the learnable parameters in batch normalisation?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Does batch norm help with covariate shift?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is layer normalisation and when is it preferred over batch norm?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What problems can batch norm cause?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "BN: normalise activations to zero mean, unit variance, then scale and shift with learnable γ, β. Reduces internal covariate shift, allows higher learning rates, has mild regularisation effect. LayerNorm normalises across features (not batch) — preferred in Transformers where batch sizes are small."
+      },
+      {
+        "topic": "Model evaluation & selection",
+        "num": 35,
+        "text": "What are precision, recall, and F1 score? When should you use each?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is the precision-recall tradeoff?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the F-beta score and when would you use F2 vs F0.5?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "In fraud detection, which matters more — precision or recall?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the AUC-ROC? What does a value of 0.5 mean?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Precision = TP/(TP+FP). Recall = TP/(TP+FN). F1 = harmonic mean. Use recall when false negatives are costly (disease detection). Use precision when false positives are costly (spam filter). AUC-ROC = 0.5 means the model is no better than random."
+      },
+      {
+        "topic": "Model evaluation & selection",
+        "num": 36,
+        "text": "What is cross-validation? Why is k-fold CV preferred over a single train/test split?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is stratified k-fold CV and when is it needed?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is leave-one-out CV? What are its pros and cons?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is nested CV and why is it needed for hyperparameter tuning?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the bias-variance tradeoff in CV with respect to k?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Nested CV: outer loop for generalisation estimate, inner loop for hyperparameter search. Without nesting, your test error estimate is optimistically biased. High k: low bias, high variance. Low k: high bias, low variance. LOO-CV is nearly unbiased but expensive and high variance."
+      },
+      {
+        "topic": "Model evaluation & selection",
+        "num": 37,
+        "text": "What is the ROC curve? How do you interpret the AUC?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the difference between ROC-AUC and PR-AUC?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "When is PR-AUC more informative than ROC-AUC?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What does it mean geometrically when a model dominates another in ROC space?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "ROC plots TPR vs FPR across all thresholds. AUC = P(model ranks a random positive above a random negative). PR-AUC is more informative for highly imbalanced datasets — ROC-AUC can be misleadingly high when negatives dominate."
+      },
+      {
+        "topic": "Model evaluation & selection",
+        "num": 38,
+        "text": "What is hyperparameter tuning? Compare grid search, random search, and Bayesian optimisation.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Why does random search often outperform grid search?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the surrogate model in Bayesian optimisation?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the acquisition function? Name two examples.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is hyperband and why is it efficient?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Random search: if only a few hyperparams matter, random search covers the important dimensions more efficiently. Bayesian opt uses a surrogate (GP/TPE) + acquisition function (EI, UCB) to decide where to sample next. Hyperband: bandit-based early stopping of bad configurations."
+      },
+      {
+        "topic": "Model evaluation & selection",
+        "num": 39,
+        "text": "What is the confusion matrix? Derive all standard metrics from it.",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is the Matthews Correlation Coefficient (MCC)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What metric would you use for a multi-class imbalanced problem?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is Cohen's Kappa?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "MCC is considered the most reliable single metric for binary classification — it accounts for all four cells of the confusion matrix and is robust to class imbalance. Cohen's Kappa measures inter-rater agreement accounting for chance."
+      },
+      {
+        "topic": "Neural networks — fundamentals",
+        "num": 40,
+        "text": "What is a neural network? What is the universal approximation theorem?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What are the limitations of the universal approximation theorem?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Does depth matter? Can a wide shallow network always replace a deep narrow one?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What activation functions are commonly used and why?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "UAT: a single hidden layer NN with enough neurons can approximate any continuous function on a compact set. Limitation: it says nothing about how many neurons or whether gradient descent finds the solution. Depth provides exponential expressiveness advantage over width."
+      },
+      {
+        "topic": "Neural networks — fundamentals",
+        "num": 41,
+        "text": "Derive the backpropagation algorithm from first principles.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the chain rule and how is it applied in backprop?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the computational graph and why is it used?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is automatic differentiation? How does it differ from numerical differentiation?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the memory complexity of backprop?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Backprop = efficient application of chain rule on a computational graph. Memory: O(depth) for storing activations during forward pass. Autodiff (reverse-mode) is exact and O(n) for n parameters vs O(n²) for numerical diff. Forward-mode AD is efficient for few inputs, reverse-mode for few outputs (most neural networks)."
+      },
+      {
+        "topic": "Neural networks — fundamentals",
+        "num": 42,
+        "text": "What is the dying ReLU problem? How is it addressed?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is Leaky ReLU? ELU? GELU?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What activation function is used in Transformers and why?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the vanishing gradient problem for sigmoid vs ReLU?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Dying ReLU: neurons with negative pre-activations always output 0 → gradient is 0 → weight never updates. Leaky ReLU: small slope for negatives. ELU: smooth negative region. GELU: Gaussian-gated — used in BERT, GPT. Sigmoid: saturates at both ends → vanishing gradients."
+      },
+      {
+        "topic": "Neural networks — fundamentals",
+        "num": 43,
+        "text": "What is weight initialisation? Why does it matter? Describe Xavier and He initialisation.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What goes wrong with all-zero initialisation?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the symmetry-breaking argument?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "When do you use Xavier vs He initialisation?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "All-zeros: all neurons compute same gradient → no learning. Xavier (Glorot): Var(w) = 2/(n_in+n_out) — designed for tanh/sigmoid. He: Var(w) = 2/n_in — designed for ReLU. Key insight: maintain variance of activations and gradients through layers."
+      },
+      {
+        "topic": "Deep learning architectures",
+        "num": 44,
+        "text": "What is a convolutional neural network (CNN)? Why is it suited for images?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is parameter sharing and local connectivity?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the purpose of pooling layers?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the receptive field and how does it grow with depth?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the inductive bias of a CNN?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Inductive biases: translation equivariance (parameter sharing), locality (local connectivity), compositionality (hierarchical features). Receptive field grows multiplicatively with depth. Pooling provides translation invariance and reduces spatial dimensions."
+      },
+      {
+        "topic": "Deep learning architectures",
+        "num": 45,
+        "text": "What is a recurrent neural network (RNN)? What is the vanishing gradient problem specific to RNNs?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is an LSTM? What problem does it solve?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What are the gates in an LSTM and what do they do?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is a GRU and how does it compare to LSTM?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the difference between BPTT and truncated BPTT?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "LSTM gates: forget (what to remove from cell state), input (what new information to add), output (what to expose as hidden state). GRU: simplified LSTM with 2 gates — often similar performance with fewer parameters. Vanishing gradient in RNNs is worse than feedforward because gradients are multiplied T times."
+      },
+      {
+        "topic": "Deep learning architectures",
+        "num": 46,
+        "text": "What is the attention mechanism? Derive scaled dot-product attention.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "Why do we scale by √d_k?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is multi-head attention and why is it used?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the complexity of self-attention with respect to sequence length?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What problem does attention solve that RNNs struggle with?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Attention(Q,K,V) = softmax(QK^T/√d_k)V. Scale by √d_k: prevents softmax from saturating (very small gradients) when d_k is large. Multi-head: attends to different representation subspaces. Complexity: O(n²d) — quadratic in sequence length. Solves long-range dependency problem."
+      },
+      {
+        "topic": "Deep learning architectures",
+        "num": 47,
+        "text": "What is the Transformer architecture? Describe its key components.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is positional encoding and why is it needed?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the residual connection + layer norm pattern and why is it used?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the difference between encoder-only, decoder-only, and encoder-decoder Transformers?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Name one model from each category.",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Components: multi-head self-attention, FFN, residual connections, layer norm, positional encoding. Positional encoding: Transformer has no inherent sequence order (unlike RNNs). Encoder-only: BERT. Decoder-only: GPT. Encoder-decoder: T5, original Transformer."
+      },
+      {
+        "topic": "Deep learning architectures",
+        "num": 48,
+        "text": "What is transfer learning and fine-tuning? Why does it work?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the difference between feature extraction and fine-tuning?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is catastrophic forgetting?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is LoRA and why is it used for LLM fine-tuning?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What layers do you typically fine-tune and why?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Transfer learning works because lower layers learn general features (edges, textures, syntactic patterns) transferable across tasks. Catastrophic forgetting: fine-tuning on new task overwrites old knowledge. LoRA: low-rank adaptation of weight matrices — reduces trainable params by 99%+ while preserving performance."
+      },
+      {
+        "topic": "Advanced & modern ML topics",
+        "num": 49,
+        "text": "What is a generative adversarial network (GAN)? Formulate the minimax objective.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What are the training challenges of GANs?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is mode collapse? How is it addressed?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the Wasserstein GAN and why is it more stable?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the discriminator actually learning?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "min_G max_D E[log D(x)] + E[log(1-D(G(z)))]. Discriminator ≈ distinguishes real from fake. Mode collapse: G generates few modes. WGAN uses Wasserstein distance (Earth Mover's Distance) — better gradients even when distributions don't overlap."
+      },
+      {
+        "topic": "Advanced & modern ML topics",
+        "num": 50,
+        "text": "What is a variational autoencoder (VAE)? Derive the ELBO.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the reparametrisation trick and why is it needed?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the role of the KL term in the ELBO?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is posterior collapse and when does it happen?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "How does a VAE differ from a standard autoencoder?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "ELBO = E_q[log p(x|z)] - KL(q(z|x)||p(z)). Reparametrisation: z = μ + σ·ε, ε~N(0,I) — makes sampling differentiable. KL term regularises latent space to be Gaussian. Posterior collapse: decoder ignores z, KL→0."
+      },
+      {
+        "topic": "Advanced & modern ML topics",
+        "num": 51,
+        "text": "What is reinforcement learning? Define the key components.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the Bellman equation?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the difference between model-based and model-free RL?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the exploration-exploitation tradeoff?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is policy gradient and how does it differ from Q-learning?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Components: agent, environment, state, action, reward, policy, value function. Bellman: V(s) = max_a [R(s,a) + γ Σ P(s'|s,a)V(s')]. Policy gradient: directly optimises policy parameters using REINFORCE. Q-learning: model-free value-based, off-policy."
+      },
+      {
+        "topic": "Advanced & modern ML topics",
+        "num": 52,
+        "text": "What is self-supervised learning? Give three examples of pretext tasks.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "How does contrastive learning work? What is SimCLR?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is masked language modelling (BERT)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the next token prediction task (GPT)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why has self-supervised learning become dominant in NLP and vision?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Pretext tasks: masked token prediction, next sentence prediction, image rotation prediction, contrastive (same image → similar embeddings). SSL leverages unlabelled data — critical when labels are scarce. BERT uses masked LM. GPT uses causal LM. SimCLR: maximise agreement between augmented views of same image."
+      },
+      {
+        "topic": "Advanced & modern ML topics",
+        "num": 53,
+        "text": "What is the difference between generative and discriminative models? Give examples of each.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What are the advantages of each type?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "When is a generative model preferred?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the asymptotic relationship between Naive Bayes and logistic regression?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Generative: models P(X,Y) = P(X|Y)P(Y). Discriminative: models P(Y|X) directly. Discriminative: better accuracy with enough data. Generative: better with small data (leverages unlabelled X), enables data generation, handles missing data naturally. With infinite data, NB and LR converge to same decision boundary."
+      },
+      {
+        "topic": "Advanced & modern ML topics",
+        "num": 54,
+        "text": "What is active learning? What is the key idea behind uncertainty sampling?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the query-by-committee strategy?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Where is active learning most useful in practice?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the cold-start problem in active learning?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Active learning: model queries the most informative unlabelled examples for annotation. Uncertainty sampling: query examples where the model is least confident (e.g., closest to decision boundary, highest entropy). Used when labels are expensive (medical imaging, NLP annotation)."
+      },
+      {
+        "topic": "Research mindset & PhD-specific questions",
+        "num": 55,
+        "text": "Walk me through a project you've done. What was the research question and what did you try?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What didn't work, and why?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What would you do differently now?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does this relate to open research problems?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "This is the most important non-technical question. Professors want to see: (1) clear problem formulation, (2) awareness of baselines, (3) honest failure analysis, (4) intellectual curiosity. Never claim everything worked perfectly."
+      },
+      {
+        "topic": "Research mindset & PhD-specific questions",
+        "num": 56,
+        "text": "What is a research problem you find compelling in ML/AI right now? Why?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What has been tried before? Why did it fall short?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What would a good solution look like?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How would you measure progress?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Prepare 2-3 genuine research interests. Connect them to recent literature. Professors are checking whether you can think like a researcher — problem formulation > solution. Show you know the difference between an engineering task and a research question."
+      },
+      {
+        "topic": "Research mindset & PhD-specific questions",
+        "num": 57,
+        "text": "What is the difference between a research contribution and an engineering contribution?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What makes a result publishable at a top venue?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is a null result? Is it publishable?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How do you identify that a problem is genuinely open vs already solved?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Research = novel insight or method that advances understanding. Engineering = building a working system. Null results are publishable and valuable — they prune the search space. Top venues (NeurIPS, ICML, ICLR) require novelty + rigorous evaluation."
+      },
+      {
+        "topic": "Research mindset & PhD-specific questions",
+        "num": 58,
+        "text": "Explain a recent ML paper that impressed you. What was the key insight?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What were the limitations of the paper?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "How would you extend it?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What experiments would you run to validate the core claim?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Have 1-2 recent papers ready (from NeurIPS/ICML/ICLR 2023-2024). Explain WHY the insight matters, not just WHAT it does. Discussing limitations shows critical thinking — exactly what professors want in a PhD student."
+      },
+      {
+        "topic": "Research mindset & PhD-specific questions",
+        "num": 59,
+        "text": "What are the open problems in your area of interest?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the bottleneck preventing progress?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Is this a data problem, a compute problem, or a theoretical problem?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What would a breakthrough look like?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "The ability to articulate open problems is a reliable signal of research readiness. Students who can only describe solved problems are not ready for a PhD. Prepare at least 3 open problems in your chosen area."
+      }
+    ]
+  },
+  {
+    "subject": "Probability and Statistics",
+    "questions": [
+      {
+        "topic": "Probability foundations",
+        "num": 1,
+        "text": "Define probability. What are the three Kolmogorov axioms?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Why do we need a sigma-algebra? What goes wrong without it?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the difference between frequentist and Bayesian interpretations of probability?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Give an example where the frequentist interpretation breaks down.",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Professors expect you to know WHY axioms are necessary, not just state them. The sigma-algebra question is a favourite for CS/Math-background candidates."
+      },
+      {
+        "topic": "Probability foundations",
+        "num": 2,
+        "text": "What is the difference between mutually exclusive events and independent events?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Can two events be both mutually exclusive AND independent? When?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "If P(A)>0 and P(B)>0, can A and B be both mutually exclusive and independent?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Give a concrete example of independent but not mutually exclusive events.",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Two events with positive probability cannot be both mutually exclusive AND independent. If A∩B=∅ then P(A∩B)=0, but independence requires P(A∩B)=P(A)P(B) > 0. This trips up many candidates."
+      },
+      {
+        "topic": "Probability foundations",
+        "num": 3,
+        "text": "State and prove the inclusion-exclusion principle for two events.",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Extend it to three events.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "A student randomly guesses on a 10-question true/false test. What is the probability of getting at least one correct?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": ""
+      },
+      {
+        "topic": "Probability foundations",
+        "num": 4,
+        "text": "What is conditional probability? Define it and explain intuitively.",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Does P(A|B) = P(B|A)? When are they equal?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "If A and B are independent, what is P(A|B)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Is conditional probability itself a valid probability measure?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "P(A|B) = P(B|A) only when P(A)=P(B). Confusing P(A|B) with P(B|A) is the base rate fallacy — extremely relevant to ML evaluation metrics."
+      },
+      {
+        "topic": "Probability foundations",
+        "num": 5,
+        "text": "What is the law of total probability? State and prove it.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Give an example from a real-world ML scenario where this is used.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does this relate to marginalizing out a variable?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "This is the foundation of marginalization in probabilistic models. Expected everywhere in ML interviews."
+      },
+      {
+        "topic": "Probability foundations",
+        "num": 6,
+        "text": "What is the multiplication rule of probability? Derive the chain rule for n events.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "How does the chain rule of probability relate to the chain rule in Bayesian networks?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What assumption simplifies the chain rule drastically in a naive Bayes classifier?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Chain rule: P(A1∩A2∩...∩An) = P(A1)P(A2|A1)P(A3|A1,A2)...  Naive Bayes assumes conditional independence — this collapses the product into a much simpler form."
+      },
+      {
+        "topic": "Random variables & distributions",
+        "num": 7,
+        "text": "What is a random variable? What is the difference between discrete and continuous random variables?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is a mixed random variable? Give an example.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Is the indicator function of an event a random variable?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "What is the CDF and what properties must it have?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "CDF properties: non-decreasing, right-continuous, limits to 0 as x→-∞ and 1 as x→+∞. Professors may ask you to sketch CDFs."
+      },
+      {
+        "topic": "Random variables & distributions",
+        "num": 8,
+        "text": "What is a PMF? A PDF? How do they differ and what properties must each satisfy?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Can a PDF take values greater than 1? Give an example.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the relationship between PDF and CDF?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How do you compute P(a ≤ X ≤ b) from the PDF?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "PDF CAN exceed 1 — it is a density, not a probability. E.g., Uniform(0, 0.5) has PDF = 2. This is a classic trick question."
+      },
+      {
+        "topic": "Random variables & distributions",
+        "num": 9,
+        "text": "What is the joint distribution of two random variables? When are two RVs independent?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "If X and Y are independent, is f(X) and g(Y) independent for arbitrary functions f,g?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Does zero covariance imply independence? Prove or give a counterexample.",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the marginal distribution and how do you compute it?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Zero covariance does NOT imply independence. Classic counterexample: X ~ Uniform(-1,1), Y = X². Cov(X,Y)=0 but Y is completely determined by X. This is extremely commonly asked."
+      },
+      {
+        "topic": "Random variables & distributions",
+        "num": 10,
+        "text": "What is a transformation of a random variable? If Y=g(X), how do you find the PDF of Y?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the change-of-variables formula?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "If X ~ N(0,1), what is the distribution of X²?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "If X and Y are independent Uniform(0,1), what is the distribution of X+Y?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "The Jacobian is required for multivariate transformations. X² where X~N(0,1) gives Chi-squared(1) — this directly connects to the chi-squared test."
+      },
+      {
+        "topic": "Key probability distributions",
+        "num": 11,
+        "text": "Describe the Bernoulli and Binomial distributions. What is the relationship between them?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What are the mean and variance of a Binomial(n,p)?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "For large n and small p, what does Binomial(n,p) approximate to?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "When does Binomial approximate a Normal distribution?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Binomial → Poisson when n→∞, p→0, np→λ. Binomial → Normal (by CLT) when n is large. Knowing BOTH approximations and their conditions is expected."
+      },
+      {
+        "topic": "Key probability distributions",
+        "num": 12,
+        "text": "Define the Poisson distribution. What process gives rise to it?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Derive the mean and variance of the Poisson distribution.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the sum of two independent Poisson RVs?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Where does the Poisson distribution appear in machine learning?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Sum of independent Poisson(λ1) and Poisson(λ2) is Poisson(λ1+λ2). Appears in count data models, NLP (word counts), queuing theory."
+      },
+      {
+        "topic": "Key probability distributions",
+        "num": 13,
+        "text": "Define the Gaussian (Normal) distribution. Why is it so important?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is the PDF of N(μ,σ²)? Derive it from first principles or explain its shape.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What are the mean, variance, skewness, and kurtosis of a Normal distribution?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "What is the standard normal? How do you standardize a normal RV?",
+            "difficulty": "basic"
+          },
+          {
+            "text": "What is a multivariate Gaussian? Write its PDF.",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "The multivariate Gaussian PDF involves the covariance matrix determinant and inverse — this connects directly to Mahalanobis distance and LDA."
+      },
+      {
+        "topic": "Key probability distributions",
+        "num": 14,
+        "text": "What is the Exponential distribution? What memoryless property does it have?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Prove the memoryless property: P(X>s+t | X>s) = P(X>t).",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the connection between the Exponential and Poisson distributions?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the Gamma distribution and how does it relate to the Exponential?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "The Exponential is the continuous analog of the Geometric distribution (which is the discrete memoryless distribution). The sum of n independent Exp(λ) is Gamma(n,λ)."
+      },
+      {
+        "topic": "Key probability distributions",
+        "num": 15,
+        "text": "What is the Uniform distribution? What are its mean and variance?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is the distribution of the minimum of n independent Uniform(0,1) RVs?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "If U ~ Uniform(0,1), what transformation gives you an Exponential RV?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the inverse CDF method for sampling?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Inverse CDF (probability integral transform): if U~Uniform(0,1), then F⁻¹(U) has CDF F. This is fundamental to random sampling algorithms."
+      },
+      {
+        "topic": "Key probability distributions",
+        "num": 16,
+        "text": "What are the Chi-squared, t, and F distributions? Where do they arise in statistics?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "If Z~N(0,1), what is Z²? What is Z1²+Z2²?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does the t-distribution relate to Normal and Chi-squared?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "When do you use the t-distribution instead of the Normal?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the F-distribution used for?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "t-distribution = Normal / sqrt(Chi-squared/df). Used when population variance is unknown (small samples). F = ratio of two Chi-squared RVs — used in ANOVA and comparing regression models."
+      },
+      {
+        "topic": "Key probability distributions",
+        "num": 17,
+        "text": "What is the Beta distribution? Where is it used as a prior in Bayesian statistics?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What are the mean and variance of Beta(α,β)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why is the Beta distribution a conjugate prior for the Binomial?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the uniform distribution as a special case of Beta?",
+            "difficulty": "basic"
+          }
+        ],
+        "hint": "Beta(1,1) = Uniform(0,1). Beta is the conjugate prior for Bernoulli/Binomial — after observing successes and failures, the posterior is still Beta. This is fundamental to Bayesian A/B testing."
+      },
+      {
+        "topic": "Key probability distributions",
+        "num": 18,
+        "text": "What is the Dirichlet distribution? What is it used for?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "How does it generalize the Beta distribution?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why is Dirichlet the conjugate prior for the Categorical/Multinomial distribution?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Where does it appear in topic models like LDA?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Dirichlet is the conjugate prior for the Multinomial. It generates probability vectors that sum to 1, making it ideal for modelling topic mixtures in LDA."
+      },
+      {
+        "topic": "Expectation, variance & moments",
+        "num": 19,
+        "text": "Define expectation. What are its key properties?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Is E[g(X)] = g(E[X])? When does equality hold?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the law of total expectation (tower property)? Prove it.",
+            "difficulty": "hard"
+          },
+          {
+            "text": "E[XY] = E[X]E[Y] — when is this true?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Jensen's inequality: E[g(X)] ≥ g(E[X]) for convex g. Equality holds iff X is constant or g is linear. Law of total expectation: E[X] = E[E[X|Y]] — critical for probabilistic reasoning."
+      },
+      {
+        "topic": "Expectation, variance & moments",
+        "num": 20,
+        "text": "Define variance. What are its properties? How does it differ from expectation?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is Var(aX+b)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is Var(X+Y) when X and Y are independent? When they are not?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why is variance not in the same units as X? What do we use instead?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Var(X+Y) = Var(X) + Var(Y) + 2Cov(X,Y). Independence → Cov=0 → variances add. Standard deviation is in the same units as X."
+      },
+      {
+        "topic": "Expectation, variance & moments",
+        "num": 21,
+        "text": "What is covariance? What does it measure? What are its limitations?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the covariance matrix of a random vector?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How is covariance related to the correlation coefficient?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "If Cov(X,Y)=0, are X and Y independent?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Covariance is scale-dependent — its magnitude depends on the units of X and Y. Correlation normalizes this. Zero covariance ≠ independence (as noted above)."
+      },
+      {
+        "topic": "Expectation, variance & moments",
+        "num": 22,
+        "text": "What is the moment generating function (MGF)? What is it used for?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "How do you recover moments from the MGF?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the MGF of a sum of independent RVs?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the relationship between MGF and the characteristic function?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "MGF of sum of independent RVs = product of individual MGFs. This is the easiest way to prove that the sum of independent Normals is Normal."
+      },
+      {
+        "topic": "Expectation, variance & moments",
+        "num": 23,
+        "text": "State and prove the law of total variance.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "Give an intuitive interpretation of the two terms.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Where is this used in hierarchical models?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Var(X) = E[Var(X|Y)] + Var(E[X|Y]). First term = average within-group variance. Second term = variance of group means. Fundamental to ANOVA decomposition and hierarchical Bayesian models."
+      },
+      {
+        "topic": "Expectation, variance & moments",
+        "num": 24,
+        "text": "What is Jensen's inequality? State it and give two applications in ML.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "Is log a convex or concave function? How does Jensen's inequality apply to log?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does Jensen's inequality appear in the derivation of the EM algorithm?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "How does it appear in the ELBO of variational inference?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "log is concave: E[log X] ≤ log E[X]. This inequality is the core of why the ELBO is a lower bound on log-likelihood — fundamental to VAEs and EM."
+      },
+      {
+        "topic": "Bayes' theorem & conditional probability",
+        "num": 25,
+        "text": "State Bayes' theorem. Derive it from the definition of conditional probability.",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is the prior, likelihood, and posterior in Bayes' theorem?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why does the denominator P(B) act as a normalizing constant?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Give a concrete medical diagnosis example and compute the posterior.",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "The medical diagnosis example always appears: P(disease | positive test). Students who only memorize the formula get confused — make sure you can apply it to concrete numbers."
+      },
+      {
+        "topic": "Bayes' theorem & conditional probability",
+        "num": 26,
+        "text": "What is the base rate fallacy? Give an example.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "How does ignoring the prior lead to errors in ML model evaluation?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does this relate to precision and recall in imbalanced datasets?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Even a 99% accurate test for a rare disease (1 in 10,000) gives mostly false positives. This directly explains why accuracy is a bad metric for imbalanced classification — interviewers love this connection."
+      },
+      {
+        "topic": "Bayes' theorem & conditional probability",
+        "num": 27,
+        "text": "What is a conjugate prior? Give two examples.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "Why is conjugacy computationally convenient?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Beta-Binomial conjugacy: if prior is Beta(α,β) and you observe k successes in n trials, what is the posterior?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the Gaussian-Gaussian conjugate update?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Posterior = Beta(α+k, β+n-k). Conjugacy means closed-form Bayesian updates — no sampling needed. Used in online learning, bandit algorithms, and Bayesian A/B testing."
+      },
+      {
+        "topic": "Bayes' theorem & conditional probability",
+        "num": 28,
+        "text": "What is the difference between Bayesian and frequentist statistics?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is a credible interval vs a confidence interval?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What does a 95% confidence interval actually mean (frequentist)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What does a 95% credible interval mean (Bayesian)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Which interpretation do most people use incorrectly?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Most people (incorrectly) interpret confidence intervals as Bayesian credible intervals. The frequentist CI means: if we repeated the experiment many times, 95% of such intervals would contain the true parameter."
+      },
+      {
+        "topic": "Bayes' theorem & conditional probability",
+        "num": 29,
+        "text": "What is a naive Bayes classifier? What assumption does it make?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "When would naive Bayes perform well despite the independence assumption being violated?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the generative model behind naive Bayes?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does naive Bayes relate to logistic regression?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Naive Bayes is a generative model (models P(X|Y)). Logistic regression is discriminative (models P(Y|X) directly). They often give similar decision boundaries when the naive Bayes assumption approximately holds."
+      },
+      {
+        "topic": "Limit theorems",
+        "num": 30,
+        "text": "State the Law of Large Numbers. What does it say intuitively?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is the difference between the weak and strong LLN?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Give an example where LLN might be misapplied.",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Does LLN apply to correlated samples?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Weak LLN: convergence in probability. Strong LLN: almost sure convergence. LLN requires iid samples — fails for correlated data (e.g., time series)."
+      },
+      {
+        "topic": "Limit theorems",
+        "num": 31,
+        "text": "State the Central Limit Theorem. What are its conditions?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "How fast does the convergence occur (rate)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Does CLT require the underlying distribution to be Normal?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the Lindeberg-Feller CLT — when does CLT hold for non-iid variables?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What happens when variance is infinite?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "CLT holds for any distribution with finite mean and variance. Rate of convergence is O(1/√n). Infinite variance (e.g., Cauchy) breaks CLT. Professors love asking about the Cauchy distribution."
+      },
+      {
+        "topic": "Limit theorems",
+        "num": 32,
+        "text": "Why does the CLT matter for machine learning and statistics?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "How does it justify using Normal approximations for confidence intervals?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does it underpin bootstrap methods?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Why do neural networks not directly rely on CLT?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "CLT justifies using z-tests and t-tests even when data is non-normal (for large n). It also underpins bootstrapping — resampling distributions converge to Normal."
+      },
+      {
+        "topic": "Limit theorems",
+        "num": 33,
+        "text": "What is the Markov inequality? State and prove it.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the Chebyshev inequality and how is it derived from Markov's?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the Chernoff bound and when is it tighter?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Markov: P(X≥a) ≤ E[X]/a for non-negative X. Chebyshev uses the Markov inequality on (X-μ)². Chernoff uses the MGF and gives exponential tail bounds — much tighter for sums."
+      },
+      {
+        "topic": "Parameter estimation: MLE & MAP",
+        "num": 34,
+        "text": "What is Maximum Likelihood Estimation (MLE)? Derive the MLE for a Gaussian distribution.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Is the MLE for variance biased or unbiased? Why?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What are the asymptotic properties of MLE?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "When can MLE fail or give poor estimates?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "MLE for σ² = (1/n)Σ(xi-μ̂)², which is biased. Unbiased estimator divides by (n-1). MLE fails with small n, when the likelihood is multimodal, or under severe model misspecification."
+      },
+      {
+        "topic": "Parameter estimation: MLE & MAP",
+        "num": 35,
+        "text": "What is MAP estimation? How does it differ from MLE?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Show that MAP with a Gaussian prior is equivalent to L2 regularization.",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Show that MAP with a Laplace prior is equivalent to L1 regularization.",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What happens to MAP as the prior becomes increasingly uninformative?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "MAP = MLE + log prior. Gaussian prior → ridge regression (L2). Laplace prior → lasso (L1). As prior variance → ∞, MAP → MLE. This is a crucial connection between Bayesian statistics and regularization in ML."
+      },
+      {
+        "topic": "Parameter estimation: MLE & MAP",
+        "num": 36,
+        "text": "What is an unbiased estimator? Is unbiasedness always desirable?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the bias-variance tradeoff for estimators?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the James-Stein estimator and why is it surprising?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the Cramér-Rao lower bound?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Unbiasedness is NOT always optimal — biased estimators (like ridge regression) can have lower MSE due to reduced variance. The James-Stein result shows the sample mean is inadmissible in ≥3 dimensions."
+      },
+      {
+        "topic": "Parameter estimation: MLE & MAP",
+        "num": 37,
+        "text": "What is the Cramér-Rao lower bound? What does it tell you about estimators?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is Fisher information?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is an efficient estimator?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Is MLE asymptotically efficient?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "CRLB: Var(θ̂) ≥ 1/I(θ) where I(θ) is the Fisher information. An estimator achieving this bound is efficient. MLE is asymptotically efficient — it achieves CRLB as n→∞."
+      },
+      {
+        "topic": "Parameter estimation: MLE & MAP",
+        "num": 38,
+        "text": "What is the EM algorithm? What problem does it solve?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What are the E-step and M-step?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What does EM optimize in each iteration?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Does EM guarantee convergence to the global optimum?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Give a concrete example: EM for Gaussian Mixture Models.",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "EM maximizes a lower bound on the log-likelihood (ELBO) using Jensen's inequality. It monotonically increases log-likelihood but only guarantees local optima. GMM is the canonical example — must know E and M steps for GMM."
+      },
+      {
+        "topic": "Hypothesis testing & inference",
+        "num": 39,
+        "text": "What is a hypothesis test? Define null hypothesis, alternative hypothesis, p-value, and significance level.",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What does a p-value of 0.03 actually mean?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is wrong with saying 'we proved the null hypothesis is true' when p > 0.05?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the difference between statistical significance and practical significance?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "p-value = P(observing data this extreme | H0 is true). It does NOT measure the probability H0 is true. A very common misconception — interviewers test this explicitly."
+      },
+      {
+        "topic": "Hypothesis testing & inference",
+        "num": 40,
+        "text": "What is a Type I and Type II error? What is the tradeoff?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "What is the power of a test?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does sample size affect Type II error?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "In medical testing, which error is more costly — Type I or Type II?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Type I (α) = false positive = rejecting a true null. Type II (β) = false negative = failing to reject a false null. Power = 1-β. Increasing sample size reduces β without increasing α."
+      },
+      {
+        "topic": "Hypothesis testing & inference",
+        "num": 41,
+        "text": "What is the z-test vs the t-test? When do you use each?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What happens to the t-distribution as degrees of freedom increase?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What assumptions does the t-test make?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the paired t-test and when is it preferred?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Use z-test when σ is known or n is large (>30 by convention). Use t-test when σ is unknown and n is small. As df→∞, t → N(0,1)."
+      },
+      {
+        "topic": "Hypothesis testing & inference",
+        "num": 42,
+        "text": "What is the chi-squared test? What is it used for?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the chi-squared test of independence?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What are the degrees of freedom for a goodness-of-fit test on k categories?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does the chi-squared statistic relate to the chi-squared distribution?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Chi-squared test of independence: tests if two categorical variables are related. df = (rows-1)(cols-1). The test statistic Σ(O-E)²/E follows a χ²(df) under H0."
+      },
+      {
+        "topic": "Hypothesis testing & inference",
+        "num": 43,
+        "text": "What is the p-value controversy? What are its limitations?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is p-hacking?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Why did the American Statistical Association issue a statement on p-values?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What are alternatives to p-values?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "P-values don't measure effect size or practical importance. P-hacking (multiple testing) inflates false positives. Alternatives: effect sizes, confidence intervals, Bayesian factors, pre-registration. PhD panels increasingly ask about this."
+      },
+      {
+        "topic": "Hypothesis testing & inference",
+        "num": 44,
+        "text": "What is multiple testing? What is the Bonferroni correction?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the family-wise error rate (FWER)?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the Benjamini-Hochberg procedure?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Why is multiple testing a problem in genomics and ML model evaluation?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "If you run 100 tests at α=0.05, you expect 5 false positives. Bonferroni: use α/m per test. BH controls the false discovery rate (FDR) instead — less conservative and more powerful."
+      },
+      {
+        "topic": "Hypothesis testing & inference",
+        "num": 45,
+        "text": "What is the Kolmogorov-Smirnov test? What does it test?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What statistic does the KS test use?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "When would you use KS over chi-squared?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How is KS used in ML model monitoring?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "KS test compares the empirical CDF of a sample against a reference distribution (or two samples against each other). Used in ML for detecting data drift — comparing training vs production distributions."
+      },
+      {
+        "topic": "Regression, correlation & information theory",
+        "num": 46,
+        "text": "What is the Pearson correlation coefficient? What does it measure and what are its limitations?",
+        "difficulty": "basic",
+        "followups": [
+          {
+            "text": "Correlation of 0 means no relationship — is this always true?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is Spearman's rank correlation and when is it preferred?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Can correlation be used to infer causation?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Pearson measures LINEAR association only. Zero correlation ≠ no relationship (e.g., Y=X² has zero Pearson correlation with X). Spearman is preferred for monotonic non-linear relationships and ordinal data."
+      },
+      {
+        "topic": "Regression, correlation & information theory",
+        "num": 47,
+        "text": "What is linear regression from a probabilistic perspective?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What distributional assumption does OLS make about the errors?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Show that MLE under Gaussian errors is equivalent to OLS.",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is heteroscedasticity and what does it violate?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "OLS minimizing MSE = MLE assuming Gaussian errors with constant variance. Heteroscedasticity (non-constant variance) violates this assumption and makes OLS inefficient. Use weighted least squares instead."
+      },
+      {
+        "topic": "Regression, correlation & information theory",
+        "num": 48,
+        "text": "What is entropy? Define Shannon entropy and explain its intuition.",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What distribution maximizes entropy for a discrete RV?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What distribution maximizes entropy for a continuous RV with fixed variance?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the entropy of a fair coin flip vs a biased coin?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Uniform distribution maximizes discrete entropy. Gaussian maximizes continuous entropy for fixed variance — this is why Gaussian noise is the 'worst case' assumption. Entropy of fair coin = 1 bit (maximum for Bernoulli)."
+      },
+      {
+        "topic": "Regression, correlation & information theory",
+        "num": 49,
+        "text": "What is KL divergence? Is it a distance metric?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "Is KL divergence symmetric?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is KL(P||Q) when Q assigns zero probability to an event that P does not?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "How is KL divergence used in variational inference?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the relationship between KL divergence and MLE?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "KL is NOT symmetric and does NOT satisfy the triangle inequality — it is not a metric. MLE = minimizing KL(data distribution || model distribution). KL(P||Q)=∞ if Q(x)=0 but P(x)>0 — the 'zero-avoiding' property."
+      },
+      {
+        "topic": "Regression, correlation & information theory",
+        "num": 50,
+        "text": "What is mutual information? How does it relate to entropy?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is the relationship between mutual information and correlation?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "When is mutual information zero?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How is mutual information used in feature selection?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "I(X;Y) = H(X) - H(X|Y) = H(Y) - H(Y|X). MI = 0 iff X and Y are independent. MI captures ALL statistical dependencies (not just linear), making it more powerful than correlation for feature selection."
+      },
+      {
+        "topic": "Connections to ML & data science",
+        "num": 51,
+        "text": "What is the bias-variance tradeoff in machine learning? Derive the bias-variance decomposition of MSE.",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "How does model complexity affect bias and variance?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "How does regularization help with this tradeoff?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "Does the bias-variance tradeoff apply to deep learning? (hint: double descent)",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "MSE = Bias² + Variance + Irreducible noise. High complexity → low bias, high variance (overfitting). Low complexity → high bias, low variance (underfitting). Modern deep learning challenges this with the double descent phenomenon."
+      },
+      {
+        "topic": "Connections to ML & data science",
+        "num": 52,
+        "text": "What probabilistic model underlies logistic regression?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "Why do we model P(Y=1|X) as sigmoid(w^T x)?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the loss function and how is it derived from MLE?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What is the connection to the Bernoulli distribution?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Logistic regression assumes P(Y=1|X) follows the Bernoulli distribution with parameter σ(w^T x). The cross-entropy loss IS the negative log-likelihood under this assumption."
+      },
+      {
+        "topic": "Connections to ML & data science",
+        "num": 53,
+        "text": "What is cross-entropy loss and why is it used for classification?",
+        "difficulty": "medium",
+        "followups": [
+          {
+            "text": "What is the relationship between cross-entropy and KL divergence?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Why is cross-entropy preferred over MSE for classification?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is categorical cross-entropy?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "Cross-entropy loss = -Σ p(x) log q(x). Minimizing cross-entropy = minimizing KL divergence from the true to the model distribution = MLE. MSE is suboptimal for classification because gradients saturate with sigmoid."
+      },
+      {
+        "topic": "Connections to ML & data science",
+        "num": 54,
+        "text": "What is a Gaussian Mixture Model (GMM)? How is it trained?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "Write down the log-likelihood of a GMM.",
+            "difficulty": "hard"
+          },
+          {
+            "text": "Why can't we directly maximize the GMM log-likelihood?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the responsibility in the E-step of EM for GMMs?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "How does GMM relate to k-means clustering?",
+            "difficulty": "medium"
+          }
+        ],
+        "hint": "K-means is a special case of GMM with equal spherical covariances and hard assignment. EM for GMMs uses soft assignments (responsibilities). The log of a sum makes the log-likelihood intractable for direct maximization."
+      },
+      {
+        "topic": "Connections to ML & data science",
+        "num": 55,
+        "text": "What is a probabilistic graphical model? What is the difference between a Bayesian network and a Markov random field?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "What is d-separation?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "What is the Markov blanket of a node?",
+            "difficulty": "hard"
+          },
+          {
+            "text": "How does independence in the graph relate to independence of the random variables?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "Bayesian networks = directed, represent conditional distributions. MRFs = undirected, represent joint distributions via potential functions. d-separation determines conditional independence from graph structure alone."
+      },
+      {
+        "topic": "Connections to ML & data science",
+        "num": 56,
+        "text": "What is the connection between regularization and Bayesian priors?",
+        "difficulty": "hard",
+        "followups": [
+          {
+            "text": "L2 regularization corresponds to which prior?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "L1 regularization corresponds to which prior?",
+            "difficulty": "medium"
+          },
+          {
+            "text": "What does Dropout correspond to from a Bayesian perspective?",
+            "difficulty": "hard"
+          }
+        ],
+        "hint": "L2 (ridge) = Gaussian prior. L1 (lasso) = Laplace prior. Dropout ≈ approximate variational inference (Gal & Ghahramani, 2016). This is a guaranteed question for ML-focused PhD interviews."
+      }
+    ]
+  }
+]

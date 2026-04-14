@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mock Interview</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#f0f4ff 0%,#e0e7ff 50%,#ede9fe 100%);min-height:100vh;color:#1e1b4b}
+    .top-bar{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06);z-index:100}
+    .back-link{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#6366f1;font-size:13px;font-weight:600;padding:6px 14px;border-radius:10px;background:rgba(99,102,241,0.08);transition:all 0.2s}
+    .back-link:hover{background:rgba(99,102,241,0.18);transform:translateX(-2px)}
+    .top-title{font-size:15px;font-weight:700;color:#1e1b4b}
+    .score-pill{display:flex;gap:14px;font-size:13px;font-weight:600}
+    .score-pill span{padding:5px 12px;border-radius:20px;background:rgba(99,102,241,0.08);color:#4338ca}
+    .exit-btn{display:none;align-items:center;gap:5px;padding:6px 14px;border:1.5px solid #fca5a5;border-radius:10px;font-size:12px;font-weight:600;color:#dc2626;background:rgba(239,68,68,0.06);cursor:pointer;transition:all 0.2s;text-decoration:none}
+    .exit-btn:hover{background:rgba(239,68,68,0.14);border-color:#f87171}
+    .exit-btn.visible{display:inline-flex}
+    .container{max-width:760px;margin:0 auto;padding:80px 1.5rem 2rem}
+
+    /* Start screen */
+    .start-screen{text-align:center;padding:4rem 2rem}
+    .start-screen h1{font-size:2rem;font-weight:700;margin-bottom:0.5rem;color:#1e1b4b}
+    .start-screen p{color:#64748b;margin-bottom:2rem;line-height:1.6}
+    .start-btn{display:inline-block;padding:14px 36px;border:none;border-radius:14px;font-size:16px;font-weight:700;color:#fff;background:linear-gradient(135deg,#6366f1,#8b5cf6);cursor:pointer;transition:all 0.3s;box-shadow:0 6px 20px rgba(99,102,241,0.35)}
+    .start-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(99,102,241,0.45)}
+    .filter-section{margin-top:2rem}
+    .filter-section label{display:block;font-size:13px;font-weight:600;color:#64748b;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em}
+    .filter-chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+    .chip{padding:7px 16px;border-radius:20px;border:1.5px solid #c7d2fe;font-size:13px;cursor:pointer;background:#fff;color:#6b7280;transition:all 0.2s;font-weight:500}
+    .chip.active{background:linear-gradient(135deg,#6366f1,#818cf8);border-color:transparent;color:#fff;box-shadow:0 3px 10px rgba(99,102,241,0.3)}
+    .chip:hover:not(.active){background:#eef2ff;border-color:#a5b4fc;color:#4338ca}
+
+    /* Question card */
+    .q-card{background:#fff;border-radius:20px;padding:2rem;box-shadow:0 4px 24px rgba(0,0,0,0.06);margin-bottom:1.5rem;animation:slideIn 0.4s ease}
+    @keyframes slideIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    .q-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .q-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:0.03em}
+    .badge-subject{background:#eef2ff;color:#4338ca}
+    .badge-subtopic{background:#f0fdf4;color:#166534}
+    .badge-diff{text-transform:capitalize}
+    .bd-basic{background:#dcfce7;color:#166534}
+    .bd-medium{background:#fef3c7;color:#92400e}
+    .bd-hard{background:#fee2e2;color:#991b1b}
+    .badge-count{background:#faf5ff;color:#7c3aed}
+    .q-text{font-size:17px;font-weight:600;color:#1e1b4b;line-height:1.6;margin-bottom:1.2rem}
+    .q-label{font-size:11px;font-weight:600;color:#6366f1;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+    .fu-indicator{font-size:12px;color:#64748b;margin-top:6px;font-style:italic}
+
+    /* Answer area */
+    .answer-area{margin-top:1rem}
+    .answer-area textarea{width:100%;min-height:120px;border:1.5px solid #e2e8f0;border-radius:14px;padding:14px 16px;font-size:14px;font-family:inherit;color:#1e1b4b;resize:vertical;transition:border-color 0.2s,box-shadow 0.2s;line-height:1.6;background:#fafbff}
+    .answer-area textarea:focus{outline:none;border-color:#818cf8;box-shadow:0 0 0 3px rgba(129,140,248,0.15)}
+    .answer-area textarea::placeholder{color:#a0aec0}
+    .btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+    .submit-btn{padding:10px 24px;border:none;border-radius:12px;font-size:14px;font-weight:600;color:#fff;background:linear-gradient(135deg,#6366f1,#8b5cf6);cursor:pointer;transition:all 0.25s;box-shadow:0 4px 14px rgba(99,102,241,0.3)}
+    .submit-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(99,102,241,0.4)}
+    .submit-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none}
+    .skip-btn{padding:10px 24px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14px;font-weight:500;color:#64748b;background:#fff;cursor:pointer;transition:all 0.2s}
+    .skip-btn:hover{background:#f8fafc;border-color:#cbd5e1}
+    .hint-btn{padding:10px 24px;border:1.5px solid #dbeafe;border-radius:12px;font-size:14px;font-weight:500;color:#3b82f6;background:#eff6ff;cursor:pointer;transition:all 0.2s}
+    .hint-btn:hover{background:#dbeafe;border-color:#93c5fd}
+    .next-btn{padding:10px 24px;border:none;border-radius:12px;font-size:14px;font-weight:600;color:#fff;background:linear-gradient(135deg,#22c55e,#16a34a);cursor:pointer;transition:all 0.25s;box-shadow:0 4px 14px rgba(34,197,94,0.3)}
+    .next-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(34,197,94,0.4)}
+
+    /* Chat history */
+    .chat-history{margin-top:1.5rem}
+    .chat-bubble{padding:12px 16px;border-radius:14px;margin-bottom:8px;font-size:14px;line-height:1.6;animation:fadeIn 0.3s ease}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .bubble-q{background:linear-gradient(135deg,#eef2ff,#e0e7ff);color:#3730a3;border-left:3px solid #818cf8}
+    .bubble-a{background:#fff;color:#374151;border:1px solid #e5e7eb;margin-left:20px}
+    .bubble-hint{background:linear-gradient(135deg,#eff6ff,#dbeafe);color:#1e40af;border-left:3px solid #60a5fa;font-size:13px}
+    .bubble-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;opacity:0.7}
+
+    /* End screen */
+    .end-screen{text-align:center;padding:3rem 2rem}
+    .end-screen h2{font-size:1.8rem;font-weight:700;color:#1e1b4b;margin-bottom:0.5rem}
+    .end-screen p{color:#64748b;margin-bottom:2rem}
+    .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:2rem}
+    .stat-box{background:#fff;border-radius:14px;padding:1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
+    .stat-box .num{font-size:2rem;font-weight:700;color:#4338ca}
+    .stat-box .lbl{font-size:12px;color:#64748b;margin-top:4px}
+    .restart-btn{padding:14px 36px;border:none;border-radius:14px;font-size:16px;font-weight:700;color:#fff;background:linear-gradient(135deg,#6366f1,#8b5cf6);cursor:pointer;transition:all 0.3s;box-shadow:0 6px 20px rgba(99,102,241,0.35)}
+    .restart-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(99,102,241,0.45)}
+    .hidden{display:none!important}
+
+    /* Evaluation bubble */
+    .bubble-eval{background:linear-gradient(135deg,#f0fdf4,#dcfce7);color:#14532d;border-left:3px solid #22c55e;margin-left:20px;position:relative}
+    .eval-score{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:700;margin-bottom:8px}
+    .eval-score.high{background:#dcfce7;color:#166534}
+    .eval-score.mid{background:#fef3c7;color:#92400e}
+    .eval-score.low{background:#fee2e2;color:#991b1b}
+    .eval-ideal{margin-top:8px;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,0.7);font-size:13px;line-height:1.6;color:#1e1b4b}
+    .eval-ideal strong{font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:#6366f1;display:block;margin-bottom:4px}
+    .eval-feedback{margin-top:6px;font-size:13px;color:#475569;font-style:italic}
+
+    /* Loading */
+    .bubble-loading{background:#f8fafc;border-left:3px solid #cbd5e1;margin-left:20px;display:flex;align-items:center;gap:10px;color:#64748b;font-size:13px}
+    .spinner{width:18px;height:18px;border:2.5px solid #e2e8f0;border-top-color:#6366f1;border-radius:50%;animation:spin 0.7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* Report card */
+    .report-card{text-align:left;background:#fff;border-radius:20px;padding:2rem;box-shadow:0 4px 24px rgba(0,0,0,0.08);margin-top:2rem;animation:slideIn 0.5s ease}
+    .report-header{text-align:center;margin-bottom:1.5rem}
+    .overall-score{font-size:3.5rem;font-weight:800;background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .overall-label{font-size:13px;color:#64748b;font-weight:600;text-transform:uppercase;letter-spacing:0.08em}
+    .report-section{margin-bottom:1.5rem}
+    .report-section h3{font-size:14px;font-weight:700;color:#1e1b4b;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .report-section ul{list-style:none;padding:0}
+    .report-section li{padding:6px 0;font-size:14px;color:#374151;line-height:1.6;border-bottom:1px solid #f1f5f9}
+    .report-section li::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:10px;vertical-align:middle}
+    .section-positive li::before{background:#22c55e}
+    .section-negative li::before{background:#ef4444}
+    .section-improve li::before{background:#f59e0b}
+    .score-breakdown{margin-top:1.5rem}
+    .score-row{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:10px;margin-bottom:6px;font-size:13px;background:#f8fafc}
+    .score-row .sq{flex:1;color:#374151;font-weight:500}
+    .score-row .ss{font-weight:700;min-width:50px;text-align:right}
+    .score-bar{flex:0 0 120px;height:6px;background:#e2e8f0;border-radius:3px;margin:0 12px;overflow:hidden}
+    .score-bar-fill{height:100%;border-radius:3px;transition:width 0.5s ease}
+    .report-loading{text-align:center;padding:3rem;color:#64748b}
+    .report-loading .spinner{width:32px;height:32px;margin:0 auto 1rem}
+
+    /* Mic button */
+    .mic-btn{padding:10px 20px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14px;font-weight:500;color:#64748b;background:#fff;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
+    .mic-btn:hover{background:#fef2f2;border-color:#fca5a5;color:#dc2626}
+    .mic-btn.recording{background:#fee2e2;border-color:#f87171;color:#dc2626;animation:micPulse 1s ease-in-out infinite}
+    .mic-btn.recording .mic-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#dc2626;animation:blink 0.8s infinite}
+    @keyframes micPulse{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,0.3)}50%{box-shadow:0 0 0 8px rgba(220,38,38,0)}}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+    .mic-status{font-size:11px;color:#64748b;margin-top:4px;min-height:16px}
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a class="back-link" href="../">&#8592; Data Science / AI</a>
+  <div class="top-title">Mock Interview</div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <span id="countDisplay" style="padding:5px 12px;border-radius:20px;background:rgba(99,102,241,0.08);color:#4338ca;font-size:13px;font-weight:600">Q: 0 / 0</span>
+    <button class="exit-btn" id="exitBtn" onclick="exitInterview()">&#10005; End Test</button>
+  </div>
+</div>
+
+<div class="container">
+  <!-- START SCREEN -->
+  <div id="startScreen" class="start-screen">
+    <h1>Mock Interview</h1>
+    <p>Prepare for your next big interview with our interactive mock interview platform. Select the topics you want to focus on, and get ready to answer real interview questions with instant feedback and hints!</p>    
+    <div class="filter-section">
+      <label>Select topics to include</label>
+      <div class="filter-chips" id="topicChips"></div>
+    </div>
+    <br><br>
+    <button class="start-btn" onclick="startInterview()">Start Interview</button>
+  </div>
+
+  <!-- INTERVIEW SCREEN -->
+  <div id="interviewScreen" class="hidden">
+    <div id="questionCard" class="q-card"></div>
+    <div id="chatHistory" class="chat-history"></div>
+    <div id="answerSection" class="answer-area">
+      <textarea id="answerInput" placeholder="Type your answer here..." rows="4"></textarea>
+      <div class="btn-row">
+        <button class="submit-btn" id="submitBtn" onclick="submitAnswer()">Submit Answer</button>
+        <button class="mic-btn" id="micBtn" onclick="toggleRecording()">🎤 Speak</button>
+        <button class="hint-btn" id="hintBtn" onclick="showHint()">Show Hint</button>
+        <button class="next-btn hidden" id="nextBtn" onclick="proceedNext()">Next Question &#8594;</button>
+      </div>
+      <div class="mic-status" id="micStatus"></div>
+    </div>
+  </div>
+
+  <!-- END SCREEN -->
+  <div id="endScreen" class="hidden end-screen"></div>
+</div>
+
+<script>
+// ===== ALL QUESTION DATA =====
+let ALL_QUESTIONS = [];
+
+async function loadQuestions() {
+  const res = await fetch('../data/questions_data_updated.json');
+  const json = await res.json();
+  ALL_QUESTIONS = [];
+  json.forEach(subj => {
+    subj.questions.forEach(q => {
+      const normalizedFollowups = (q.followups || []).map(f => {
+        if (typeof f === 'string') {
+          return { q: f, d: q.difficulty || 'medium' };
+        }
+        return { q: f.text || '', d: f.difficulty || q.difficulty || 'medium' };
+      }).filter(f => f.q);
+      ALL_QUESTIONS.push({
+        subject: subj.subject,
+        topic: q.topic,
+        q: q.text,
+        d: q.difficulty,
+        fu: normalizedFollowups,
+        hint: q.hint || ''
+      });
+    });
+  });
+}
+
+// ===== STATE =====
+const GROQ_MODELS = ['llama-3.3-70b-versatile', 'llama-3.1-70b-versatile', 'llama-3.1-8b-instant', 'gemma2-9b-it'];
+
+// ===== SPEECH TO TEXT (Web Speech API live preview + Whisper final) =====
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const hasWebSpeech = !!SpeechRecognition;
+let recognition = null;
+let isListening = false;
+let textBeforeSpeech = '';
+let mediaRecorder = null;
+let audioChunks = [];
+
+function toggleRecording() {
+  if (isListening) {
+    stopCombinedRecording();
+  } else {
+    startCombinedRecording();
+  }
+}
+
+async function startCombinedRecording() {
+  const micBtn = document.getElementById('micBtn');
+  const micStatus = document.getElementById('micStatus');
+  const input = document.getElementById('answerInput');
+
+  // Start MediaRecorder for Whisper
+  let stream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  } catch (err) {
+    micStatus.textContent = 'Microphone access denied. Please allow mic permission.';
+    return;
+  }
+
+  audioChunks = [];
+  mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
+  mediaRecorder.ondataavailable = e => { if (e.data.size > 0) audioChunks.push(e.data); };
+  mediaRecorder.onstop = async () => {
+    stream.getTracks().forEach(t => t.stop());
+    const blob = new Blob(audioChunks, { type: 'audio/webm' });
+    await finalizeWithWhisper(blob);
+  };
+  mediaRecorder.start();
+
+  // Start Web Speech API for live preview
+  if (hasWebSpeech) {
+    textBeforeSpeech = input.value;
+    recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US';
+
+    recognition.onresult = (event) => {
+      let interim = '';
+      let final = '';
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const transcript = event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+          final += transcript;
+        } else {
+          interim += transcript;
+        }
+      }
+      if (final) {
+        textBeforeSpeech = textBeforeSpeech ? textBeforeSpeech + ' ' + final : final;
+      }
+      input.value = interim ? (textBeforeSpeech ? textBeforeSpeech + ' ' + interim : interim) : textBeforeSpeech;
+    };
+
+    recognition.onerror = (event) => {
+      if (event.error !== 'aborted' && event.error !== 'no-speech') {
+        micStatus.textContent = 'Live preview unavailable, Whisper still recording...';
+      }
+    };
+
+    recognition.onend = () => {
+      if (isListening) {
+        try { recognition.start(); } catch(e) {}
+      }
+    };
+
+    try { recognition.start(); } catch(e) {}
+  }
+
+  isListening = true;
+  micBtn.classList.add('recording');
+  micBtn.innerHTML = '<span class="mic-dot"></span> Listening... (click to stop)';
+  micStatus.textContent = hasWebSpeech
+    ? 'Speak now — live preview active, Whisper will finalize'
+    : 'Speak now — Whisper will transcribe after you stop';
+}
+
+function stopCombinedRecording() {
+  const micBtn = document.getElementById('micBtn');
+  const micStatus = document.getElementById('micStatus');
+  isListening = false;
+
+  // Stop Web Speech API
+  if (recognition) {
+    try { recognition.stop(); } catch(e) {}
+    recognition = null;
+  }
+
+  // Stop MediaRecorder (triggers onstop → finalizeWithWhisper)
+  if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+    mediaRecorder.stop();
+  }
+
+  micBtn.classList.remove('recording');
+  micBtn.innerHTML = '\ud83c\udfa4 Speak';
+  micStatus.textContent = 'Finalizing with Whisper...';
+}
+
+async function finalizeWithWhisper(blob) {
+  const micStatus = document.getElementById('micStatus');
+  const input = document.getElementById('answerInput');
+  const submitBtn = document.getElementById('submitBtn');
+
+  try {
+    const formData = new FormData();
+    formData.append('file', blob, 'recording.webm');
+    formData.append('model', 'whisper-large-v3-turbo');
+    formData.append('response_format', 'json');
+    const response = await fetch('/api/transcribe', {
+      method: 'POST',
+      body: formData
+    });
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({}));
+      throw new Error(errData.error?.message || `API error ${response.status}`);
+    }
+    const data = await response.json();
+    const whisperText = (data.text || '').trim();
+    if (whisperText) {
+      // Replace with Whisper's accurate transcription
+      input.value = whisperText;
+      input.focus();
+      micStatus.textContent = 'Whisper transcription ready. Review and submit.';
+    } else {
+      micStatus.textContent = 'Whisper detected no speech. Using live preview text.';
+    }
+  } catch (err) {
+    micStatus.textContent = 'Whisper failed (' + err.message + '). Using live preview text.';
+  }
+}
+
+async function callGroqWithFallback(body) {
+  let lastErr;
+  for (const model of GROQ_MODELS) {
+    try {
+      const response = await fetch('/api/groq', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ...body, model })
+      });
+      if (response.status === 429 || response.status === 503) { lastErr = new Error(`Rate limited on ${model}`); continue; }
+      if (!response.ok) { const errData = await response.json().catch(() => ({})); throw new Error(errData.error?.message || `API error ${response.status}`); }
+      return await response.json();
+    } catch (err) { lastErr = err; if (!err.message.includes('Rate limited')) throw err; }
+  }
+  throw lastErr;
+}
+let pool = [];
+let currentQ = null;
+let fuIndex = 0;
+let totalMainQs = 0;
+let totalFollowUps = 0;
+let mainQCount = 0;
+let fuCount = 0;
+let chatLog = [];
+let selectedSubjects = new Set(["Linear Algebra","Probability and Statistics","Machine Learning"]);
+let evaluationResults = []; // stores {question, subject, topic, answer, score, idealAnswer, feedback, isFollowUp}
+
+// ===== INIT =====
+window.addEventListener('DOMContentLoaded', async () => {
+  await loadQuestions();
+  renderTopicChips();
+  document.getElementById('answerInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submitAnswer(); }
+  });
+});
+
+function renderTopicChips() {
+  const container = document.getElementById('topicChips');
+  const subjects = ["Linear Algebra","Probability and Statistics","Machine Learning"];
+  container.innerHTML = subjects.map(s =>
+    `<div class="chip active" onclick="toggleSubject(this,'${s}')">${s}</div>`
+  ).join('');
+}
+
+function toggleSubject(el, subject) {
+  if (selectedSubjects.has(subject)) {
+    if (selectedSubjects.size === 1) return; // keep at least one
+    selectedSubjects.delete(subject);
+    el.classList.remove('active');
+  } else {
+    selectedSubjects.add(subject);
+    el.classList.add('active');
+  }
+}
+
+// ===== START =====
+function startInterview() {
+  pool = shuffle(ALL_QUESTIONS.filter(q => selectedSubjects.has(q.subject)));
+  if (pool.length === 0) return;
+  totalMainQs = pool.length;
+  totalFollowUps = pool.reduce((s, q) => s + (q.fu ? q.fu.length : 0), 0);
+  mainQCount = 0;
+  fuCount = 0;
+  chatLog = [];
+  evaluationResults = [];
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('interviewScreen').classList.remove('hidden');
+  document.getElementById('exitBtn').classList.add('visible');
+  nextQuestion();
+}
+
+// ===== QUESTIONS =====
+function nextQuestion() {
+  if (pool.length === 0) return endInterview();
+  currentQ = pool.pop();
+  fuIndex = 0;
+  mainQCount++;
+  chatLog = [];
+  updateCount();
+  renderQuestion(false);
+  document.getElementById('chatHistory').innerHTML = '';
+  document.getElementById('answerInput').value = '';
+  document.getElementById('answerInput').focus();
+  document.getElementById('hintBtn').classList.remove('hidden');
+  document.getElementById('submitBtn').disabled = false;
+}
+
+function renderQuestion(isFollowUp) {
+  const card = document.getElementById('questionCard');
+  const currentFollowUp = isFollowUp ? currentQ.fu[fuIndex - 1] : null;
+  const activeDiff = currentFollowUp ? currentFollowUp.d : currentQ.d;
+  const diffClass = activeDiff === 'basic' ? 'bd-basic' : activeDiff === 'medium' ? 'bd-medium' : 'bd-hard';
+  const qLabel = isFollowUp ? 'FOLLOW-UP QUESTION' : 'QUESTION';
+  const countLabel = isFollowUp
+    ? `Follow-up ${fuIndex} of ${currentQ.fu ? currentQ.fu.length : 0}`
+    : `Question ${mainQCount} of ${totalMainQs}`;
+  const questionText = currentFollowUp ? currentFollowUp.q : currentQ.q;
+  const fuAvail = '';
+
+  card.innerHTML = `
+    <div class="q-meta">
+      <span class="q-badge badge-subject">${currentQ.subject}</span>
+      <span class="q-badge badge-subtopic">${currentQ.topic}</span>
+      <span class="q-badge badge-diff ${diffClass}">${activeDiff}</span>
+      <span class="q-badge badge-count">${countLabel}</span>
+    </div>
+    <div class="q-label">${qLabel}</div>
+    <div class="q-text">${questionText}</div>
+    ${fuAvail}
+  `;
+  card.style.animation = 'none';
+  card.offsetHeight; // trigger reflow
+  card.style.animation = 'slideIn 0.4s ease';
+}
+
+let pendingFollowUp = false;
+
+async function submitAnswer() {
+  const input = document.getElementById('answerInput');
+  const answer = input.value.trim();
+  if (!answer) return;
+
+  const isFollowUp = fuIndex > 0;
+  const qText = isFollowUp ? currentQ.fu[fuIndex - 1].q : currentQ.q;
+
+  // add to chat
+  addChatBubble('q', isFollowUp ? 'Follow-up' : 'Question', qText);
+  addChatBubble('a', 'Your Answer', answer);
+
+  input.value = '';
+  document.getElementById('submitBtn').disabled = true;
+
+  // show loading bubble
+  const loadingId = addLoadingBubble();
+
+  // evaluate with Groq
+  try {
+    const evalResult = await callGroqEvaluate(qText, answer, currentQ.subject, currentQ.topic);
+    removeLoadingBubble(loadingId);
+    addEvalBubble(evalResult.score, evalResult.idealAnswer, evalResult.feedback);
+    evaluationResults.push({
+      question: qText,
+      subject: currentQ.subject,
+      topic: currentQ.topic,
+      answer: answer,
+      score: evalResult.score,
+      idealAnswer: evalResult.idealAnswer,
+      feedback: evalResult.feedback,
+      isFollowUp: isFollowUp
+    });
+  } catch (err) {
+    removeLoadingBubble(loadingId);
+    addChatBubble('hint', 'Evaluation Error', 'Could not evaluate — ' + err.message);
+    evaluationResults.push({
+      question: qText, subject: currentQ.subject, topic: currentQ.topic,
+      answer: answer, score: null, idealAnswer: '', feedback: '', isFollowUp: isFollowUp
+    });
+  }
+
+  // Hide submit/hint, show Next button
+  document.getElementById('submitBtn').classList.add('hidden');
+  document.getElementById('hintBtn').classList.add('hidden');
+  document.getElementById('answerInput').disabled = true;
+
+  // decide what happens next and store it
+  if (currentQ.fu && fuIndex < currentQ.fu.length && Math.random() < 0.65) {
+    pendingFollowUp = true;
+  } else {
+    pendingFollowUp = false;
+  }
+  showNextButton();
+}
+
+function showNextButton() {
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.textContent = pendingFollowUp ? 'Next Follow-up \u2192' : 'Next Question \u2192';
+  nextBtn.classList.remove('hidden');
+}
+
+function proceedNext() {
+  document.getElementById('nextBtn').classList.add('hidden');
+  document.getElementById('answerInput').disabled = false;
+  document.getElementById('submitBtn').classList.remove('hidden');
+  document.getElementById('submitBtn').disabled = false;
+
+  if (pendingFollowUp) {
+    fuIndex++;
+    fuCount++;
+    updateCount();
+    renderQuestion(true);
+    document.getElementById('hintBtn').classList.remove('hidden');
+    document.getElementById('answerInput').focus();
+  } else {
+    nextQuestion();
+  }
+}
+
+// ===== GROQ API =====
+async function callGroqEvaluate(question, userAnswer, subject, topic) {
+  const systemPrompt = `You are an expert ${subject} professor evaluating a student's answer in a PhD interview setting.
+Evaluate the answer to the given question. Return ONLY valid JSON with exactly these keys:
+- "score": integer 0-10
+- "idealAnswer": a concise ideal answer (3-5 sentences max)
+- "feedback": brief one-line feedback on the student's answer
+Do NOT include any text outside the JSON object.`;
+
+  const userPrompt = `Topic: ${topic}\nQuestion: ${question}\nStudent's Answer: ${userAnswer}`;
+
+  const data = await callGroqWithFallback({
+    messages: [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: userPrompt }
+    ],
+    temperature: 0.3,
+    max_tokens: 500
+  });
+
+  const parsed = safeParseJSON(data.choices[0].message.content);
+  return {
+    score: Math.max(0, Math.min(10, parseInt(parsed.score) || 0)),
+    idealAnswer: parsed.idealAnswer || '',
+    feedback: parsed.feedback || ''
+  };
+}
+
+async function callGroqReportCard(results) {
+  const summary = results.map((r, i) =>
+    `${i+1}. [${r.subject} - ${r.topic}] Q: ${r.question}\n   Answer: ${r.answer}\n   Score: ${r.score !== null ? r.score + '/10' : 'N/A'}`
+  ).join('\n');
+
+  const systemPrompt = `You are an interview coach. Review this PhD mock interview performance and respond with a JSON object containing: overallScore (0-100), positives (array of 3-5 short strings), negatives (array of 2-4 short strings), improvements (array of 3-5 short strings), summary (one short paragraph). Use only plain ASCII text in strings, no special characters. Respond with ONLY the JSON, nothing else.`;
+
+  const data = await callGroqWithFallback({
+    messages: [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: summary }
+    ],
+    temperature: 0.3,
+    max_tokens: 1000
+  });
+
+  return safeParseJSON(data.choices[0].message.content);
+}
+
+function safeParseJSON(text) {
+  const clean = text.trim();
+  try { return JSON.parse(clean); } catch(e) {}
+  // try extracting JSON from markdown code block or surrounding text
+  const match = clean.match(/```(?:json)?\s*([\s\S]*?)```/) || clean.match(/(\{[\s\S]*\})/);
+  if (match) {
+    try { return JSON.parse(match[1].trim()); } catch(e) {}
+  }
+  throw new Error('Could not parse API response as JSON');
+}
+
+// ===== EVAL BUBBLES =====
+function addLoadingBubble() {
+  const history = document.getElementById('chatHistory');
+  const id = 'loading-' + Date.now();
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-bubble bubble-loading';
+  bubble.id = id;
+  bubble.innerHTML = '<div class="spinner"></div>Evaluating your answer...';
+  history.appendChild(bubble);
+  bubble.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  return id;
+}
+
+function removeLoadingBubble(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+function addEvalBubble(score, idealAnswer, feedback) {
+  const history = document.getElementById('chatHistory');
+  const scoreClass = score >= 7 ? 'high' : score >= 4 ? 'mid' : 'low';
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-bubble bubble-eval';
+  bubble.innerHTML = `
+    <div class="bubble-label">AI Evaluation</div>
+    <div class="eval-score ${scoreClass}">&#9733; Score: ${score}/10</div>
+    ${feedback ? `<div class="eval-feedback">${feedback}</div>` : ''}
+    <div class="eval-ideal"><strong>Ideal Answer</strong>${idealAnswer}</div>
+  `;
+  history.appendChild(bubble);
+  bubble.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+
+function showHint() {
+  if (!currentQ.hint) return;
+  addChatBubble('hint', 'Hint', currentQ.hint);
+  document.getElementById('hintBtn').classList.add('hidden');
+}
+
+function addChatBubble(type, label, text) {
+  const history = document.getElementById('chatHistory');
+  const cls = type === 'q' ? 'bubble-q' : type === 'a' ? 'bubble-a' : 'bubble-hint';
+  const bubble = document.createElement('div');
+  bubble.className = `chat-bubble ${cls}`;
+  bubble.innerHTML = `<div class="bubble-label">${label}</div>${text}`;
+  history.appendChild(bubble);
+  bubble.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+
+function updateCount() {
+  document.getElementById('countDisplay').textContent = `Q: ${mainQCount}`;
+}
+
+// ===== END =====
+async function endInterview() {
+  document.getElementById('interviewScreen').classList.add('hidden');
+  const end = document.getElementById('endScreen');
+  end.classList.remove('hidden');
+
+  // Show loading state
+  end.innerHTML = `
+    <h2>Interview Complete!</h2>
+    <p>Generating your AI-powered report card...</p>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="num">${mainQCount}</div><div class="lbl">Main Questions</div></div>
+      <div class="stat-box"><div class="num">${fuCount}</div><div class="lbl">Follow-up Questions</div></div>
+      <div class="stat-box"><div class="num">${mainQCount + fuCount}</div><div class="lbl">Total Answered</div></div>
+    </div>
+    <div class="report-loading"><div class="spinner"></div><p>AI is analyzing your performance...</p></div>
+  `;
+
+  // Calculate average from individual scores as fallback
+  const scored = evaluationResults.filter(r => r.score !== null);
+  const avgScore = scored.length > 0 ? Math.round((scored.reduce((s, r) => s + r.score, 0) / scored.length) * 10) : 0;
+
+  try {
+    console.log('Calling Groq report card with', evaluationResults.length, 'results');
+    const report = await callGroqReportCard(evaluationResults);
+    console.log('Report received:', report);
+    renderReportCard(end, report, avgScore);
+  } catch (err) {
+    console.error('Report card generation failed:', err);
+    // Fallback: show basic report from individual scores
+    renderFallbackReport(end, avgScore, err.message);
+  }
+}
+
+function renderReportCard(container, report, fallbackScore) {
+  const overallScore = report.overallScore || fallbackScore;
+  const scoreColor = overallScore >= 70 ? '#22c55e' : overallScore >= 40 ? '#f59e0b' : '#ef4444';
+
+  let scoreBreakdownHTML = evaluationResults.map((r, i) => {
+    const s = r.score !== null ? r.score : '-';
+    const pct = r.score !== null ? r.score * 10 : 0;
+    const barColor = r.score >= 7 ? '#22c55e' : r.score >= 4 ? '#f59e0b' : '#ef4444';
+    const prefix = r.isFollowUp ? '↳ ' : '';
+    return `<div class="score-row">
+      <span class="sq">${prefix}${r.question.substring(0, 60)}${r.question.length > 60 ? '...' : ''}</span>
+      <div class="score-bar"><div class="score-bar-fill" style="width:${pct}%;background:${barColor}"></div></div>
+      <span class="ss" style="color:${barColor}">${s}/10</span>
+    </div>`;
+  }).join('');
+
+  const reportHTML = `
+    <div class="report-card">
+      <div class="report-header">
+        <div class="overall-label">Overall Score</div>
+        <div class="overall-score">${overallScore}/100</div>
+        ${report.summary ? `<p style="color:#64748b;font-size:14px;margin-top:8px;line-height:1.6">${report.summary}</p>` : ''}
+      </div>
+
+      ${report.positives && report.positives.length ? `
+      <div class="report-section">
+        <h3>&#9989; Strengths</h3>
+        <ul class="section-positive">${report.positives.map(p => `<li>${p}</li>`).join('')}</ul>
+      </div>` : ''}
+
+      ${report.negatives && report.negatives.length ? `
+      <div class="report-section">
+        <h3>&#10060; Areas of Concern</h3>
+        <ul class="section-negative">${report.negatives.map(n => `<li>${n}</li>`).join('')}</ul>
+      </div>` : ''}
+
+      ${report.improvements && report.improvements.length ? `
+      <div class="report-section">
+        <h3>&#128161; Suggestions for Improvement</h3>
+        <ul class="section-improve">${report.improvements.map(s => `<li>${s}</li>`).join('')}</ul>
+      </div>` : ''}
+
+      <div class="score-breakdown">
+        <h3 style="font-size:14px;font-weight:700;color:#1e1b4b;margin-bottom:10px">&#128202; Question-wise Scores</h3>
+        ${scoreBreakdownHTML}
+      </div>
+    </div>
+    <a class="restart-btn" style="margin-top:1.5rem;display:inline-block;text-decoration:none;text-align:center" href="index.html">🏠 Back to home</a>
+  `;
+
+  // Replace loading with report
+  const loadingEl = container.querySelector('.report-loading');
+  if (loadingEl) loadingEl.remove();
+  container.insertAdjacentHTML('beforeend', reportHTML);
+}
+
+function renderFallbackReport(container, avgScore, errorMsg) {
+  const scored = evaluationResults.filter(r => r.score !== null);
+  const scoreBreakdownHTML = evaluationResults.map((r) => {
+    const s = r.score !== null ? r.score : '-';
+    const pct = r.score !== null ? r.score * 10 : 0;
+    const barColor = r.score >= 7 ? '#22c55e' : r.score >= 4 ? '#f59e0b' : '#ef4444';
+    const prefix = r.isFollowUp ? '↳ ' : '';
+    return `<div class="score-row">
+      <span class="sq">${prefix}${r.question.substring(0, 60)}${r.question.length > 60 ? '...' : ''}</span>
+      <div class="score-bar"><div class="score-bar-fill" style="width:${pct}%;background:${barColor}"></div></div>
+      <span class="ss" style="color:${barColor}">${s}/10</span>
+    </div>`;
+  }).join('');
+
+  const loadingEl = container.querySelector('.report-loading');
+  if (loadingEl) {
+    loadingEl.innerHTML = `
+      <p style="color:#ef4444;font-size:13px;margin-bottom:1rem">Could not generate AI report${errorMsg ? ': ' + errorMsg : ''}. Showing score summary.</p>
+      <div class="report-card">
+        <div class="report-header">
+          <div class="overall-label">Average Score</div>
+          <div class="overall-score">${avgScore}/100</div>
+        </div>
+        <div class="score-breakdown">
+          <h3 style="font-size:14px;font-weight:700;color:#1e1b4b;margin-bottom:10px">Question-wise Scores</h3>
+          ${scoreBreakdownHTML}
+        </div>
+      </div>
+      <a class="restart-btn" style="margin-top:1.5rem;display:inline-block;text-decoration:none;text-align:center" href="index.html">🏠 Back to home</a>
+    `;
+  }
+}
+
+function restart() {
+  document.getElementById('endScreen').classList.add('hidden');
+  document.getElementById('startScreen').classList.remove('hidden');
+  document.getElementById('exitBtn').classList.remove('visible');
+}
+
+function exitInterview() {
+  if (evaluationResults.length === 0) {
+    if (!confirm('You haven\'t answered any questions yet. Are you sure you want to exit?')) return;
+    document.getElementById('interviewScreen').classList.add('hidden');
+    document.getElementById('startScreen').classList.remove('hidden');
+    document.getElementById('exitBtn').classList.remove('visible');
+    return;
+  }
+  if (!confirm('End the interview now and see your report card?')) return;
+  endInterview();
+}
+
+// ===== UTILS =====
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+</script>
+</body>
+</html>

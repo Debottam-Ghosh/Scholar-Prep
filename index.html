@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScholarPrep - Industries</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 20% 20%, #ffffff 0%, #f8fafc 35%, #e2e8f0 100%);
+      padding: 2rem;
+    }
+    .wrapper { text-align: center; max-width: 1180px; width: 100%; }
+    h1 {
+      font-size: 4.3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899, #f59e0b, #059669);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 4s ease infinite;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% center; }
+      50% { background-position: 100% center; }
+      100% { background-position: 0% center; }
+    }
+    .subtitle { font-size: 1rem; color: #64748b; margin-bottom: 2.3rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.15rem; }
+    .card {
+      --a1: #6366f1;
+      --a2: #818cf8;
+      --lb1: #eef2ff;
+      --lb2: #c7d2fe;
+      --lc: #3730a3;
+      --bd: #c7d2fe;
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.55rem 1.2rem 1.3rem;
+      text-decoration: none;
+      color: inherit;
+      border: 2px solid transparent;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      border-radius: 20px 20px 0 0;
+      transition: height 0.3s;
+      background: linear-gradient(90deg, var(--a1), var(--a2));
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.14);
+      border-color: var(--bd);
+    }
+    .card:hover::before { height: 6px; }
+    .card:hover .logo { transform: scale(1.18) rotate(-3deg); }
+    .card-row { margin-bottom: 0.15rem; }
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.2rem auto;
+      display: block;
+      object-fit: contain;
+      transition: transform 0.3s;
+    }
+    .card-title { font-size: 1.05rem; font-weight: 700; color: #1f2937; line-height: 1.35; text-align: center; }
+    .card-desc { font-size: 0.86rem; color: #64748b; line-height: 1.55; }
+    @media (max-width: 700px) {
+      h1 { font-size: 3rem; }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>ScholarPrep</h1>
+    <p class="subtitle">Choose your Industry</p>
+
+    <div class="cards">
+      <a class="card" href="industries/data-science-ai/" style="--a1:#6366f1;--a2:#8b5cf6;--lb1:#eef2ff;--lb2:#c7d2fe;--lc:#3730a3;--bd:#c7d2fe;">
+        <div class="card-row">
+          <img class="logo" src="icons/Data Science AI.png" alt="Data Science / AI">
+          <div class="card-title">Data Science / AI</div>
+        </div>
+      </a>
+      <a class="card" href="industries/it-software/" style="--a1:#0ea5e9;--a2:#2563eb;--lb1:#e0f2fe;--lb2:#bfdbfe;--lc:#1e3a8a;--bd:#bfdbfe;">
+        <div class="card-row">
+          <img class="logo" src="icons/IT Software.png" alt="IT / Software">
+          <div class="card-title">IT / Software</div>
+        </div>
+      </a>
+      <a class="card" href="industries/finance-quant-banking/" style="--a1:#0891b2;--a2:#0f766e;--lb1:#ccfbf1;--lb2:#99f6e4;--lc:#134e4a;--bd:#99f6e4;">
+        <div class="card-row">
+          <img class="logo" src="icons/Finance.png" alt="Finance / Quant / Banking">
+          <div class="card-title">Finance / Quant / Banking</div>
+        </div>
+      </a>
+      <a class="card" href="industries/consulting/" style="--a1:#f97316;--a2:#ea580c;--lb1:#ffedd5;--lb2:#fdba74;--lc:#9a3412;--bd:#fdba74;">
+        <div class="card-row">
+          <img class="logo" src="icons/Consulting.png" alt="Consulting">
+          <div class="card-title">Consulting</div>
+        </div>
+      </a>
+      <a class="card" href="industries/product-management/" style="--a1:#ec4899;--a2:#db2777;--lb1:#fce7f3;--lb2:#f9a8d4;--lc:#9d174d;--bd:#f9a8d4;">
+        <div class="card-row">
+          <img class="logo" src="icons/Product Management.png" alt="Product Management">
+          <div class="card-title">Product Management</div>
+        </div>
+      </a>
+      <a class="card" href="industries/marketing/" style="--a1:#eab308;--a2:#ca8a04;--lb1:#fef9c3;--lb2:#fde047;--lc:#854d0e;--bd:#fde047;">
+        <div class="card-row">
+          <img class="logo" src="icons/Marketing.png" alt="Marketing">
+          <div class="card-title">Marketing</div>
+        </div>
+      </a>
+      <a class="card" href="industries/sales-business-development/" style="--a1:#ef4444;--a2:#dc2626;--lb1:#fee2e2;--lb2:#fca5a5;--lc:#991b1b;--bd:#fca5a5;">
+        <div class="card-row">
+          <img class="logo" src="icons/Sales.png" alt="Sales / Business Development">
+          <div class="card-title">Sales / Business Development</div>
+        </div>
+      </a>
+      <a class="card" href="industries/core-engineering/" style="--a1:#475569;--a2:#334155;--lb1:#e2e8f0;--lb2:#cbd5e1;--lc:#1e293b;--bd:#cbd5e1;">
+        <div class="card-row">
+          <img class="logo" src="icons/Core Engineering.png" alt="Core Engineering">
+          <div class="card-title">Core Engineering (Mechanical / Electrical / Civil)</div>
+        </div>
+      </a>
+      <a class="card" href="industries/pharmaceutical-life-sciences/" style="--a1:#10b981;--a2:#059669;--lb1:#d1fae5;--lb2:#86efac;--lc:#065f46;--bd:#86efac;">
+        <div class="card-row">
+          <img class="logo" src="icons/Pharmaceutical.png" alt="Pharmaceutical / Life Sciences">
+          <div class="card-title">Pharmaceutical / Life Sciences</div>
+        </div>
+      </a>
+      <a class="card" href="industries/healthcare/" style="--a1:#14b8a6;--a2:#0d9488;--lb1:#ccfbf1;--lb2:#99f6e4;--lc:#115e59;--bd:#99f6e4;">
+        <div class="card-row">
+          <img class="logo" src="icons/Healh Care.png" alt="Healthcare">
+          <div class="card-title">Healthcare</div>
+        </div>
+      </a>
+      <a class="card" href="industries/operations-supply-chain/" style="--a1:#f59e0b;--a2:#d97706;--lb1:#fef3c7;--lb2:#fcd34d;--lc:#92400e;--bd:#fcd34d;">
+        <div class="card-row">
+          <img class="logo" src="icons/Operations.png" alt="Operations / Supply Chain">
+          <div class="card-title">Operations / Supply Chain</div>
+        </div>
+      </a>
+      <a class="card" href="industries/hr-human-resources/" style="--a1:#8b5cf6;--a2:#7c3aed;--lb1:#ede9fe;--lb2:#c4b5fd;--lc:#5b21b6;--bd:#c4b5fd;">
+        <div class="card-row">
+          <img class="logo" src="icons/Human Resources.png" alt="HR / Human Resources">
+          <div class="card-title">HR / Human Resources</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

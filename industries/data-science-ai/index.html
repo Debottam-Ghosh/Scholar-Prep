@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Science / AI - ScholarPrep</title>
+  <style>
+    :root {
+      --a1: #6366f1;
+      --a2: #8b5cf6;
+      --bg1: #eef2ff;
+      --bg2: #e0e7ff;
+      --bg3: #f5f3ff;
+      --lb1: #eef2ff;
+      --lb2: #c7d2fe;
+      --lc: #3730a3;
+      --bd: #c7d2fe;
+      --title: #1f2937;
+      --subtitle: #64748b;
+      --mockText: #1e3a8a;
+      --topicsText: #065f46;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 45%, var(--bg3) 100%);
+      padding: 2rem;
+    }
+    .back-home {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--lc);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--lb1) 75%, white 25%);
+      border: 1.5px solid var(--bd);
+      transition: all 0.25s;
+      z-index: 10;
+    }
+    .back-home:hover {
+      background: color-mix(in srgb, var(--lb2) 65%, white 35%);
+      border-color: var(--bd);
+      transform: translateX(2px);
+      box-shadow: 0 4px 12px color-mix(in srgb, var(--a1) 20%, transparent 80%);
+    }
+    .wrapper { text-align: center; max-width: 760px; width: 100%; }
+    h1 { font-size: 2.3rem; font-weight: 700; color: var(--title); margin-bottom: 0.4rem; letter-spacing: -0.02em; }
+    .subtitle { font-size: 1rem; color: var(--subtitle); margin-bottom: 2.5rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 3rem 2rem 2.5rem;
+      text-decoration: none;
+      color: inherit;
+      border: 2px solid transparent;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      position: relative;
+      overflow: hidden;
+      display: block;
+      cursor: pointer;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      border-radius: 20px 20px 0 0;
+      transition: height 0.3s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.14); }
+    .card:hover::before { height: 6px; }
+    .card:hover .icon { transform: scale(1.18) rotate(-3deg); }
+    .card.disabled { cursor: default; opacity: 0.97; }
+    .card.mock::before { background: linear-gradient(90deg, var(--a1), var(--a2)); }
+    .card.mock:hover { border-color: var(--bd); }
+    .card.mock .card-title { color: var(--mockText); }
+    .card.topics::before { background: linear-gradient(90deg, #059669, #34d399); }
+    .card.topics:hover { border-color: #6ee7b7; }
+    .card.topics .card-title { color: var(--topicsText); }
+    .icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.2rem auto;
+      display: block;
+      transition: transform 0.3s;
+      object-fit: contain;
+    }
+    .badge {
+      width: 46px;
+      height: 46px;
+      margin: 0 auto 1rem;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--lc);
+      background: linear-gradient(135deg, var(--lb1), var(--lb2));
+      border: 1px solid var(--bd);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+    }
+    .card-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .card-desc { font-size: 0.9rem; color: #64748b; line-height: 1.6; }
+    .note { margin-top: 0.7rem; font-size: 0.8rem; color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <a class="back-home" href="../../">&#8592; Back to Industries</a>
+  <div class="wrapper">
+    <div class="badge">AI</div>
+    <h1>Data Science / AI</h1>
+    <p class="subtitle">Choose your preparation mode</p>
+    <div class="cards">
+      <a class="card mock" href="./mock-interview-options/">
+        <img src="../../icons/interview.png" class="icon" alt="Mock Interview">
+        <div class="card-title">Mock Interview</div>
+        <div class="card-desc">Simulate a real interview experience with timed questions and evaluation</div>
+      </a>
+      <a class="card topics" href="./topics/">
+        <img src="../../icons/questions.png" class="icon" alt="Topicwise Practice">
+        <div class="card-title">Topicwise Questions Practice</div>
+        <div class="card-desc">Practice questions organized by core interview topics for Data Science / AI</div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
+
+
+

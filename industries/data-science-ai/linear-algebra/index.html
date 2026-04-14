@@ -1,0 +1,432 @@
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#f5f3ff 0%,#ede9fe 50%,#f5f3ff 100%);min-height:100vh;color:#1e1b4b}
+.container{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+.back-link{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#6d5dd3;font-size:13px;font-weight:500;margin-bottom:1.5rem;padding:6px 14px;border-radius:10px;background:rgba(124,109,234,0.08);transition:all 0.2s}
+.back-link:hover{background:rgba(124,109,234,0.18);transform:translateX(-2px)}
+.header{margin-bottom:1.5rem}
+.header h2{font-size:18px;font-weight:500;color:#1e1b4b;margin-bottom:4px}
+.header p{font-size:14px;color:#6b7280}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1.5rem}
+.stat{background:#f3f0ff;border-radius:10px;padding:10px 12px}
+.stat-n{font-size:22px;font-weight:500;color:#1e1b4b}
+.stat-l{font-size:12px;color:#6b7280;margin-top:2px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem}
+.tab{padding:8px 18px;border-radius:12px;border:1.5px solid #ddd6fe;font-size:13px;cursor:pointer;background:#fff;color:#6b7280;transition:all 0.25s ease;font-weight:500}
+.tab.active{background:linear-gradient(135deg,#7c6dea,#a78bfa);border-color:transparent;color:#fff;box-shadow:0 4px 14px rgba(124,109,234,0.35)}
+.tab:hover:not(.active){background:#ede9fe;border-color:#c4b5fd;color:#5b21b6;transform:translateY(-1px)}
+.filter-wrap{margin-bottom:1.25rem}
+.filter-title{font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
+.filter-title-row{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+.difficulty-filters{display:flex;gap:8px;flex-wrap:wrap}
+.diff-chip{padding:7px 14px;border-radius:999px;border:1.5px solid #ddd6fe;background:#fff;color:#6b7280;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;text-transform:capitalize}
+.diff-chip.active{box-shadow:0 3px 10px rgba(124,109,234,0.08)}
+.diff-chip.active.basic{background:rgba(22,163,74,0.12);border-color:rgba(22,163,74,0.2);color:#166534}
+.diff-chip.active.medium{background:rgba(217,119,6,0.12);border-color:rgba(217,119,6,0.2);color:#92400e}
+.diff-chip.active.hard{background:rgba(220,38,38,0.12);border-color:rgba(220,38,38,0.2);color:#991b1b}
+.info-tip{position:relative;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#fff;border:1.5px solid #ddd6fe;color:#6d5dd3;font-size:12px;font-weight:700;cursor:help;box-shadow:0 1px 4px rgba(124,109,234,0.15);transition:all 0.2s;line-height:1}
+.info-tip:hover,.info-tip:focus{background:#ede9fe;border-color:#c4b5fd;outline:none}
+.info-pop{position:absolute;top:125%;left:0;z-index:20;min-width:280px;max-width:420px;padding:10px 12px;background:linear-gradient(135deg,#ffffff,#f5f3ff);border:1px solid #ddd6fe;border-radius:10px;color:#4b5563;font-size:12px;font-weight:500;line-height:1.45;text-transform:none;letter-spacing:0;box-shadow:0 8px 24px rgba(76,29,149,0.14);opacity:0;visibility:hidden;transform:translateY(-4px);transition:all 0.2s}
+.info-pop::before{content:'';position:absolute;top:-6px;left:10px;width:10px;height:10px;background:#fff;border-left:1px solid #ddd6fe;border-top:1px solid #ddd6fe;transform:rotate(45deg)}
+.info-tip:hover .info-pop,.info-tip:focus .info-pop{opacity:1;visibility:visible;transform:translateY(0)}
+.section{margin-bottom:2rem}
+.section-title{font-size:16px;font-weight:600;color:#3C3489;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #ddd6fe;letter-spacing:-0.01em}
+.qcard{background:#fff;border:1px solid #e5e7eb;border-radius:14px;margin-bottom:10px;overflow:hidden;transition:all 0.25s ease;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.qcard:hover{border-color:#c4b5fd;box-shadow:0 4px 20px rgba(124,109,234,0.12);transform:translateY(-1px)}
+.qcard-header{padding:14px 16px;cursor:pointer;display:flex;align-items:flex-start;gap:12px;user-select:none;transition:background 0.2s}
+.qcard-header:hover{background:#faf8ff}
+.qnum{min-width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;margin-top:1px;background:linear-gradient(135deg,#ede9fe,#ddd6fe);color:#5b21b6}
+.q-text{font-size:14px;color:#1e1b4b;line-height:1.6;flex:1}
+.arrow{font-size:12px;color:#a0a0b0;flex-shrink:0;margin-top:5px;transition:transform 0.3s ease}
+.arrow.open{transform:rotate(90deg);color:#7c6dea}
+.qcard-body{padding:0 16px 16px 56px;display:none;animation:fadeIn 0.3s ease}
+.qcard-body.open{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.followup-label{font-size:11px;font-weight:600;color:#7c6dea;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;margin-top:4px}
+.followup{font-size:13px;color:#4b5563;padding:8px 12px;background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-radius:10px;margin-bottom:6px;line-height:1.5;border-left:3px solid #a78bfa;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:8px}
+.followup:hover{background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-left-color:#7c6dea}
+.followup-text{flex:1}
+.fu-practice{margin-top:4px;margin-bottom:10px}
+.hint-label{font-size:11px;font-weight:600;color:#1d4ed8;text-transform:uppercase;letter-spacing:0.08em;margin-top:12px;margin-bottom:8px}
+.hint{font-size:13px;color:#4b5563;padding:8px 12px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:10px;line-height:1.5;border-left:3px solid #60a5fa}
+.difficulty{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;margin-left:auto;flex-shrink:0;align-self:center;letter-spacing:0.02em}
+.d-basic{background:#dcfce7;color:#166534}
+.d-medium{background:#fef3c7;color:#92400e}
+.d-hard{background:#fee2e2;color:#991b1b}
+.practice-btn{display:block;margin-top:12px;padding:8px 14px;background:#fff;border:1.5px solid #ddd6fe;border-radius:10px;font-size:13px;color:#6d5dd3;cursor:pointer;width:100%;text-align:left;transition:all 0.2s;font-weight:500}
+.practice-btn:hover{background:#f5f3ff;border-color:#a78bfa;box-shadow:0 2px 8px rgba(124,109,234,0.1)}
+.hint-toggle{display:inline-block;margin-top:10px;padding:6px 14px;background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:8px;font-size:12px;color:#2563eb;cursor:pointer;font-weight:600;transition:all 0.2s}
+.hint-toggle:hover{background:#dbeafe;border-color:#93c5fd}
+.hint-content{display:none;margin-top:8px}
+.hint-content.visible{display:block}
+.practice-area{margin-top:12px;display:none}
+.practice-area.visible{display:block}
+.practice-area textarea{width:100%;min-height:90px;border:1.5px solid #e2e8f0;border-radius:10px;padding:10px 14px;font-size:13px;font-family:inherit;color:#1e1b4b;resize:vertical;line-height:1.5;background:#fafbff}
+.practice-area textarea:focus{outline:none;border-color:#a78bfa;box-shadow:0 0 0 3px rgba(167,139,250,0.15)}
+.practice-buttons{display:flex;gap:8px;margin-top:8px;align-items:center}
+.practice-submit{padding:8px 20px;border:none;border-radius:10px;font-size:13px;font-weight:600;color:#fff;background:linear-gradient(135deg,#7c6dea,#a78bfa);cursor:pointer;transition:all 0.2s;box-shadow:0 3px 10px rgba(124,109,234,0.25)}
+.practice-submit:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(124,109,234,0.35)}
+.practice-submit:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none}
+.hint-btn{padding:8px 16px;border:1.5px solid #ddd6fe;border-radius:10px;font-size:13px;font-weight:600;color:#6d5dd3;background:#f5f3ff;cursor:pointer;transition:all 0.2s}
+.hint-btn:hover{background:#ede9fe;border-color:#a78bfa}
+.mic-btn{padding:8px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13px;font-weight:500;color:#64748b;background:#fff;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:5px}
+.mic-btn:hover{background:#fef2f2;border-color:#fca5a5;color:#dc2626}
+.mic-btn.recording{background:#fee2e2;border-color:#f87171;color:#dc2626;animation:micPulse 1s ease-in-out infinite}
+.mic-btn .mic-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#dc2626;animation:blink 0.8s infinite}
+@keyframes micPulse{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,0.3)}50%{box-shadow:0 0 0 6px rgba(220,38,38,0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.mic-status{font-size:11px;color:#64748b;margin-top:4px;min-height:14px}
+.eval-result{margin-top:12px;padding:14px;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-left:3px solid #22c55e;border-radius:10px;animation:fadeIn 0.3s ease}
+.eval-score{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:700;margin-bottom:8px}
+.eval-score.high{background:#dcfce7;color:#166534}
+.eval-score.mid{background:#fef3c7;color:#92400e}
+.eval-score.low{background:#fee2e2;color:#991b1b}
+.eval-ideal{margin-top:8px;padding:10px 12px;background:rgba(255,255,255,0.7);border-radius:8px;font-size:13px;line-height:1.6;color:#1e1b4b}
+.eval-ideal strong{font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:#6366f1;display:block;margin-bottom:4px}
+.eval-feedback{margin-top:6px;font-size:13px;color:#475569;font-style:italic}
+.eval-loading{display:flex;align-items:center;gap:10px;color:#64748b;font-size:13px;margin-top:12px}
+.eval-spinner{width:16px;height:16px;border:2.5px solid #e2e8f0;border-top-color:#7c6dea;border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+
+<div class="container">
+<a class="back-link" href="../topics/">&#8592; Back to Topics</a>
+
+<div class="tabs" id="tabsContainer">
+  <div class="tab active" onclick="showTab('all',this)">All topics</div>
+</div>
+
+<div class="filter-wrap">
+  <div class="filter-title-row">
+    <div class="filter-title">Filter by difficulty</div>
+    <button type="button" class="info-tip" aria-label="Difficulty filter help">🛈
+      <span class="info-pop">If a parent question is filtered out but it has follow-ups matching selected difficulties, that card is still shown so those matching follow-ups are accessible.</span>
+    </button>
+  </div>
+  <div class="difficulty-filters" id="difficultyFilters"></div>
+</div>
+
+<div id="qbank"></div>
+</div>
+
+<script>
+const SUBJECT = 'Linear Algebra';
+let data = [];
+let currentTopic = 'all';
+const difficultyOptions = ['basic', 'medium', 'hard'];
+let activeDifficulties = new Set(difficultyOptions);
+
+async function loadData() {
+  const res = await fetch('../data/questions_data_updated.json');
+  const json = await res.json();
+  const subjectData = json.find(s => s.subject === SUBJECT);
+  if (!subjectData) return;
+  // Group questions by topic
+  const topicMap = new Map();
+  subjectData.questions.forEach(q => {
+    const normalizedFollowups = (q.followups || []).map(f => {
+      if (typeof f === 'string') {
+        return { text: f, d: q.difficulty || 'medium' };
+      }
+      return { text: f.text || '', d: f.difficulty || q.difficulty || 'medium' };
+    }).filter(f => f.text);
+    if (!topicMap.has(q.topic)) topicMap.set(q.topic, []);
+    topicMap.get(q.topic).push({ q: q.text, d: q.difficulty, fu: normalizedFollowups, hint: q.hint || '' });
+  });
+  data = Array.from(topicMap.entries()).map(([label, qs]) => ({
+    topic: label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, ''),
+    topicLabel: label,
+    qs
+  }));
+  buildTabs();
+  renderDifficultyFilters();
+  renderQuestions();
+}
+
+function renderDifficultyFilters() {
+  const container = document.getElementById('difficultyFilters');
+  container.innerHTML = '';
+  difficultyOptions.forEach(level => {
+    const chip = document.createElement('button');
+    chip.className = `diff-chip ${level}${activeDifficulties.has(level) ? ' active' : ''}`;
+    chip.type = 'button';
+    chip.textContent = level;
+    chip.onclick = () => toggleDifficulty(level);
+    container.appendChild(chip);
+  });
+}
+
+function toggleDifficulty(level) {
+  if (activeDifficulties.has(level)) {
+    if (activeDifficulties.size === 1) return;
+    activeDifficulties.delete(level);
+  } else {
+    activeDifficulties.add(level);
+  }
+  renderDifficultyFilters();
+  renderQuestions();
+}
+
+function buildTabs() {
+  const container = document.getElementById('tabsContainer');
+  container.innerHTML = '<div class="tab active" onclick="showTab(\'all\',this)">All topics</div>';
+  data.forEach(s => {
+    const shortLabel = s.topicLabel.replace(/&/g, '&amp;').split(/\s+/).slice(0, 3).join(' ');
+    container.innerHTML += `<div class="tab" onclick="showTab('${s.topic}',this)">${shortLabel}</div>`;
+  });
+}
+
+function showTab(topic, el){
+  currentTopic = topic;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderQuestions();
+}
+
+function renderQuestions(){
+  const bank = document.getElementById('qbank');
+  bank.innerHTML = '';
+  let qIndex = 0;
+  const colors = {basic:'d-basic',medium:'d-medium',hard:'d-hard'};
+  const numColors = ['#534AB7','#0F6E56','#993C1D','#993556','#185FA5','#3B6D11','#854F0B'];
+  const numBg = ['#EEEDFE','#E1F5EE','#FAECE7','#FBEAF0','#E6F1FB','#EAF3DE','#FAEEDA'];
+
+  data.forEach((section, si) => {
+    if(currentTopic !== 'all' && section.topic !== currentTopic) return;
+    const sec = document.createElement('div');
+    sec.className = 'section';
+    sec.innerHTML = `<div class="section-title">${section.topicLabel}</div>`;
+    section.qs.forEach((item, qi) => {
+      const visibleFollowups = (item.fu || []).filter(f => activeDifficulties.has(f.d || 'medium'));
+      const parentVisible = activeDifficulties.has(item.d);
+      if (!parentVisible && visibleFollowups.length === 0) return;
+      qIndex++;
+      const ci = si % numColors.length;
+      const card = document.createElement('div');
+      card.className = 'qcard';
+      const bodyId = `body-${si}-${qi}`;
+      const arrowId = `arrow-${si}-${qi}`;
+      let fuHtml = '';
+      if(visibleFollowups.length){
+        fuHtml += `<div class="followup-label">Follow-up probes</div>`;
+        visibleFollowups.forEach((fobj, fi) => {
+          const fText = fobj.text;
+          const fDiff = fobj.d || 'medium';
+          const fuPractId = `fupract-${si}-${qi}-${fi}`;
+          fuHtml += `<div class="followup" onclick="openPractice('${fuPractId}',null)"><span class="followup-text">↳ ${fText}</span><span class="difficulty ${colors[fDiff] || colors.medium}">${fDiff}</span></div>`;
+          fuHtml += `<div class="fu-practice"><div class="practice-area" id="${fuPractId}" data-question="${fText.replace(/"/g,'&quot;')}" data-subject="${SUBJECT}"><textarea placeholder="Type your answer here..."></textarea><div class="practice-buttons"><button class="practice-submit" onclick="submitPractice('${fuPractId}')">Submit Answer</button><button class="mic-btn" onclick="toggleVoice('${fuPractId}')">🎤 Speak</button></div><div class="mic-status" id="mic-status-${fuPractId}"></div><div class="eval-container"></div></div></div>`;
+        });
+      }
+      const practiceId = `pract-${si}-${qi}`;
+      const hintId = `hint-${si}-${qi}`;
+      const hintBtnHtml = item.hint ? `<button class="hint-btn" onclick="document.getElementById('${hintId}').classList.toggle('visible')">💡Hint</button>` : '';
+      const hintContentHtml = item.hint ? `<div class="hint-content" id="${hintId}"><div class="hint-label">Professor's note</div><div class="hint">${item.hint}</div></div>` : '';
+      const practiceHtml = `<div class="practice-area visible" id="${practiceId}" data-question="${item.q.replace(/"/g,'&quot;')}" data-subject="${SUBJECT}"><textarea placeholder="Type your answer here..."></textarea><div class="practice-buttons"><button class="practice-submit" onclick="submitPractice('${practiceId}')">Submit Answer</button><button class="mic-btn" onclick="toggleVoice('${practiceId}')">🎤 Speak</button>${hintBtnHtml}</div>${hintContentHtml}<div class="mic-status" id="mic-status-${practiceId}"></div><div class="eval-container"></div></div>`;
+      card.innerHTML = `
+        <div class="qcard-header" onclick="toggle('${bodyId}','${arrowId}')">
+          <div class="qnum" style="background:${numBg[ci]};color:${numColors[ci]}">${qIndex}</div>
+          <div class="q-text">${item.q}</div>
+          <div class="difficulty ${colors[item.d]}">${item.d}</div>
+          <div class="arrow" id="${arrowId}">▶</div>
+        </div>
+        <div class="qcard-body" id="${bodyId}">
+          ${practiceHtml}${fuHtml}
+        </div>`;
+      sec.appendChild(card);
+    });
+    bank.appendChild(sec);
+  });
+}
+
+function toggle(bodyId, arrowId){
+  const body = document.getElementById(bodyId);
+  const arrow = document.getElementById(arrowId);
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  arrow.classList.toggle('open', !isOpen);
+}
+
+// ===== Practice & Evaluation =====
+const GROQ_MODELS = ['llama-3.3-70b-versatile', 'llama-3.1-70b-versatile', 'llama-3.1-8b-instant', 'gemma2-9b-it'];
+
+// ===== VOICE INPUT (Web Speech API live + Whisper final) =====
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const hasWebSpeech = !!SpeechRecognition;
+const voiceState = {}; // per-area state keyed by practiceId
+
+function toggleVoice(id) {
+  if (voiceState[id] && voiceState[id].active) {
+    stopVoice(id);
+  } else {
+    startVoice(id);
+  }
+}
+
+async function startVoice(id) {
+  const area = document.getElementById(id);
+  const ta = area.querySelector('textarea');
+  const micBtn = area.querySelector('.mic-btn');
+  const micStatus = document.getElementById('mic-status-' + id);
+  let stream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  } catch (err) {
+    micStatus.textContent = 'Microphone access denied.';
+    return;
+  }
+  const state = { active: true, recognition: null, recorder: null, chunks: [], textBefore: ta.value, stream };
+  voiceState[id] = state;
+  // MediaRecorder for Whisper
+  state.recorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
+  state.recorder.ondataavailable = e => { if (e.data.size > 0) state.chunks.push(e.data); };
+  state.recorder.onstop = async () => {
+    stream.getTracks().forEach(t => t.stop());
+    const blob = new Blob(state.chunks, { type: 'audio/webm' });
+    await finalizeWhisper(id, blob);
+  };
+  state.recorder.start();
+  // Web Speech API for live preview
+  if (hasWebSpeech) {
+    state.recognition = new SpeechRecognition();
+    state.recognition.continuous = true;
+    state.recognition.interimResults = true;
+    state.recognition.lang = 'en-US';
+    state.recognition.onresult = (event) => {
+      let interim = '', final = '';
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        if (event.results[i].isFinal) final += event.results[i][0].transcript;
+        else interim += event.results[i][0].transcript;
+      }
+      if (final) state.textBefore = state.textBefore ? state.textBefore + ' ' + final : final;
+      ta.value = interim ? (state.textBefore ? state.textBefore + ' ' + interim : interim) : state.textBefore;
+    };
+    state.recognition.onerror = () => {};
+    state.recognition.onend = () => { if (state.active) try { state.recognition.start(); } catch(e) {} };
+    try { state.recognition.start(); } catch(e) {}
+  }
+  micBtn.classList.add('recording');
+  micBtn.innerHTML = '<span class="mic-dot"></span> Listening...';
+  micStatus.textContent = hasWebSpeech ? 'Speak now \u2014 live preview active' : 'Speak now \u2014 Whisper will transcribe after stop';
+}
+
+function stopVoice(id) {
+  const state = voiceState[id];
+  if (!state) return;
+  const area = document.getElementById(id);
+  const micBtn = area.querySelector('.mic-btn');
+  const micStatus = document.getElementById('mic-status-' + id);
+  state.active = false;
+  if (state.recognition) try { state.recognition.stop(); } catch(e) {}
+  if (state.recorder && state.recorder.state !== 'inactive') state.recorder.stop();
+  micBtn.classList.remove('recording');
+  micBtn.innerHTML = '\ud83c\udfa4 Speak';
+  micStatus.textContent = 'Finalizing with Whisper...';
+}
+
+async function finalizeWhisper(id, blob) {
+  const area = document.getElementById(id);
+  const ta = area.querySelector('textarea');
+  const micStatus = document.getElementById('mic-status-' + id);
+  try {
+    const fd = new FormData();
+    fd.append('file', blob, 'recording.webm');
+    fd.append('model', 'whisper-large-v3-turbo');
+    fd.append('response_format', 'json');
+    const res = await fetch('/api/transcribe', {
+      method: 'POST',
+      body: fd
+    });
+    if (!res.ok) { const err = await res.json().catch(() => ({})); throw new Error(err.error?.message || `API error ${res.status}`); }
+    const data = await res.json();
+    const text = (data.text || '').trim();
+    if (text) { ta.value = text; micStatus.textContent = 'Whisper transcription ready. Review and submit.'; }
+    else { micStatus.textContent = 'No speech detected. Using live preview text.'; }
+  } catch (err) {
+    micStatus.textContent = 'Whisper failed. Using live preview text.';
+  }
+}
+
+async function callGroqWithFallback(body) {
+  let lastErr;
+  for (const model of GROQ_MODELS) {
+    try {
+      const response = await fetch('/api/groq', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ...body, model })
+      });
+      if (response.status === 429 || response.status === 503) { lastErr = new Error(`Rate limited on ${model}`); continue; }
+      if (!response.ok) { const errData = await response.json().catch(() => ({})); throw new Error(errData.error?.message || `API error ${response.status}`); }
+      return await response.json();
+    } catch (err) { lastErr = err; if (!err.message.includes('Rate limited')) throw err; }
+  }
+  throw lastErr;
+}
+
+function openPractice(id, btn) {
+  const area = document.getElementById(id);
+  const visible = area.classList.contains('visible');
+  area.classList.toggle('visible', !visible);
+  if (btn) btn.textContent = visible ? 'Practice this question ↗' : 'Close practice ✕';
+  if (!visible) area.querySelector('textarea').focus();
+}
+
+async function submitPractice(id) {
+  const area = document.getElementById(id);
+  const ta = area.querySelector('textarea');
+  const answer = ta.value.trim();
+  if (!answer) return;
+  const question = area.dataset.question;
+  const subject = area.dataset.subject;
+  const submitBtn = area.querySelector('.practice-submit');
+  const container = area.querySelector('.eval-container');
+
+  submitBtn.disabled = true;
+  container.innerHTML = '<div class="eval-loading"><div class="eval-spinner"></div>Evaluating your answer...</div>';
+
+  try {
+    const result = await callGroqEvaluate(question, answer, subject);
+    const score = Math.max(0, Math.min(10, parseInt(result.score) || 0));
+    const scoreClass = score >= 7 ? 'high' : score >= 4 ? 'mid' : 'low';
+    container.innerHTML = `
+      <div class="eval-result">
+        <div class="eval-score ${scoreClass}">★ Score: ${score}/10</div>
+        ${result.feedback ? `<div class="eval-feedback">${result.feedback}</div>` : ''}
+        <div class="eval-ideal"><strong>Ideal Answer</strong>${result.idealAnswer || ''}</div>
+      </div>`;
+  } catch (err) {
+    container.innerHTML = `<div class="eval-result" style="border-left-color:#ef4444;background:linear-gradient(135deg,#fef2f2,#fee2e2)"><div style="color:#991b1b;font-size:13px">Evaluation failed: ${err.message}</div></div>`;
+  }
+  submitBtn.disabled = false;
+}
+
+async function callGroqEvaluate(question, userAnswer, subject) {
+  const systemPrompt = `You are an expert ${subject} professor evaluating a student's answer in a PhD interview setting.
+Evaluate the answer to the given question. Return ONLY valid JSON with exactly these keys:
+- "score": integer 0-10
+- "idealAnswer": a concise ideal answer (3-5 sentences max)
+- "feedback": brief one-line feedback on the student's answer
+Do NOT include any text outside the JSON object.`;
+  const data = await callGroqWithFallback({
+    messages: [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: `Question: ${question}\nStudent's Answer: ${userAnswer}` }
+    ],
+    temperature: 0.3, max_tokens: 500
+  });
+  return safeParseJSON(data.choices[0].message.content);
+}
+
+function safeParseJSON(text) {
+  const clean = text.trim();
+  try { return JSON.parse(clean); } catch(e) {}
+  const match = clean.match(/```(?:json)?\s*([\s\S]*?)```/) || clean.match(/(\{[\s\S]*\})/);
+  if (match) { try { return JSON.parse(match[1].trim()); } catch(e) {} }
+  throw new Error('Could not parse API response as JSON');
+}
+
+loadData();
+</script>

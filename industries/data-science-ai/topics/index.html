@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topicwise Questions Practice</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f0f4ff 0%, #e8eaf6 40%, #f3e5f5 100%);
+      padding: 2rem;
+      position: relative;
+    }
+    .back-home {
+      position: fixed;
+      top: 1.5rem;
+      left: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: #6366f1;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 12px;
+      background: rgba(99,102,241,0.08);
+      border: 1.5px solid rgba(99,102,241,0.15);
+      transition: all 0.25s;
+      z-index: 10;
+    }
+    .back-home:hover {
+      background: rgba(99,102,241,0.18);
+      border-color: rgba(99,102,241,0.35);
+      transform: translateX(2px);
+      box-shadow: 0 4px 12px rgba(99,102,241,0.15);
+    }
+    .wrapper {
+      text-align: center;
+      max-width: 960px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      font-size: 1rem;
+      color: #64748b;
+      margin-bottom: 2.5rem;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.8rem 2rem 2.2rem;
+      text-decoration: none;
+      color: inherit;
+      border: 2px solid transparent;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      transition: height 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.13);
+    }
+    .card:hover::before { height: 6px; }
+    .card:hover .icon { transform: scale(1.18) rotate(-3deg); }
+    .icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.2rem auto;
+      display: block;
+      transition: transform 0.3s;
+      object-fit: contain;
+    }
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
+    /* Linear Algebra - Purple */
+    .card.la::before { background: linear-gradient(90deg, #7c6dea, #a78bfa); }
+    .card.la:hover { border-color: #c4b5fd; }
+    .card.la .card-title { color: #3C3489; }
+    /* Probability & Stats - Green */
+    .card.ps::before { background: linear-gradient(90deg, #059669, #34d399); }
+    .card.ps:hover { border-color: #6ee7b7; }
+    .card.ps .card-title { color: #065f46; }
+    /* Machine Learning - Amber */
+    .card.ml::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+    .card.ml:hover { border-color: #fde68a; }
+    .card.ml .card-title { color: #92400e; }
+  </style>
+</head>
+<body>
+  <a class="back-home" href="../">&#8592; Back to Home</a>
+  <div class="wrapper">
+    <h1>Topicwise Questions Practice</h1>
+    <p class="subtitle">Choose a topic to start practicing</p>
+    <div class="cards">
+      <a class="card la" href="../linear-algebra/">
+        <img src="../../../icons/Linear Algebra.png" class="icon" alt="Linear Algebra">
+        <div class="card-title">Linear Algebra</div>
+        <div class="card-desc">Vectors, matrices, eigenvalues, decompositions and more</div>
+      </a>
+      <a class="card ps" href="../probability-and-statistics/">
+        <img src="../../../icons/Statistics.png" class="icon" alt="Probability & Statistics">
+        <div class="card-title">Probability &amp; Statistics</div>
+        <div class="card-desc">Distributions, hypothesis testing, Bayes' theorem and more</div>
+      </a>
+      <a class="card ml" href="../machine-learning/">
+        <img src="../../../icons/Machine Learning.png" class="icon" alt="Machine Learning">
+        <div class="card-title">Machine Learning</div>
+        <div class="card-desc">Regression, classification, clustering, neural networks and more</div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
