@@ -38,6 +38,9 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear
 .qcard-header:hover{background:#f0fdf9}
 .qnum{min-width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;margin-top:1px;background:linear-gradient(135deg,#d1fae5,#a7f3d0);color:#065f46}
 .q-text{font-size:14px;color:#0f172a;line-height:1.6;flex:1}
+.q-copy-btn{width:30px;height:30px;border-radius:10px;border:1px solid #a7f3d0;background:none !important;background-color:transparent !important;background-image:none !important;color:#047857;display:inline-flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;flex-shrink:0;transition:all 0.2s;appearance:none;-webkit-appearance:none;box-shadow:none}
+.q-copy-btn:hover{background:none !important;background-color:transparent !important;transform:translateY(-1px) scale(1.02);border-color:#6ee7b7;box-shadow:none}
+.q-copy-btn:active,.q-copy-btn:focus,.q-copy-btn:focus-visible{background:none !important;background-color:transparent !important;outline:2px solid #6ee7b7;outline-offset:1px;box-shadow:none}
 .arrow{font-size:12px;color:#a0a0b0;flex-shrink:0;margin-top:5px;transition:transform 0.3s ease}
 .arrow.open{transform:rotate(90deg);color:#059669}
 .qcard-body{padding:0 16px 16px 56px;display:none;animation:fadeIn 0.3s ease}
@@ -47,6 +50,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear
 .followup{font-size:13px;color:#4b5563;padding:8px 12px;background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-radius:10px;margin-bottom:6px;line-height:1.5;border-left:3px solid #34d399;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:8px}
 .followup:hover{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-left-color:#059669}
 .followup-text{flex:1}
+.followup .q-copy-btn{width:26px;height:26px;border-radius:8px;font-size:13px;margin-left:6px;background:none !important;background-color:transparent !important;background-image:none !important;box-shadow:none}
 .fu-practice{margin-top:4px;margin-bottom:10px}
 .hint-label{font-size:11px;font-weight:600;color:#1d4ed8;text-transform:uppercase;letter-spacing:0.08em;margin-top:12px;margin-bottom:8px}
 .hint{font-size:13px;color:#4b5563;padding:8px 12px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:10px;line-height:1.5;border-left:3px solid #60a5fa}
@@ -88,8 +92,16 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear
 .eval-loading{display:flex;align-items:center;gap:10px;color:#64748b;font-size:13px;margin-top:12px}
 .eval-spinner{width:16px;height:16px;border:2.5px solid #e2e8f0;border-top-color:#059669;border-radius:50%;animation:spin 0.7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-</style>
+.copy-toast{position:fixed;right:20px;bottom:20px;padding:11px 14px;border-radius:12px;background:linear-gradient(135deg,#065f46,#10b981);color:#fff;font-size:13px;font-weight:700;box-shadow:0 12px 28px rgba(5,150,105,0.3);opacity:0;transform:translateY(12px) scale(0.96);pointer-events:none;transition:all 0.25s;z-index:9999}
+.copy-toast.show{opacity:1;transform:translateY(0) scale(1)}\n.ask-mentor-btn{position:fixed;bottom:30px;right:30px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#059669,#34d399);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 8px 24px rgba(5,150,105,0.35);transition:all 0.3s;z-index:9998}\n.ask-mentor-btn:hover{transform:scale(1.08);box-shadow:0 12px 32px rgba(5,150,105,0.45)}\n.ask-mentor-btn:active{transform:scale(0.95)}\n.mentor-chat{position:fixed;bottom:100px;right:30px;width:380px;max-height:600px;background:linear-gradient(135deg,#ffffff,#ecfdf5);border:1px solid #a7f3d0;border-radius:18px;box-shadow:0 20px 60px rgba(5,150,105,0.25);display:none;flex-direction:column;z-index:9997;opacity:0;transform:translateY(8px) scale(0.95);transition:all 0.3s}\n.mentor-chat.open{display:flex;opacity:1;transform:translateY(0) scale(1)}\n.mentor-header{padding:18px 20px;border-bottom:1px solid #a7f3d0;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#059669,#10b981);border-radius:18px 18px 0 0;color:#fff}\n.mentor-title{font-size:15px;font-weight:700;letter-spacing:-0.01em}\n.mentor-close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;transition:all 0.2s}\n.mentor-close:hover{transform:rotate(90deg)}\n.mentor-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}\n.mentor-msg{display:flex;gap:8px;align-items:flex-end}\n.mentor-msg.user{justify-content:flex-end}\n.mentor-msg.bot .avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#059669,#10b981);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;flex-shrink:0}\n.mentor-msg-content{max-width:70%;padding:12px 14px;border-radius:12px;line-height:1.5;font-size:13px}\n.mentor-msg.user .mentor-msg-content{background:#059669;color:#fff;border-radius:16px 4px 12px 12px}\n.mentor-msg.bot .mentor-msg-content{background:#d1fae5;color:#047857;border-radius:4px 16px 12px 12px;border:1px solid #a7f3d0}\n.mentor-input-wrap{padding:14px;border-top:1px solid #a7f3d0;display:flex;gap:8px;background:#fff;border-radius:0 0 18px 18px}\n.mentor-input{flex:1;border:1.5px solid #a7f3d0;border-radius:10px;padding:10px 14px;font-size:13px;font-family:inherit;color:#047857;transition:all 0.2s}\n.mentor-input:focus{outline:none;border-color:#6ee7b7;box-shadow:0 0 0 3px rgba(110,231,183,0.15)}\n.mentor-input::placeholder{color:#059669}\n.mentor-send{background:linear-gradient(135deg,#059669,#10b981);border:none;color:#fff;border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;transition:all 0.2s;flex-shrink:0}\n.mentor-send:hover{transform:scale(1.05)}\n.mentor-send:disabled{opacity:0.5;cursor:not-allowed}\n.mentor-loading{display:flex;align-items:center;gap:6px;color:#047857;font-size:12px;font-style:italic}\n.mentor-spinner{width:12px;height:12px;border:2px solid #a7f3d0;border-top-color:#059669;border-radius:50%;animation:spin 0.7s linear infinite}\n@media(max-width:600px){.mentor-chat{width:calc(100vw - 40px);right:20px;bottom:90px}.mentor-msg-content{max-width:85%}}\n</style>
 
+<style>
+.copy-toast{position:fixed;left:50%;right:auto;bottom:20px;transform:translate(-50%,12px) scale(0.96)}
+.copy-toast.show{transform:translate(-50%,0) scale(1)}
+.ask-mentor-btn{position:fixed;right:24px;bottom:24px;z-index:10000;display:flex;align-items:center;gap:10px;padding:14px 18px;border:none;border-radius:999px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;cursor:pointer;box-shadow:0 14px 30px rgba(5,150,105,0.32);transition:transform 0.2s ease,box-shadow 0.2s ease}
+.ask-mentor-btn:hover{transform:translateY(-1px);box-shadow:0 18px 36px rgba(5,150,105,0.42)}
+.ask-mentor-btn:active{transform:translateY(0) scale(0.98)}
+</style>
 <div class="container">
 <a class="back-link" href="../topics/">&#8592; Back to Topics</a>
 
@@ -108,11 +120,55 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear
 <div id="qbank"></div>
 </div>
 
+<button class="ask-mentor-btn" id="askMentorBtn" type="button" title="Ask Mentor" style="position:fixed;right:24px;bottom:24px;z-index:10000;display:flex;align-items:center;gap:10px;padding:14px 18px;border:none;border-radius:999px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;cursor:pointer;box-shadow:0 14px 30px rgba(5,150,105,0.32);transition:transform 0.2s ease,box-shadow 0.2s ease"><span class="ask-mentor-icon" style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.18);font-size:20px;flex-shrink:0">💬</span><span class="ask-mentor-text" style="font-size:14px;font-weight:700;letter-spacing:0.01em;white-space:nowrap">Ask Mentor</span></button>
+
 <script>
 const SUBJECT = 'Probability and Statistics';
 let data = [];
 const difficultyOptions = ['basic', 'medium', 'hard'];
 let activeDifficulties = new Set(difficultyOptions);
+let copyToastTimer = null;
+
+function escapeForAttr(text) {
+  return String(text || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\r?\n/g, ' ');
+}
+
+function ensureCopyToast() {
+  let toast = document.getElementById('copyToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'copyToast';
+    toast.className = 'copy-toast';
+    toast.textContent = 'Copied!';
+    document.body.appendChild(toast);
+  }
+  return toast;
+}
+
+function showCopyToast() {
+  const toast = ensureCopyToast();
+  toast.classList.add('show');
+  clearTimeout(copyToastTimer);
+  copyToastTimer = setTimeout(() => toast.classList.remove('show'), 1100);
+}
+
+async function copyText(event, text) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (err) {
+    const tmp = document.createElement('textarea');
+    tmp.value = text;
+    document.body.appendChild(tmp);
+    tmp.select();
+    document.execCommand('copy');
+    document.body.removeChild(tmp);
+  }
+  showCopyToast();
+}
 
 async function loadData() {
   const res = await fetch('../data/questions_data_updated.json');
@@ -206,9 +262,10 @@ function renderQuestions(){
         fu+=`<div class="followup-label">Follow-up probes</div>`;
         visibleFollowups.forEach((fobj,fi)=>{
           const fText = fobj.text;
+          const fCopy = escapeForAttr(fText);
           const fDiff = fobj.d || 'medium';
           const fuPractId=`fupract-${si}-${idx}-${fi}`;
-          fu+=`<div class="followup" onclick="openPractice('${fuPractId}',null)"><span class="followup-text">↳ ${fText}</span><span class="difficulty ${dc[fDiff] || dc.medium}">${fDiff}</span></div>`;
+          fu+=`<div class="followup" onclick="openPractice('${fuPractId}',null)"><span class="followup-text">↳ ${fText}</span><button type="button" class="q-copy-btn" title="Copy follow-up" onclick="copyText(event,'${fCopy}')">📋</button><span class="difficulty ${dc[fDiff] || dc.medium}">${fDiff}</span></div>`;
           fu+=`<div class="fu-practice"><div class="practice-area" id="${fuPractId}" data-question="${fText.replace(/"/g,'&quot;')}" data-subject="${SUBJECT}"><textarea placeholder="Type your answer here..."></textarea><div class="practice-buttons"><button class="practice-submit" onclick="submitPractice('${fuPractId}')">Submit Answer</button><button class="mic-btn" onclick="toggleVoice('${fuPractId}')">🎤 Speak</button></div><div class="mic-status" id="mic-status-${fuPractId}"></div><div class="eval-container"></div></div></div>`;
         });
       }
@@ -217,10 +274,12 @@ function renderQuestions(){
       const hintBtnHtml=item.hint?`<button class="hint-btn" onclick="document.getElementById('${hintId}').classList.toggle('visible')">💡Hint</button>`:'';
       const hintContentHtml=item.hint?`<div class="hint-content" id="${hintId}"><div class="hint-label">Professor's note</div><div class="hint">${item.hint}</div></div>`:'';
       const pb=`<div class="practice-area visible" id="${practId}" data-question="${item.q.replace(/"/g,'&quot;')}" data-subject="${SUBJECT}"><textarea placeholder="Type your answer here..."></textarea><div class="practice-buttons"><button class="practice-submit" onclick="submitPractice('${practId}')">Submit Answer</button><button class="mic-btn" onclick="toggleVoice('${practId}')">🎤 Speak</button>${hintBtnHtml}</div>${hintContentHtml}<div class="mic-status" id="mic-status-${practId}"></div><div class="eval-container"></div></div>`;
+      const qCopy = escapeForAttr(item.q);
       card.innerHTML=`
         <div class="qcard-header" onclick="tog('${bid}','${aid}')">
           <div class="qnum" style="background:${numB[ci]};color:${numC[ci]}">${qi}</div>
           <div class="q-text">${item.q}</div>
+          <button type="button" class="q-copy-btn" title="Copy question" onclick="copyText(event,'${qCopy}')">📋</button>
           <div class="difficulty ${dc[item.d]}">${item.d}</div>
           <div class="arrow" id="${aid}">▶</div>
         </div>
@@ -372,6 +431,14 @@ function safeParseJSON(text) {
   if (match) { try { return JSON.parse(match[1].trim()); } catch(e) {} }
   throw new Error('Could not parse API response as JSON');
 }
+
+function openMentorWindow() {
+  const mentorUrl = new URL('../mentor/index.html', window.location.href);
+  mentorUrl.searchParams.set('subject', 'Probability and Statistics');
+  window.open(mentorUrl.toString(), '_blank');
+}
+
+document.getElementById('askMentorBtn').addEventListener('click', openMentorWindow);
 
 loadData();
 </script>

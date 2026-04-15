@@ -19,17 +19,46 @@
     .container{max-width:760px;margin:0 auto;padding:80px 1.5rem 2rem}
 
     /* Start screen */
-    .start-screen{text-align:center;padding:4rem 2rem}
+    .start-screen{text-align:center;padding:4rem 1.5rem}
     .start-screen h1{font-size:2rem;font-weight:700;margin-bottom:0.5rem;color:#1e1b4b}
-    .start-screen p{color:#64748b;margin-bottom:2rem;line-height:1.6}
-    .start-btn{display:inline-block;padding:14px 36px;border:none;border-radius:14px;font-size:16px;font-weight:700;color:#fff;background:linear-gradient(135deg,#6366f1,#8b5cf6);cursor:pointer;transition:all 0.3s;box-shadow:0 6px 20px rgba(99,102,241,0.35)}
+    .start-screen p{color:#64748b;margin:0 auto 2rem;line-height:1.6;max-width:700px}
+    .selection-wizard{max-width:760px;margin:0 auto}
+    .wizard-card{background:#fff;border-radius:24px;padding:1.5rem;border:1px solid rgba(99,102,241,0.12);box-shadow:0 14px 40px rgba(99,102,241,0.12);text-align:left;animation:wizardFade 0.28s ease}
+    @keyframes wizardFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .wizard-progress{display:inline-flex;align-items:center;padding:6px 12px;border-radius:999px;background:#eef2ff;color:#4338ca;font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:1rem}
+    .wizard-title{font-size:1.45rem;font-weight:700;color:#1e1b4b;margin-bottom:0.35rem}
+    .wizard-subtitle{color:#64748b;font-size:14px;line-height:1.6;margin-bottom:1.25rem}
+    .check-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.7rem}
+    .check-item{display:flex;align-items:center;gap:0.65rem;border:1.5px solid #dbe4ff;background:#fff;border-radius:12px;padding:0.72rem 0.85rem;cursor:pointer;transition:all 0.2s ease;font-size:13px;font-weight:600;color:#374151;line-height:1.3}
+    .check-item:hover{border-color:#818cf8;background:#f8faff;transform:translateY(-1px)}
+    .check-item input[type="checkbox"]{accent-color:#6366f1;width:16px;height:16px;cursor:pointer;flex:0 0 auto}
+    .check-item.active{background:linear-gradient(180deg,#f8faff 0%,#eef2ff 100%);border-color:#818cf8;color:#312e81}
+    .check-item.locked{background:#f3f4f6;border-color:#d1d5db;color:#6b7280;cursor:not-allowed;pointer-events:none}
+    .check-item.locked:hover{transform:none;background:#f3f4f6;border-color:#d1d5db}
+    .check-item input[type="checkbox"]:disabled{accent-color:#9ca3af;cursor:not-allowed}
+    .wizard-actions{display:flex;justify-content:space-between;align-items:center;gap:0.75rem;margin-top:1.5rem;flex-wrap:wrap}
+    .secondary-btn{padding:10px 22px;border:1.5px solid #cbd5e1;border-radius:12px;font-size:14px;font-weight:600;color:#475569;background:#fff;cursor:pointer;transition:all 0.2s}
+    .secondary-btn:hover{background:#f8fafc;border-color:#94a3b8;color:#1e293b}
+    .start-btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 36px;border:none;border-radius:14px;font-size:16px;font-weight:700;color:#fff;background:linear-gradient(135deg,#6366f1,#8b5cf6);cursor:pointer;transition:all 0.3s;box-shadow:0 6px 20px rgba(99,102,241,0.35)}
     .start-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(99,102,241,0.45)}
-    .filter-section{margin-top:2rem}
-    .filter-section label{display:block;font-size:13px;font-weight:600;color:#64748b;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em}
-    .filter-chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-    .chip{padding:7px 16px;border-radius:20px;border:1.5px solid #c7d2fe;font-size:13px;cursor:pointer;background:#fff;color:#6b7280;transition:all 0.2s;font-weight:500}
-    .chip.active{background:linear-gradient(135deg,#6366f1,#818cf8);border-color:transparent;color:#fff;box-shadow:0 3px 10px rgba(99,102,241,0.3)}
-    .chip:hover:not(.active){background:#eef2ff;border-color:#a5b4fc;color:#4338ca}
+    .start-btn:disabled{opacity:0.55;cursor:not-allowed;transform:none;box-shadow:none}
+    .mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.9rem}
+    .mode-card{appearance:none;text-align:left;border:1.5px solid #dbe4ff;background:#fff;border-radius:18px;padding:1rem 1rem 0.95rem;cursor:pointer;transition:all 0.2s ease;min-height:128px;display:flex;flex-direction:column;justify-content:space-between;gap:0.55rem}
+    .mode-card:hover:not(:disabled){border-color:#818cf8;box-shadow:0 12px 24px rgba(99,102,241,0.1);transform:translateY(-2px)}
+    .mode-card.active{border-color:#6366f1;background:linear-gradient(180deg,#f8faff 0%,#eef2ff 100%);box-shadow:0 12px 24px rgba(99,102,241,0.14)}
+    .mode-card:disabled{cursor:not-allowed;opacity:0.6;background:#f8fafc}
+    .mode-card-title{font-size:15px;font-weight:700;color:#1e1b4b}
+    .mode-card-desc{font-size:13px;line-height:1.5;color:#64748b}
+    .mode-card-badge{align-self:flex-start;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:5px 10px;border-radius:999px;background:#e2e8f0;color:#475569}
+    .mode-card.active .mode-card-badge{background:#6366f1;color:#fff}
+    .mode-card.disabled .mode-card-badge{background:#e2e8f0;color:#64748b}
+    @media (max-width: 700px){
+      .mode-grid{grid-template-columns:1fr}
+      .wizard-card{padding:1.2rem}
+      .check-list{grid-template-columns:1fr}
+      .wizard-actions{flex-direction:column;align-items:stretch}
+      .wizard-actions .secondary-btn,.wizard-actions .start-btn{width:100%}
+    }
 
     /* Question card */
     .q-card{background:#fff;border-radius:20px;padding:2rem;box-shadow:0 4px 24px rgba(0,0,0,0.06);margin-bottom:1.5rem;animation:slideIn 0.4s ease}
@@ -147,12 +176,13 @@
   <div id="startScreen" class="start-screen">
     <h1>Mock Interview</h1>
     <p>Prepare for your next big interview with our interactive mock interview platform. Select the topics you want to focus on, and get ready to answer real interview questions with instant feedback and hints!</p>    
-    <div class="filter-section">
-      <label>Select topics to include</label>
-      <div class="filter-chips" id="topicChips"></div>
+    <div class="selection-wizard" id="selectionWizard">
+      <div class="wizard-card">
+        <div class="wizard-progress">Loading</div>
+        <div class="wizard-title">Preparing selection steps</div>
+        <div class="wizard-subtitle">Loading available questions and options...</div>
+      </div>
     </div>
-    <br><br>
-    <button class="start-btn" onclick="startInterview()">Start Interview</button>
   </div>
 
   <!-- INTERVIEW SCREEN -->
@@ -179,6 +209,18 @@
 // ===== ALL QUESTION DATA =====
 let ALL_QUESTIONS = [];
 
+const DIFFICULTY_OPTIONS = [
+  { value: 'basic', label: 'Easy' },
+  { value: 'medium', label: 'Medium' },
+  { value: 'hard', label: 'Hard' }
+];
+
+let subjectOptions = [];
+let selectedSubjectKeys = new Set();
+let selectedDifficultyValues = new Set();
+let selectedMode = 'smart-practice';
+let wizardStep = 1;
+
 async function loadQuestions() {
   const res = await fetch('../data/questions_data_updated.json');
   const json = await res.json();
@@ -201,6 +243,9 @@ async function loadQuestions() {
       });
     });
   });
+  buildSelectionOptions();
+  resetWizardState();
+  renderSelectionWizard();
 }
 
 // ===== STATE =====
@@ -375,41 +420,223 @@ let totalFollowUps = 0;
 let mainQCount = 0;
 let fuCount = 0;
 let chatLog = [];
-let selectedSubjects = new Set(["Linear Algebra","Probability and Statistics","Machine Learning"]);
 let evaluationResults = []; // stores {question, subject, topic, answer, score, idealAnswer, feedback, isFollowUp}
 
 // ===== INIT =====
 window.addEventListener('DOMContentLoaded', async () => {
   await loadQuestions();
-  renderTopicChips();
   document.getElementById('answerInput').addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submitAnswer(); }
   });
 });
 
-function renderTopicChips() {
-  const container = document.getElementById('topicChips');
-  const subjects = ["Linear Algebra","Probability and Statistics","Machine Learning"];
-  container.innerHTML = subjects.map(s =>
-    `<div class="chip active" onclick="toggleSubject(this,'${s}')">${s}</div>`
-  ).join('');
+function buildSelectionOptions() {
+  const seenSubjects = new Map();
+  ALL_QUESTIONS.forEach(q => {
+    const key = normalizeSubject(q.subject);
+    if (!seenSubjects.has(key)) {
+      seenSubjects.set(key, {
+        key,
+        label: String(q.subject || '').trim()
+      });
+    }
+  });
+  subjectOptions = Array.from(seenSubjects.values());
 }
 
-function toggleSubject(el, subject) {
-  if (selectedSubjects.has(subject)) {
-    if (selectedSubjects.size === 1) return; // keep at least one
-    selectedSubjects.delete(subject);
-    el.classList.remove('active');
-  } else {
-    selectedSubjects.add(subject);
-    el.classList.add('active');
+function resetWizardState() {
+  selectedSubjectKeys = new Set(subjectOptions.map(opt => opt.key));
+  selectedDifficultyValues = new Set(DIFFICULTY_OPTIONS.map(opt => opt.value));
+  selectedMode = 'smart-practice';
+  wizardStep = 1;
+}
+
+function normalizeDifficulty(value) {
+  const normalized = String(value || 'medium').trim().toLowerCase();
+  if (normalized === 'easy' || normalized === 'basic') return 'basic';
+  if (normalized === 'medium' || normalized === 'intermediate') return 'medium';
+  if (normalized === 'hard' || normalized === 'difficult') return 'hard';
+  return 'medium';
+}
+
+function normalizeSubject(value) {
+  return String(value || '').trim().toLowerCase();
+}
+
+function escapeHTML(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function renderSelectionWizard() {
+  const container = document.getElementById('selectionWizard');
+  if (!container) return;
+  container.innerHTML = `
+    <div class="wizard-card">
+      <div class="wizard-progress">Step ${wizardStep}/3</div>
+      ${wizardStep === 1 ? renderTopicStep() : ''}
+      ${wizardStep === 2 ? renderDifficultyStep() : ''}
+      ${wizardStep === 3 ? renderModeStep() : ''}
+    </div>
+  `;
+}
+
+function renderTopicStep() {
+  const checkboxes = subjectOptions.map(option => `
+    <label class="check-item ${selectedSubjectKeys.has(option.key) ? 'active' : ''} ${isLastSubjectSelection(option.key) ? 'locked' : ''}">
+      <input type="checkbox" data-subject-key="${escapeHTML(option.key)}" ${selectedSubjectKeys.has(option.key) ? 'checked' : ''} ${isLastSubjectSelection(option.key) ? 'disabled' : ''} onchange="handleSubjectCheckboxChange(this)">
+      <span>${escapeHTML(option.label)}</span>
+    </label>
+  `).join('');
+
+  return `
+    <div class="wizard-title">Select Subjects</div>
+    <div class="wizard-subtitle">Choose one or more Subjects to include. All Subjects are selected by default.</div>
+    <div class="check-list">${checkboxes}</div>
+    <div class="wizard-actions">
+      <span></span>
+      <button type="button" class="start-btn" onclick="goToSelectionStep(2)">Next</button>
+    </div>
+  `;
+}
+
+function renderDifficultyStep() {
+  const checkboxes = DIFFICULTY_OPTIONS.map(option => `
+    <label class="check-item ${selectedDifficultyValues.has(option.value) ? 'active' : ''} ${isLastDifficultySelection(option.value) ? 'locked' : ''}">
+      <input type="checkbox" data-difficulty-value="${escapeHTML(option.value)}" ${selectedDifficultyValues.has(option.value) ? 'checked' : ''} ${isLastDifficultySelection(option.value) ? 'disabled' : ''} onchange="handleDifficultyCheckboxChange(this)">
+      <span>${escapeHTML(option.label)}</span>
+    </label>
+  `).join('');
+
+  return `
+    <div class="wizard-title">Select Difficulty</div>
+    <div class="wizard-subtitle">Pick the difficulty levels you want to include. All levels are selected by default.</div>
+    <div class="check-list">${checkboxes}</div>
+    <div class="wizard-actions">
+      <button type="button" class="secondary-btn" onclick="goToSelectionStep(1)">Back</button>
+      <button type="button" class="start-btn" onclick="goToSelectionStep(3)">Next</button>
+    </div>
+  `;
+}
+
+function renderModeStep() {
+  return `
+    <div class="wizard-title">Select Interview Mode</div>
+    <div class="wizard-subtitle">Choose the practice mode for this session.</div>
+    <div class="mode-grid">
+      <button type="button" class="mode-card disabled" disabled>
+        <span class="mode-card-title">Live Interview Mode</span>
+        <span class="mode-card-desc">1-1 video interview with AI</span>
+      </button>
+      <button type="button" class="mode-card ${selectedMode === 'smart-practice' ? 'active' : ''}" onclick="chooseMode('smart-practice')">
+        <span class="mode-card-title">Smart Practice Mode</span>
+        <span class="mode-card-desc">Quick practice with text/voice answers</span>
+        <span class="mode-card-badge">Selected</span>
+      </button>
+    </div>
+    <div class="wizard-actions">
+      <button type="button" class="secondary-btn" onclick="goToSelectionStep(2)">Back</button>
+      <button type="button" class="start-btn" onclick="startInterview()">Start</button>
+    </div>
+  `;
+}
+
+function toggleSubjectSelection(key, isChecked) {
+  if (!isChecked && selectedSubjectKeys.size === 1 && selectedSubjectKeys.has(key)) {
+    renderSelectionWizard();
+    return;
   }
+  if (isChecked) selectedSubjectKeys.add(key);
+  else selectedSubjectKeys.delete(key);
+  enforceFilterMinimums();
+  renderSelectionWizard();
+}
+
+function handleSubjectCheckboxChange(inputEl) {
+  if (!inputEl) return;
+  toggleSubjectSelection(inputEl.dataset.subjectKey, inputEl.checked);
+}
+
+function toggleDifficultySelection(value, isChecked) {
+  if (!isChecked && selectedDifficultyValues.size === 1 && selectedDifficultyValues.has(value)) {
+    renderSelectionWizard();
+    return;
+  }
+  if (isChecked) selectedDifficultyValues.add(value);
+  else selectedDifficultyValues.delete(value);
+  enforceFilterMinimums();
+  renderSelectionWizard();
+}
+
+function handleDifficultyCheckboxChange(inputEl) {
+  if (!inputEl) return;
+  toggleDifficultySelection(inputEl.dataset.difficultyValue, inputEl.checked);
+}
+
+function chooseMode(mode) {
+  if (mode !== 'smart-practice') return;
+  selectedMode = mode;
+  renderSelectionWizard();
+}
+
+function goToSelectionStep(step) {
+  enforceFilterMinimums();
+  wizardStep = Math.max(1, Math.min(3, step));
+  renderSelectionWizard();
+}
+
+function enforceFilterMinimums() {
+  if (selectedSubjectKeys.size === 0 && subjectOptions.length > 0) {
+    selectedSubjectKeys.add(subjectOptions[0].key);
+  }
+  if (selectedDifficultyValues.size === 0 && DIFFICULTY_OPTIONS.length > 0) {
+    selectedDifficultyValues.add(DIFFICULTY_OPTIONS[0].value);
+  }
+}
+
+function isLastSubjectSelection(key) {
+  return selectedSubjectKeys.size === 1 && selectedSubjectKeys.has(key);
+}
+
+function isLastDifficultySelection(value) {
+  return selectedDifficultyValues.size === 1 && selectedDifficultyValues.has(value);
+}
+
+function buildFilteredPool(activeSubjectKeys, activeDifficultyValues) {
+  return shuffle(
+    ALL_QUESTIONS
+      .map(q => ({
+        ...q,
+        d: normalizeDifficulty(q.d),
+        fu: (q.fu || []).map(f => ({ ...f, d: normalizeDifficulty(f.d) }))
+      }))
+      .filter(q => activeSubjectKeys.has(normalizeSubject(q.subject)))
+      .filter(q => activeDifficultyValues.has(q.d))
+      .map(q => ({
+        ...q,
+        fu: q.fu.filter(f => activeDifficultyValues.has(f.d))
+      }))
+  );
 }
 
 // ===== START =====
 function startInterview() {
-  pool = shuffle(ALL_QUESTIONS.filter(q => selectedSubjects.has(q.subject)));
-  if (pool.length === 0) return;
+  if (selectedMode !== 'smart-practice') {
+    alert('Only Smart Practice Mode is available right now.');
+    return;
+  }
+  enforceFilterMinimums();
+  const activeSubjectKeys = new Set(selectedSubjectKeys);
+  const activeDifficultyValues = new Set(Array.from(selectedDifficultyValues).map(normalizeDifficulty));
+  pool = buildFilteredPool(activeSubjectKeys, activeDifficultyValues);
+  if (pool.length === 0) {
+    alert('No questions match the selected subject and difficulty filters. Please adjust your filters.');
+    return;
+  }
   totalMainQs = pool.length;
   totalFollowUps = pool.reduce((s, q) => s + (q.fu ? q.fu.length : 0), 0);
   mainQCount = 0;
@@ -786,6 +1013,8 @@ function restart() {
   document.getElementById('endScreen').classList.add('hidden');
   document.getElementById('startScreen').classList.remove('hidden');
   document.getElementById('exitBtn').classList.remove('visible');
+  resetWizardState();
+  renderSelectionWizard();
 }
 
 function exitInterview() {

@@ -1,0 +1,2496 @@
+{
+  "metadata": {
+    "title": "PhD Interview Preparation — Comprehensive MCQ Bank",
+    "description": "360-degree MCQ preparation for PhD interviews covering Linear Algebra, Probability & Statistics, and Machine Learning from Basic to Hard difficulty.",
+    "subjects": [
+      "Linear Algebra",
+      "Probability and Statistics",
+      "Machine Learning"
+    ],
+    "topics": {
+      "Linear Algebra": [
+        "Vectors & Vector Spaces",
+        "Matrices & Operations",
+        "Eigenvalues & Eigenvectors",
+        "SVD & Matrix Decompositions",
+        "Linear Systems & Solutions",
+        "Projections, Least Squares & OLS",
+        "Positive Definite Matrices",
+        "Norms, Distances & Inner Products",
+        "Connections to ML"
+      ],
+      "Probability and Statistics": [
+        "Probability Foundations",
+        "Random Variables & Distributions",
+        "Key Probability Distributions",
+        "Expectation, Variance & Moments",
+        "Bayes' Theorem & Conditional Probability",
+        "Limit Theorems",
+        "Parameter Estimation: MLE & MAP",
+        "Hypothesis Testing & Inference",
+        "Regression, Correlation & Information Theory",
+        "Connections to ML"
+      ],
+      "Machine Learning": [
+        "Foundations of Machine Learning",
+        "Supervised Learning",
+        "Key Classifiers & Regressors",
+        "Unsupervised Learning",
+        "Optimisation for ML",
+        "Regularisation & Generalisation",
+        "Model Evaluation & Selection",
+        "SVD, PCA & Dimensionality Reduction"
+      ]
+    },
+    "difficulty_levels": [
+      "Basic",
+      "Medium",
+      "Hard"
+    ],
+    "total_questions": 162,
+    "question_counts": {
+      "Linear Algebra": 50,
+      "Probability and Statistics": 55,
+      "Machine Learning": 57
+    },
+    "difficulty_counts": {
+      "Basic": 22,
+      "Medium": 52,
+      "Hard": 88
+    },
+    "instructions": "Each question has exactly one correct answer. Read explanations carefully to understand the underlying concept. Aim to understand WHY the answer is correct, not just what it is.",
+    "recommended_usage": "Start with Basic questions, progress to Medium, then attempt Hard. Review explanations for all questions regardless of whether you answered correctly."
+  },
+  "questions": [
+    {
+      "id": "LA001",
+      "subject": "Linear Algebra",
+      "topic": "Vectors & Vector Spaces",
+      "difficulty": "Basic",
+      "question": "What is the dimension of the null space of a 4×6 matrix with rank 3?",
+      "options": {
+        "A": "3",
+        "B": "2",
+        "C": "4",
+        "D": "1"
+      },
+      "correct_answer": "A",
+      "explanation": "By the Rank-Nullity theorem: nullity = n − rank = 6 − 3 = 3."
+    },
+    {
+      "id": "LA002",
+      "subject": "Linear Algebra",
+      "topic": "Vectors & Vector Spaces",
+      "difficulty": "Basic",
+      "question": "Which of the following best describes a basis of a vector space V?",
+      "options": {
+        "A": "Any set of vectors in V",
+        "B": "A linearly independent set that spans V",
+        "C": "A set of n orthogonal vectors",
+        "D": "The set of all unit vectors in V"
+      },
+      "correct_answer": "B",
+      "explanation": "A basis must be linearly independent AND span the space. Orthogonality is a bonus, not a requirement."
+    },
+    {
+      "id": "LA003",
+      "subject": "Linear Algebra",
+      "topic": "Vectors & Vector Spaces",
+      "difficulty": "Medium",
+      "question": "Which of the following sets is NOT a subspace of ℝ³?",
+      "options": {
+        "A": "{(x,y,z) : x+y+z=0}",
+        "B": "{(x,y,z) : x+y+z=1}",
+        "C": "{(x,y,z) : x=y=0}",
+        "D": "{(x,y,z) : x=2z}"
+      },
+      "correct_answer": "B",
+      "explanation": "A subspace must contain the zero vector. Setting x=y=z=0 gives 0+0+0=1, which is false, so option B fails the zero vector test."
+    },
+    {
+      "id": "LA004",
+      "subject": "Linear Algebra",
+      "topic": "Vectors & Vector Spaces",
+      "difficulty": "Medium",
+      "question": "If V is a vector space of dimension n and W is a subspace of dimension k, what is dim(W⊥)?",
+      "options": {
+        "A": "n − k",
+        "B": "k",
+        "C": "n",
+        "D": "n + k"
+      },
+      "correct_answer": "A",
+      "explanation": "The orthogonal complement W⊥ satisfies dim(W) + dim(W⊥) = n, so dim(W⊥) = n − k."
+    },
+    {
+      "id": "LA005",
+      "subject": "Linear Algebra",
+      "topic": "Vectors & Vector Spaces",
+      "difficulty": "Hard",
+      "question": "For subspaces W₁ and W₂ of a finite-dimensional vector space V, which formula gives dim(W₁ + W₂)?",
+      "options": {
+        "A": "dim(W₁) + dim(W₂)",
+        "B": "dim(W₁) + dim(W₂) − dim(W₁ ∩ W₂)",
+        "C": "dim(W₁) × dim(W₂)",
+        "D": "max(dim(W₁), dim(W₂))"
+      },
+      "correct_answer": "B",
+      "explanation": "The dimension formula for sum of subspaces: dim(W₁+W₂) = dim(W₁) + dim(W₂) − dim(W₁∩W₂), analogous to the inclusion-exclusion principle."
+    },
+    {
+      "id": "LA006",
+      "subject": "Linear Algebra",
+      "topic": "Matrices & Operations",
+      "difficulty": "Basic",
+      "question": "What is (AB)ᵀ equal to?",
+      "options": {
+        "A": "AᵀBᵀ",
+        "B": "BᵀAᵀ",
+        "C": "AB",
+        "D": "BA"
+      },
+      "correct_answer": "B",
+      "explanation": "The transpose of a product reverses the order: (AB)ᵀ = BᵀAᵀ. This generalises to (ABC)ᵀ = CᵀBᵀAᵀ."
+    },
+    {
+      "id": "LA007",
+      "subject": "Linear Algebra",
+      "topic": "Matrices & Operations",
+      "difficulty": "Basic",
+      "question": "If det(A) = 0 for a square matrix A, then:",
+      "options": {
+        "A": "A is invertible",
+        "B": "A has full rank",
+        "C": "Ax=0 has only the trivial solution",
+        "D": "A is singular"
+      },
+      "correct_answer": "D",
+      "explanation": "det(A)=0 ⟺ A is singular (non-invertible). A singular matrix does not have full rank and Ax=0 has non-trivial solutions."
+    },
+    {
+      "id": "LA008",
+      "subject": "Linear Algebra",
+      "topic": "Matrices & Operations",
+      "difficulty": "Medium",
+      "question": "Which of the following sets is NOT closed under matrix addition?",
+      "options": {
+        "A": "n×n symmetric matrices",
+        "B": "n×n invertible matrices",
+        "C": "n×n skew-symmetric matrices",
+        "D": "n×n upper triangular matrices"
+      },
+      "correct_answer": "B",
+      "explanation": "The sum of two invertible matrices need not be invertible (e.g. A + (−A) = 0). The other sets are closed under addition."
+    },
+    {
+      "id": "LA009",
+      "subject": "Linear Algebra",
+      "topic": "Matrices & Operations",
+      "difficulty": "Medium",
+      "question": "For square matrices A and B of the same size, which is ALWAYS true?",
+      "options": {
+        "A": "trace(AB) = trace(A)·trace(B)",
+        "B": "trace(AB) = trace(BA)",
+        "C": "det(A+B) = det(A)+det(B)",
+        "D": "AB = BA"
+      },
+      "correct_answer": "B",
+      "explanation": "trace(AB) = trace(BA) is a fundamental identity (cyclic property of trace). The other options are generally false."
+    },
+    {
+      "id": "LA010",
+      "subject": "Linear Algebra",
+      "topic": "Matrices & Operations",
+      "difficulty": "Hard",
+      "question": "An n×n matrix A is idempotent (A²=A). What are the only possible eigenvalues?",
+      "options": {
+        "A": "Any real number",
+        "B": "0 and 1 only",
+        "C": "Only 0",
+        "D": "Only 1"
+      },
+      "correct_answer": "B",
+      "explanation": "If Av=λv, then A²v=λ²v=λv (since A²=A), so λ²=λ ⟹ λ(λ−1)=0 ⟹ λ∈{0,1}. Projection matrices are a key example."
+    },
+    {
+      "id": "LA011",
+      "subject": "Linear Algebra",
+      "topic": "Eigenvalues & Eigenvectors",
+      "difficulty": "Basic",
+      "question": "If Av = λv for a non-zero vector v, what is v called?",
+      "options": {
+        "A": "A singular vector",
+        "B": "A null vector",
+        "C": "An eigenvector",
+        "D": "A basis vector"
+      },
+      "correct_answer": "C",
+      "explanation": "v is an eigenvector of A associated with eigenvalue λ. Note: singular vectors come from SVD and are different from eigenvectors."
+    },
+    {
+      "id": "LA012",
+      "subject": "Linear Algebra",
+      "topic": "Eigenvalues & Eigenvectors",
+      "difficulty": "Basic",
+      "question": "The sum of all eigenvalues of a square matrix A equals:",
+      "options": {
+        "A": "det(A)",
+        "B": "trace(A)",
+        "C": "rank(A)",
+        "D": "||A||_F"
+      },
+      "correct_answer": "B",
+      "explanation": "By the characteristic polynomial, the sum of eigenvalues = trace(A), and their product = det(A)."
+    },
+    {
+      "id": "LA013",
+      "subject": "Linear Algebra",
+      "topic": "Eigenvalues & Eigenvectors",
+      "difficulty": "Basic",
+      "question": "The product of all eigenvalues of a square matrix A equals:",
+      "options": {
+        "A": "trace(A)",
+        "B": "rank(A)",
+        "C": "det(A)",
+        "D": "||A||₂"
+      },
+      "correct_answer": "C",
+      "explanation": "det(A) = ∏ᵢ λᵢ. This follows directly from the factored form of the characteristic polynomial."
+    },
+    {
+      "id": "LA014",
+      "subject": "Linear Algebra",
+      "topic": "Eigenvalues & Eigenvectors",
+      "difficulty": "Medium",
+      "question": "A matrix A is diagonalizable if and only if:",
+      "options": {
+        "A": "It has distinct eigenvalues",
+        "B": "It has n linearly independent eigenvectors (for n×n A)",
+        "C": "Its determinant is non-zero",
+        "D": "It is symmetric"
+      },
+      "correct_answer": "B",
+      "explanation": "Diagonalizability ⟺ n LI eigenvectors ⟺ A = PDP⁻¹. Distinct eigenvalues is sufficient (not necessary). Symmetric matrices are always diagonalizable by the spectral theorem."
+    },
+    {
+      "id": "LA015",
+      "subject": "Linear Algebra",
+      "topic": "Eigenvalues & Eigenvectors",
+      "difficulty": "Medium",
+      "question": "A matrix A is nilpotent if Aᵏ=0 for some k. What are the eigenvalues of a nilpotent matrix?",
+      "options": {
+        "A": "All ones",
+        "B": "All zeros",
+        "C": "±1",
+        "D": "Real and positive"
+      },
+      "correct_answer": "B",
+      "explanation": "If Av=λv, then A²v=λ²v, and Aᵏv=λᵏv=0. Since v≠0, we must have λᵏ=0 ⟹ λ=0."
+    },
+    {
+      "id": "LA016",
+      "subject": "Linear Algebra",
+      "topic": "Eigenvalues & Eigenvectors",
+      "difficulty": "Medium",
+      "question": "For a real symmetric matrix A, which statement is FALSE?",
+      "options": {
+        "A": "All eigenvalues are real",
+        "B": "Eigenvectors for distinct eigenvalues are orthogonal",
+        "C": "A is always positive definite",
+        "D": "A can be diagonalized by an orthogonal matrix Q: A=QΛQᵀ"
+      },
+      "correct_answer": "C",
+      "explanation": "A real symmetric matrix has all real eigenvalues (A) and orthogonal eigenvectors for distinct eigenvalues (B), and is orthogonally diagonalizable (D) by the Spectral Theorem. But eigenvalues can be negative (e.g. [−1,0;0,−2])."
+    },
+    {
+      "id": "LA017",
+      "subject": "Linear Algebra",
+      "topic": "Eigenvalues & Eigenvectors",
+      "difficulty": "Hard",
+      "question": "For an eigenvalue λ of matrix A, the algebraic multiplicity mₐ and geometric multiplicity m_g satisfy:",
+      "options": {
+        "A": "m_g = mₐ always",
+        "B": "m_g ≥ mₐ",
+        "C": "1 ≤ m_g ≤ mₐ",
+        "D": "m_g > mₐ"
+      },
+      "correct_answer": "C",
+      "explanation": "The geometric multiplicity (dimension of eigenspace) is always ≤ algebraic multiplicity (power in characteristic polynomial), and both are ≥ 1 for an eigenvalue. A matrix is diagonalizable iff m_g = mₐ for all eigenvalues."
+    },
+    {
+      "id": "LA018",
+      "subject": "Linear Algebra",
+      "topic": "Eigenvalues & Eigenvectors",
+      "difficulty": "Hard",
+      "question": "The Cayley-Hamilton theorem states that a matrix A satisfies:",
+      "options": {
+        "A": "Its own characteristic polynomial",
+        "B": "Aⁿ = I for some n",
+        "C": "All eigenvalues are roots of its minimal polynomial",
+        "D": "A has n distinct eigenvalues"
+      },
+      "correct_answer": "A",
+      "explanation": "Cayley-Hamilton: if p(λ) = det(λI − A) is the characteristic polynomial, then p(A) = 0. This is used for computing matrix inverses and powers."
+    },
+    {
+      "id": "LA019",
+      "subject": "Linear Algebra",
+      "topic": "SVD & Matrix Decompositions",
+      "difficulty": "Medium",
+      "question": "In A = UΣVᵀ (m×n matrix), which dimensions are correct?",
+      "options": {
+        "A": "U is m×m orthogonal, Σ is m×n with singular values on diagonal, V is n×n orthogonal",
+        "B": "U is m×n, Σ is n×n, V is m×m",
+        "C": "U and V are both m×n",
+        "D": "Σ is square and invertible always"
+      },
+      "correct_answer": "A",
+      "explanation": "Full SVD: U ∈ ℝᵐˣᵐ, Σ ∈ ℝᵐˣⁿ, V ∈ ℝⁿˣⁿ. The columns of U are left singular vectors; columns of V are right singular vectors."
+    },
+    {
+      "id": "LA020",
+      "subject": "Linear Algebra",
+      "topic": "SVD & Matrix Decompositions",
+      "difficulty": "Medium",
+      "question": "The rank of a matrix A is equal to:",
+      "options": {
+        "A": "The number of non-zero singular values in its SVD",
+        "B": "The number of rows",
+        "C": "The number of columns",
+        "D": "The trace of AᵀA"
+      },
+      "correct_answer": "A",
+      "explanation": "rank(A) = number of non-zero singular values σᵢ. This equals the number of non-zero diagonal entries of Σ in the SVD."
+    },
+    {
+      "id": "LA021",
+      "subject": "Linear Algebra",
+      "topic": "SVD & Matrix Decompositions",
+      "difficulty": "Hard",
+      "question": "Given A = UΣVᵀ, the Moore-Penrose pseudoinverse A⁺ is:",
+      "options": {
+        "A": "UΣ⁺Vᵀ",
+        "B": "VΣ⁺Uᵀ",
+        "C": "VᵀΣU",
+        "D": "Uᵀ Σ⁻¹ V"
+      },
+      "correct_answer": "B",
+      "explanation": "A⁺ = VΣ⁺Uᵀ, where Σ⁺ replaces each non-zero σᵢ with 1/σᵢ. For full column rank A, this reduces to A⁺ = (AᵀA)⁻¹Aᵀ."
+    },
+    {
+      "id": "LA022",
+      "subject": "Linear Algebra",
+      "topic": "SVD & Matrix Decompositions",
+      "difficulty": "Hard",
+      "question": "The best rank-k approximation to matrix A (minimizing Frobenius norm) is given by:",
+      "options": {
+        "A": "Aₖ = Σᵢ₌₁ᵏ σᵢuᵢvᵢᵀ (Eckart-Young theorem)",
+        "B": "The first k rows of A",
+        "C": "A projected onto the top k eigenvectors of AᵀA",
+        "D": "Both A and C are equivalent"
+      },
+      "correct_answer": "A",
+      "explanation": "The Eckart-Young-Mirsky theorem states Aₖ = Σᵢ₌₁ᵏ σᵢuᵢvᵢᵀ is the best rank-k approximation in both Frobenius and spectral norms. Option C is equivalent but A is the complete statement."
+    },
+    {
+      "id": "LA023",
+      "subject": "Linear Algebra",
+      "topic": "SVD & Matrix Decompositions",
+      "difficulty": "Hard",
+      "question": "The spectral condition number of A (using 2-norm) is:",
+      "options": {
+        "A": "σ_max / σ_min",
+        "B": "σ_max × σ_min",
+        "C": "trace(A) / det(A)",
+        "D": "λ_max / λ_min"
+      },
+      "correct_answer": "A",
+      "explanation": "κ(A) = ||A||₂ · ||A⁻¹||₂ = σ_max / σ_min. A high condition number means the system Ax=b is ill-conditioned and sensitive to perturbations."
+    },
+    {
+      "id": "LA024",
+      "subject": "Linear Algebra",
+      "topic": "Linear Systems & Solutions",
+      "difficulty": "Basic",
+      "question": "A linear system Ax = b is consistent (has at least one solution) when:",
+      "options": {
+        "A": "rank(A) = n",
+        "B": "rank(A) = rank([A|b])",
+        "C": "det(A) ≠ 0",
+        "D": "A must be square"
+      },
+      "correct_answer": "B",
+      "explanation": "By the Rouché-Capelli theorem, the system is consistent iff b lies in the column space of A, i.e. rank([A|b]) = rank(A)."
+    },
+    {
+      "id": "LA025",
+      "subject": "Linear Algebra",
+      "topic": "Linear Systems & Solutions",
+      "difficulty": "Basic",
+      "question": "For a consistent system Ax = b, a homogeneous system Ax = 0 has only the trivial solution when:",
+      "options": {
+        "A": "A is m×n with m>n",
+        "B": "A is square and invertible",
+        "C": "b = 0",
+        "D": "A is symmetric"
+      },
+      "correct_answer": "B",
+      "explanation": "Ax=0 has only x=0 iff A has trivial null space iff A has full column rank. For square A, this is equivalent to invertibility."
+    },
+    {
+      "id": "LA026",
+      "subject": "Linear Algebra",
+      "topic": "Linear Systems & Solutions",
+      "difficulty": "Medium",
+      "question": "The general solution to a consistent system Ax=b is:",
+      "options": {
+        "A": "x_p + v, where v ∈ col(A)",
+        "B": "x_p + v, where v ∈ null(A) and x_p is any particular solution",
+        "C": "The minimum-norm solution only",
+        "D": "x_p + v, where v ∈ row(A)"
+      },
+      "correct_answer": "B",
+      "explanation": "Any solution = particular solution + homogeneous solution. The homogeneous solutions form the null space of A. Adding any null-space vector keeps Ax=b satisfied."
+    },
+    {
+      "id": "LA027",
+      "subject": "Linear Algebra",
+      "topic": "Linear Systems & Solutions",
+      "difficulty": "Hard",
+      "question": "For a 4×6 matrix A with rank 2, the system Ax=b (if consistent) has a solution space of dimension:",
+      "options": {
+        "A": "2",
+        "B": "4",
+        "C": "6",
+        "D": "2"
+      },
+      "correct_answer": "B",
+      "explanation": "The solution space is an affine subspace: particular solution + null(A). dim(null(A)) = n − rank = 6 − 2 = 4. So the solution space has 4 degrees of freedom."
+    },
+    {
+      "id": "LA028",
+      "subject": "Linear Algebra",
+      "topic": "Projections, Least Squares & OLS",
+      "difficulty": "Medium",
+      "question": "The orthogonal projection of vector b onto the column space of A is:",
+      "options": {
+        "A": "A(AᵀA)⁻¹Aᵀb",
+        "B": "AAᵀb",
+        "C": "(AᵀA)⁻¹b",
+        "D": "Aᵀ(AAᵀ)⁻¹b"
+      },
+      "correct_answer": "A",
+      "explanation": "The projection matrix onto col(A) is P = A(AᵀA)⁻¹Aᵀ (assuming full column rank). This minimises ||b − Ax||₂."
+    },
+    {
+      "id": "LA029",
+      "subject": "Linear Algebra",
+      "topic": "Projections, Least Squares & OLS",
+      "difficulty": "Medium",
+      "question": "The OLS normal equations for minimising ||Ax − b||² are:",
+      "options": {
+        "A": "Ax = b",
+        "B": "AᵀAx = Aᵀb",
+        "C": "AAᵀx = b",
+        "D": "A⁻¹x = b"
+      },
+      "correct_answer": "B",
+      "explanation": "Setting the gradient to zero: ∇||Ax−b||² = 2Aᵀ(Ax−b) = 0 gives AᵀAx = Aᵀb. When A has full column rank, the unique solution is x̂ = (AᵀA)⁻¹Aᵀb."
+    },
+    {
+      "id": "LA030",
+      "subject": "Linear Algebra",
+      "topic": "Projections, Least Squares & OLS",
+      "difficulty": "Hard",
+      "question": "The hat matrix H = X(XᵀX)⁻¹Xᵀ in OLS satisfies all of the following EXCEPT:",
+      "options": {
+        "A": "H² = H (idempotent)",
+        "B": "H is symmetric",
+        "C": "H is positive definite",
+        "D": "Eigenvalues of H are only 0 or 1"
+      },
+      "correct_answer": "C",
+      "explanation": "H is idempotent (A), symmetric (B), and has eigenvalues 0 and 1 (D). But H is only positive SEMI-definite (some eigenvalues are 0), not positive definite."
+    },
+    {
+      "id": "LA031",
+      "subject": "Linear Algebra",
+      "topic": "Projections, Least Squares & OLS",
+      "difficulty": "Hard",
+      "question": "In OLS, the residual vector e = b − Ax̂ is always orthogonal to:",
+      "options": {
+        "A": "The null space of A",
+        "B": "The column space of A",
+        "C": "The row space of A",
+        "D": "The vector b"
+      },
+      "correct_answer": "B",
+      "explanation": "From the normal equations: Aᵀ(b − Ax̂) = 0, so Aᵀe = 0, meaning e ⊥ col(A). The residual lies in the left null space of A."
+    },
+    {
+      "id": "LA032",
+      "subject": "Linear Algebra",
+      "topic": "Positive Definite Matrices",
+      "difficulty": "Medium",
+      "question": "A symmetric matrix A is positive definite if and only if:",
+      "options": {
+        "A": "All diagonal entries are positive",
+        "B": "xᵀAx > 0 for all non-zero x ∈ ℝⁿ",
+        "C": "All eigenvalues are non-negative",
+        "D": "det(A) > 0"
+      },
+      "correct_answer": "B",
+      "explanation": "Positive definite (PD) ⟺ xᵀAx > 0 ∀ x ≠ 0 ⟺ all eigenvalues > 0. Positive diagonal entries are necessary but not sufficient; det > 0 is necessary but not sufficient either."
+    },
+    {
+      "id": "LA033",
+      "subject": "Linear Algebra",
+      "topic": "Positive Definite Matrices",
+      "difficulty": "Medium",
+      "question": "The matrix AᵀA is always:",
+      "options": {
+        "A": "Positive definite",
+        "B": "Positive semi-definite",
+        "C": "Negative definite",
+        "D": "Invertible"
+      },
+      "correct_answer": "B",
+      "explanation": "xᵀ(AᵀA)x = ||Ax||² ≥ 0 for all x, so AᵀA is always PSD. It is PD (and invertible) only when A has full column rank."
+    },
+    {
+      "id": "LA034",
+      "subject": "Linear Algebra",
+      "topic": "Positive Definite Matrices",
+      "difficulty": "Hard",
+      "question": "AᵀA is positive definite if and only if:",
+      "options": {
+        "A": "A is square",
+        "B": "A has full column rank",
+        "C": "A is symmetric",
+        "D": "A is invertible (square and non-singular)"
+      },
+      "correct_answer": "B",
+      "explanation": "AᵀA is PD ⟺ null(AᵀA) = {0} ⟺ null(A) = {0} ⟺ A has full column rank. A need not be square."
+    },
+    {
+      "id": "LA035",
+      "subject": "Linear Algebra",
+      "topic": "Positive Definite Matrices",
+      "difficulty": "Hard",
+      "question": "The Cholesky decomposition A = LLᵀ (L lower triangular with positive diagonal) exists when A is:",
+      "options": {
+        "A": "Square and invertible",
+        "B": "Symmetric and positive definite",
+        "C": "Symmetric and positive semi-definite",
+        "D": "Orthogonal"
+      },
+      "correct_answer": "B",
+      "explanation": "Cholesky decomposition exists and is unique for symmetric positive definite matrices. It is more efficient than LU for solving systems when A is PD."
+    },
+    {
+      "id": "LA036",
+      "subject": "Linear Algebra",
+      "topic": "Norms, Distances & Inner Products",
+      "difficulty": "Basic",
+      "question": "The L2 norm (Euclidean norm) of vector v = [3, 4] is:",
+      "options": {
+        "A": "7",
+        "B": "5",
+        "C": "12",
+        "D": "25"
+      },
+      "correct_answer": "B",
+      "explanation": "||v||₂ = √(3² + 4²) = √(9+16) = √25 = 5."
+    },
+    {
+      "id": "LA037",
+      "subject": "Linear Algebra",
+      "topic": "Norms, Distances & Inner Products",
+      "difficulty": "Medium",
+      "question": "The Cauchy-Schwarz inequality states that for vectors u, v in an inner product space:",
+      "options": {
+        "A": "|⟨u,v⟩| ≤ ||u||₁ · ||v||₁",
+        "B": "|⟨u,v⟩| ≤ ||u||₂ · ||v||₂",
+        "C": "|⟨u,v⟩| ≥ ||u||₂ · ||v||₂",
+        "D": "|⟨u,v⟩| = ||u||₂ · ||v||₂ always"
+      },
+      "correct_answer": "B",
+      "explanation": "|⟨u,v⟩| ≤ ||u|| · ||v||, with equality iff u and v are linearly dependent. This underlies the definition of cosine similarity."
+    },
+    {
+      "id": "LA038",
+      "subject": "Linear Algebra",
+      "topic": "Norms, Distances & Inner Products",
+      "difficulty": "Medium",
+      "question": "The Frobenius norm of a matrix A equals:",
+      "options": {
+        "A": "The largest singular value σ_max",
+        "B": "sqrt(trace(AᵀA)) = sqrt(Σᵢ,ⱼ aᵢⱼ²)",
+        "C": "The sum of singular values",
+        "D": "trace(A)"
+      },
+      "correct_answer": "B",
+      "explanation": "||A||_F = √(Σᵢ,ⱼ aᵢⱼ²) = √(trace(AᵀA)) = √(Σᵢ σᵢ²). The largest singular value gives the spectral norm, and sum of singular values gives the nuclear norm."
+    },
+    {
+      "id": "LA039",
+      "subject": "Linear Algebra",
+      "topic": "Norms, Distances & Inner Products",
+      "difficulty": "Hard",
+      "question": "The nuclear norm (trace norm) ||A||₊ of a matrix, used in low-rank matrix completion, equals:",
+      "options": {
+        "A": "The sum of singular values Σᵢ σᵢ",
+        "B": "The largest singular value",
+        "C": "The Frobenius norm",
+        "D": "The square root of the sum of squared singular values"
+      },
+      "correct_answer": "A",
+      "explanation": "||A||₊ = Σσᵢ (nuclear/trace norm). It is the convex envelope of the rank function and used as a convex relaxation of rank minimisation in matrix completion."
+    },
+    {
+      "id": "LA040",
+      "subject": "Linear Algebra",
+      "topic": "Norms, Distances & Inner Products",
+      "difficulty": "Medium",
+      "question": "Which norm satisfies rotational invariance: ||Qx|| = ||x|| for any orthogonal Q?",
+      "options": {
+        "A": "L1 norm",
+        "B": "L∞ norm",
+        "C": "L2 norm",
+        "D": "L0 pseudo-norm"
+      },
+      "correct_answer": "C",
+      "explanation": "||Qx||₂ = √(xᵀQᵀQx) = √(xᵀx) = ||x||₂ since QᵀQ = I. The L1 and L∞ norms are not rotationally invariant."
+    },
+    {
+      "id": "LA041",
+      "subject": "Linear Algebra",
+      "topic": "Connections to ML",
+      "difficulty": "Medium",
+      "question": "PCA (Principal Component Analysis) finds the projection that maximises variance by computing:",
+      "options": {
+        "A": "The eigenvectors of the covariance matrix corresponding to the largest eigenvalues",
+        "B": "The singular values of the raw data matrix",
+        "C": "The inverse of the covariance matrix",
+        "D": "The null space of the data matrix"
+      },
+      "correct_answer": "A",
+      "explanation": "PCA solves the eigenproblem ΣW = WΛ where Σ is the sample covariance matrix. The top k eigenvectors define the principal subspace. Equivalently, it uses the SVD of the mean-centred data matrix."
+    },
+    {
+      "id": "LA042",
+      "subject": "Linear Algebra",
+      "topic": "Connections to ML",
+      "difficulty": "Medium",
+      "question": "In ridge regression, the solution β̂ = (XᵀX + λI)⁻¹Xᵀy. What does adding λI achieve numerically?",
+      "options": {
+        "A": "Increases the condition number of the matrix",
+        "B": "Decreases the condition number, making the problem better conditioned",
+        "C": "Has no effect on conditioning",
+        "D": "Eliminates the need for the pseudo-inverse"
+      },
+      "correct_answer": "B",
+      "explanation": "The smallest eigenvalue of (XᵀX + λI) is at least λ, so the condition number κ = (σ_max² + λ)/(σ_min² + λ) < σ_max²/σ_min². Ridge regression improves numerical stability."
+    },
+    {
+      "id": "LA043",
+      "subject": "Linear Algebra",
+      "topic": "Connections to ML",
+      "difficulty": "Hard",
+      "question": "The Gram matrix K with Kᵢⱼ = φ(xᵢ)ᵀφ(xⱼ) for any feature map φ is always:",
+      "options": {
+        "A": "Positive definite",
+        "B": "Positive semi-definite",
+        "C": "Invertible",
+        "D": "Diagonal"
+      },
+      "correct_answer": "B",
+      "explanation": "cᵀKc = ||Σᵢ cᵢ φ(xᵢ)||² ≥ 0 for all c, so K is always PSD. It is PD only when the feature vectors are linearly independent. By Mercer's theorem, valid kernel functions produce PSD Gram matrices."
+    },
+    {
+      "id": "LA044",
+      "subject": "Linear Algebra",
+      "topic": "Connections to ML",
+      "difficulty": "Hard",
+      "question": "Linear Discriminant Analysis (LDA) finds the optimal projection direction by maximising:",
+      "options": {
+        "A": "The within-class variance",
+        "B": "The ratio of between-class scatter to within-class scatter (Fisher's criterion)",
+        "C": "The total variance in the data",
+        "D": "The L2 norm of the projection vector"
+      },
+      "correct_answer": "B",
+      "explanation": "Fisher's LDA maximises J(w) = (wᵀS_Bw)/(wᵀS_Ww), where S_B is between-class scatter and S_W is within-class scatter. This is a generalised eigenproblem S_Bw = λS_Ww."
+    },
+    {
+      "id": "LA045",
+      "subject": "Linear Algebra",
+      "topic": "Connections to ML",
+      "difficulty": "Hard",
+      "question": "Whitening (sphering) a dataset transforms the covariance matrix to:",
+      "options": {
+        "A": "The zero matrix",
+        "B": "The identity matrix I",
+        "C": "A diagonal matrix with unit entries",
+        "D": "A rank-1 matrix"
+      },
+      "correct_answer": "B",
+      "explanation": "Whitening transform: x_white = Σ^{−1/2}(x − μ), giving Cov(x_white) = I. This decorrelates features and normalises variances, used in preprocessing for ICA and neural networks."
+    },
+    {
+      "id": "LA046",
+      "subject": "Linear Algebra",
+      "topic": "SVD & Matrix Decompositions",
+      "difficulty": "Hard",
+      "question": "For matrices A and B that are similar (B = P⁻¹AP), which properties do they necessarily share?",
+      "options": {
+        "A": "The same eigenvectors",
+        "B": "The same eigenvalues (and characteristic polynomial)",
+        "C": "The same singular values",
+        "D": "A = B"
+      },
+      "correct_answer": "B",
+      "explanation": "Similar matrices represent the same linear transformation in different bases and share eigenvalues, determinant, trace, and rank. However, they generally have different eigenvectors and singular values."
+    },
+    {
+      "id": "LA047",
+      "subject": "Linear Algebra",
+      "topic": "Matrices & Operations",
+      "difficulty": "Medium",
+      "question": "If A is an orthogonal matrix (AᵀA = I), then det(A) is:",
+      "options": {
+        "A": "Always 1",
+        "B": "Always 0",
+        "C": "Either +1 or −1",
+        "D": "Any real number"
+      },
+      "correct_answer": "C",
+      "explanation": "det(AᵀA) = det(I) = 1 ⟹ det(A)² = 1 ⟹ det(A) = ±1. det(A) = +1 for rotations, −1 for improper rotations (reflections)."
+    },
+    {
+      "id": "LA048",
+      "subject": "Linear Algebra",
+      "topic": "Linear Systems & Solutions",
+      "difficulty": "Medium",
+      "question": "For a system with more equations than unknowns (overdetermined, m > n), which is generally true?",
+      "options": {
+        "A": "Infinitely many solutions exist",
+        "B": "A least-squares solution minimising ||Ax−b||₂ can always be found",
+        "C": "A unique exact solution always exists",
+        "D": "No meaningful solution exists"
+      },
+      "correct_answer": "B",
+      "explanation": "Overdetermined systems typically have no exact solution (b is not in col(A)), but the least-squares solution x̂ = (AᵀA)⁻¹Aᵀb minimises the residual norm, fundamental to regression."
+    },
+    {
+      "id": "LA049",
+      "subject": "Linear Algebra",
+      "topic": "Eigenvalues & Eigenvectors",
+      "difficulty": "Hard",
+      "question": "The Gram-Schmidt process applied to linearly independent vectors {v₁,...,vₙ} produces:",
+      "options": {
+        "A": "The eigenvalues of the matrix formed by the vectors",
+        "B": "An orthonormal basis for span{v₁,...,vₙ}",
+        "C": "The singular values of the matrix",
+        "D": "The projection onto the null space"
+      },
+      "correct_answer": "B",
+      "explanation": "Gram-Schmidt iteratively orthogonalises and normalises vectors. The QR decomposition A = QR is the matrix formulation, where Q has orthonormal columns and R is upper triangular."
+    },
+    {
+      "id": "LA050",
+      "subject": "Linear Algebra",
+      "topic": "Norms, Distances & Inner Products",
+      "difficulty": "Hard",
+      "question": "The rank-nullity theorem applied to a linear map T: ℝⁿ → ℝᵐ states:",
+      "options": {
+        "A": "rank(T) + nullity(T) = m",
+        "B": "rank(T) + nullity(T) = n",
+        "C": "rank(T) × nullity(T) = nm",
+        "D": "rank(T) = nullity(T)"
+      },
+      "correct_answer": "B",
+      "explanation": "rank(T) + nullity(T) = dim(domain) = n. The domain dimension, not the codomain dimension, appears on the right. This is one of the most fundamental theorems in linear algebra."
+    },
+    {
+      "id": "PS001",
+      "subject": "Probability and Statistics",
+      "topic": "Probability Foundations",
+      "difficulty": "Basic",
+      "question": "For events A and B, the probability P(A ∪ B) equals:",
+      "options": {
+        "A": "P(A) + P(B)",
+        "B": "P(A) + P(B) − P(A ∩ B)",
+        "C": "P(A) × P(B)",
+        "D": "P(A|B) × P(B)"
+      },
+      "correct_answer": "B",
+      "explanation": "Inclusion-exclusion: P(A∪B) = P(A)+P(B)−P(A∩B). Option A is only correct when A and B are mutually exclusive."
+    },
+    {
+      "id": "PS002",
+      "subject": "Probability and Statistics",
+      "topic": "Probability Foundations",
+      "difficulty": "Basic",
+      "question": "If events A and B are independent, then P(A ∩ B) equals:",
+      "options": {
+        "A": "P(A) + P(B)",
+        "B": "0",
+        "C": "P(A) × P(B)",
+        "D": "P(A|B)"
+      },
+      "correct_answer": "C",
+      "explanation": "Independence means P(A∩B) = P(A)P(B). This is also the definition: A and B are independent iff P(A|B)=P(A) (assuming P(B)>0)."
+    },
+    {
+      "id": "PS003",
+      "subject": "Probability and Statistics",
+      "topic": "Probability Foundations",
+      "difficulty": "Basic",
+      "question": "P(A|B) is defined as:",
+      "options": {
+        "A": "P(A)/P(B)",
+        "B": "P(A∩B)/P(B)",
+        "C": "P(A∩B)/P(A)",
+        "D": "P(A)×P(B)"
+      },
+      "correct_answer": "B",
+      "explanation": "Conditional probability: P(A|B) = P(A∩B)/P(B) for P(B)>0. This updates our belief about A given B has occurred."
+    },
+    {
+      "id": "PS004",
+      "subject": "Probability and Statistics",
+      "topic": "Expectation, Variance & Moments",
+      "difficulty": "Basic",
+      "question": "A discrete random variable X has E[X]=3 and E[X²]=13. What is Var(X)?",
+      "options": {
+        "A": "10",
+        "B": "4",
+        "C": "9",
+        "D": "16"
+      },
+      "correct_answer": "B",
+      "explanation": "Var(X) = E[X²] − (E[X])² = 13 − 9 = 4. This is the computational formula for variance."
+    },
+    {
+      "id": "PS005",
+      "subject": "Probability and Statistics",
+      "topic": "Key Probability Distributions",
+      "difficulty": "Basic",
+      "question": "If X ~ Binomial(n, p), then E[X] and Var(X) equal:",
+      "options": {
+        "A": "E[X]=np, Var(X)=np(1−p)",
+        "B": "E[X]=np(1−p), Var(X)=np",
+        "C": "E[X]=n/p, Var(X)=n/p²",
+        "D": "E[X]=p, Var(X)=p(1−p)"
+      },
+      "correct_answer": "A",
+      "explanation": "For Binomial(n,p): E[X]=np, Var(X)=np(1−p). The last is the variance of n independent Bernoulli(p) trials."
+    },
+    {
+      "id": "PS006",
+      "subject": "Probability and Statistics",
+      "topic": "Key Probability Distributions",
+      "difficulty": "Basic",
+      "question": "If X ~ N(μ, σ²), what are E[X] and Var(X)?",
+      "options": {
+        "A": "E[X]=σ², Var(X)=μ",
+        "B": "E[X]=μ, Var(X)=σ²",
+        "C": "E[X]=μ/σ, Var(X)=σ",
+        "D": "E[X]=0, Var(X)=1"
+      },
+      "correct_answer": "B",
+      "explanation": "For a Normal distribution: E[X]=μ (location parameter) and Var(X)=σ² (scale parameter). For the standard normal N(0,1), E[X]=0 and Var(X)=1."
+    },
+    {
+      "id": "PS007",
+      "subject": "Probability and Statistics",
+      "topic": "Bayes' Theorem & Conditional Probability",
+      "difficulty": "Basic",
+      "question": "Bayes' theorem gives P(A|B) as:",
+      "options": {
+        "A": "P(B|A)P(A)/P(B)",
+        "B": "P(A)P(B)/P(A∩B)",
+        "C": "P(B|A)/P(A)",
+        "D": "P(A∩B)/P(A∪B)"
+      },
+      "correct_answer": "A",
+      "explanation": "P(A|B) = P(B|A)P(A)/P(B). In ML: P(θ|data) = P(data|θ)P(θ)/P(data), i.e. posterior ∝ likelihood × prior."
+    },
+    {
+      "id": "PS008",
+      "subject": "Probability and Statistics",
+      "topic": "Key Probability Distributions",
+      "difficulty": "Medium",
+      "question": "If X ~ Exponential(λ), the mean E[X] and variance Var(X) are:",
+      "options": {
+        "A": "E[X]=λ, Var(X)=λ²",
+        "B": "E[X]=1/λ, Var(X)=1/λ²",
+        "C": "E[X]=λ², Var(X)=λ",
+        "D": "E[X]=1/λ², Var(X)=1/λ"
+      },
+      "correct_answer": "B",
+      "explanation": "For Exp(λ): E[X]=1/λ and Var(X)=1/λ². The exponential distribution is memoryless: P(X>s+t|X>s)=P(X>t)."
+    },
+    {
+      "id": "PS009",
+      "subject": "Probability and Statistics",
+      "topic": "Key Probability Distributions",
+      "difficulty": "Medium",
+      "question": "The Poisson distribution is well-suited to model:",
+      "options": {
+        "A": "The proportion of successes in n trials",
+        "B": "The count of events occurring in a fixed time interval at a constant average rate",
+        "C": "The time between events in a renewal process",
+        "D": "The maximum of n i.i.d. random variables"
+      },
+      "correct_answer": "B",
+      "explanation": "Poisson(λ) models counts of rare events in a fixed interval. It is the limiting case of Binomial(n,p) as n→∞, p→0, np→λ."
+    },
+    {
+      "id": "PS010",
+      "subject": "Probability and Statistics",
+      "topic": "Expectation, Variance & Moments",
+      "difficulty": "Medium",
+      "question": "For independent random variables X and Y, Var(aX + bY) equals:",
+      "options": {
+        "A": "aVar(X) + bVar(Y)",
+        "B": "a²Var(X) + b²Var(Y)",
+        "C": "(a+b)²(Var(X)+Var(Y))",
+        "D": "a²Var(X) + b²Var(Y) + 2abCov(X,Y)"
+      },
+      "correct_answer": "B",
+      "explanation": "For independent X,Y: Cov(X,Y)=0, so Var(aX+bY)=a²Var(X)+b²Var(Y). If not independent, you must add 2ab·Cov(X,Y)."
+    },
+    {
+      "id": "PS011",
+      "subject": "Probability and Statistics",
+      "topic": "Limit Theorems",
+      "difficulty": "Medium",
+      "question": "The Central Limit Theorem states that for i.i.d. samples with mean μ and variance σ², the sample mean X̄ₙ is approximately:",
+      "options": {
+        "A": "N(0,1) for all n",
+        "B": "N(μ, σ²/n) for large n",
+        "C": "N(μ, σ²) always",
+        "D": "Uniform(μ−σ, μ+σ)"
+      },
+      "correct_answer": "B",
+      "explanation": "By CLT: √n(X̄ₙ−μ)/σ →ᵈ N(0,1), equivalently X̄ₙ ≈ N(μ, σ²/n). The variance shrinks as 1/n, underpinning much of frequentist statistics."
+    },
+    {
+      "id": "PS012",
+      "subject": "Probability and Statistics",
+      "topic": "Parameter Estimation: MLE & MAP",
+      "difficulty": "Medium",
+      "question": "The MLE for the mean μ of N(μ, σ²) given n i.i.d. samples x₁,...,xₙ is:",
+      "options": {
+        "A": "The sample median",
+        "B": "The sample mean x̄ = (1/n)Σxᵢ",
+        "C": "The midrange (max+min)/2",
+        "D": "The mode of the data"
+      },
+      "correct_answer": "B",
+      "explanation": "Maximising the log-likelihood for Normal: d/dμ Σ(xᵢ−μ)² = 0 gives μ̂_MLE = x̄. Note: the MLE for σ² uses denominator n (biased), not n−1."
+    },
+    {
+      "id": "PS013",
+      "subject": "Probability and Statistics",
+      "topic": "Parameter Estimation: MLE & MAP",
+      "difficulty": "Medium",
+      "question": "The MLE for the parameter p of Bernoulli distribution given n observations with k successes is:",
+      "options": {
+        "A": "k/n",
+        "B": "(k+1)/(n+2)",
+        "C": "1/n",
+        "D": "k/(n−k)"
+      },
+      "correct_answer": "A",
+      "explanation": "L(p) = p^k(1−p)^{n−k}; setting d/dp ln L = k/p − (n−k)/(1−p) = 0 gives p̂ = k/n. Option B is the MAP estimator with a uniform prior or Laplace smoothing."
+    },
+    {
+      "id": "PS014",
+      "subject": "Probability and Statistics",
+      "topic": "Hypothesis Testing & Inference",
+      "difficulty": "Medium",
+      "question": "In hypothesis testing, a Type I error occurs when:",
+      "options": {
+        "A": "Failing to reject a false null hypothesis (false negative)",
+        "B": "Rejecting a true null hypothesis (false positive)",
+        "C": "The p-value exceeds α",
+        "D": "The test statistic equals zero"
+      },
+      "correct_answer": "B",
+      "explanation": "Type I error (α) = P(reject H₀ | H₀ true). Type II error (β) = P(fail to reject H₀ | H₀ false). Power = 1 − β."
+    },
+    {
+      "id": "PS015",
+      "subject": "Probability and Statistics",
+      "topic": "Hypothesis Testing & Inference",
+      "difficulty": "Medium",
+      "question": "The p-value in hypothesis testing is defined as:",
+      "options": {
+        "A": "The probability that H₀ is true",
+        "B": "The probability of observing a test statistic as extreme or more extreme as observed, assuming H₀ is true",
+        "C": "The Type II error rate β",
+        "D": "1 − confidence level"
+      },
+      "correct_answer": "B",
+      "explanation": "The p-value is NOT the probability that H₀ is true (a common misconception). It is P(T ≥ t_obs | H₀), where T is the test statistic. Small p-value → evidence against H₀."
+    },
+    {
+      "id": "PS016",
+      "subject": "Probability and Statistics",
+      "topic": "Regression, Correlation & Information Theory",
+      "difficulty": "Medium",
+      "question": "In simple OLS regression, the estimator β̂₁ (slope) equals:",
+      "options": {
+        "A": "Cov(X,Y)/Var(Y)",
+        "B": "Cov(X,Y)/Var(X)",
+        "C": "Corr(X,Y)",
+        "D": "Var(X)/Cov(X,Y)"
+      },
+      "correct_answer": "B",
+      "explanation": "β̂₁ = Cov(X,Y)/Var(X) = Σ(xᵢ−x̄)(yᵢ−ȳ)/Σ(xᵢ−x̄)². Equivalently β̂₁ = r · sᵧ/sₓ, where r is the Pearson correlation."
+    },
+    {
+      "id": "PS017",
+      "subject": "Probability and Statistics",
+      "topic": "Key Probability Distributions",
+      "difficulty": "Medium",
+      "question": "If X₁,...,Xₙ are i.i.d. N(0,1), then Σᵢ₌₁ⁿ Xᵢ² follows:",
+      "options": {
+        "A": "N(n, 2n)",
+        "B": "χ²(n) — chi-squared with n degrees of freedom",
+        "C": "t(n)",
+        "D": "F(1,n)"
+      },
+      "correct_answer": "B",
+      "explanation": "The chi-squared distribution with n d.f. is defined as the sum of n squared standard normal variables. It arises in variance estimation: (n−1)S²/σ² ~ χ²(n−1)."
+    },
+    {
+      "id": "PS018",
+      "subject": "Probability and Statistics",
+      "topic": "Hypothesis Testing & Inference",
+      "difficulty": "Medium",
+      "question": "The t-test statistic T = (X̄ − μ₀)/(S/√n) follows a t-distribution with n−1 d.f. under:",
+      "options": {
+        "A": "Any distribution when n is large (by CLT)",
+        "B": "Normal population with unknown variance",
+        "C": "Normal population with known variance",
+        "D": "Bernoulli population"
+      },
+      "correct_answer": "B",
+      "explanation": "Exactly: the population must be Normal and variance unknown (estimated by S²). For large n, by CLT, the t-test is approximately valid for non-normal populations."
+    },
+    {
+      "id": "PS019",
+      "subject": "Probability and Statistics",
+      "topic": "Probability Foundations",
+      "difficulty": "Hard",
+      "question": "Markov's inequality states that for a non-negative random variable X and a > 0:",
+      "options": {
+        "A": "P(X ≥ a) ≤ E[X]/a",
+        "B": "P(X ≥ a) ≤ Var(X)/a²",
+        "C": "P(X ≥ a) ≥ E[X]/a",
+        "D": "P(|X−μ| ≥ a) ≤ Var(X)/a²"
+      },
+      "correct_answer": "A",
+      "explanation": "Markov's inequality: P(X≥a) ≤ E[X]/a. Option D is Chebyshev's inequality (a stronger statement for variables with known mean and variance)."
+    },
+    {
+      "id": "PS020",
+      "subject": "Probability and Statistics",
+      "topic": "Probability Foundations",
+      "difficulty": "Medium",
+      "question": "Chebyshev's inequality states that for random variable X with mean μ, variance σ², and k > 0:",
+      "options": {
+        "A": "P(|X−μ| ≥ kσ) ≤ 1/k²",
+        "B": "P(|X−μ| ≥ kσ) ≥ 1/k²",
+        "C": "P(|X−μ| ≥ kσ) ≤ k²",
+        "D": "P(|X−μ| ≥ kσ) = 1/k²"
+      },
+      "correct_answer": "A",
+      "explanation": "Chebyshev: P(|X−μ|≥kσ) ≤ 1/k². For k=2, at most 25% of data lies more than 2 standard deviations from the mean, regardless of distribution."
+    },
+    {
+      "id": "PS021",
+      "subject": "Probability and Statistics",
+      "topic": "Limit Theorems",
+      "difficulty": "Hard",
+      "question": "The Weak Law of Large Numbers guarantees that as n → ∞:",
+      "options": {
+        "A": "X̄ₙ converges almost surely to μ",
+        "B": "X̄ₙ converges in probability to the true mean μ",
+        "C": "X̄ₙ converges in distribution to μ",
+        "D": "X̄ₙ converges in mean square to 0"
+      },
+      "correct_answer": "B",
+      "explanation": "WLLN: X̄ₙ →ᵖ μ (convergence in probability). The Strong LLN gives almost sure convergence. Mean square convergence also holds when Var(X)<∞."
+    },
+    {
+      "id": "PS022",
+      "subject": "Probability and Statistics",
+      "topic": "Parameter Estimation: MLE & MAP",
+      "difficulty": "Hard",
+      "question": "The MAP estimator differs from MLE by:",
+      "options": {
+        "A": "Maximising P(data|θ) only",
+        "B": "Incorporating a prior P(θ), maximising P(θ|data) ∝ P(data|θ)P(θ)",
+        "C": "Minimising mean squared error",
+        "D": "Maximising the marginal likelihood P(data)"
+      },
+      "correct_answer": "B",
+      "explanation": "MAP = argmax_θ P(θ|data) = argmax_θ [log P(data|θ) + log P(θ)]. With a Gaussian prior on θ, MAP is equivalent to L2-regularised MLE."
+    },
+    {
+      "id": "PS023",
+      "subject": "Probability and Statistics",
+      "topic": "Parameter Estimation: MLE & MAP",
+      "difficulty": "Hard",
+      "question": "The Fisher information I(θ) is defined as:",
+      "options": {
+        "A": "I(θ) = E[(∂ log p(X;θ)/∂θ)²]",
+        "B": "I(θ) = Var(θ̂_MLE)",
+        "C": "I(θ) = E[log p(X;θ)]",
+        "D": "I(θ) = −E[∂ log p(X;θ)/∂θ]"
+      },
+      "correct_answer": "A",
+      "explanation": "I(θ) = E[(score)²], where score = ∂ log p/∂θ. Equivalently, I(θ) = −E[∂² log p/∂θ²] under regularity conditions. The Cramér-Rao bound states Var(θ̂) ≥ 1/I(θ)."
+    },
+    {
+      "id": "PS024",
+      "subject": "Probability and Statistics",
+      "topic": "Parameter Estimation: MLE & MAP",
+      "difficulty": "Hard",
+      "question": "The Cramér-Rao lower bound states that for any unbiased estimator θ̂:",
+      "options": {
+        "A": "Var(θ̂) ≥ 1/I(θ)",
+        "B": "Var(θ̂) ≤ 1/I(θ)",
+        "C": "Var(θ̂) = I(θ)",
+        "D": "Var(θ̂) ≥ I(θ)"
+      },
+      "correct_answer": "A",
+      "explanation": "Var(θ̂) ≥ 1/I(θ) (or 1/nI(θ) for n i.i.d. samples). The MLE is asymptotically efficient: it achieves this bound as n→∞."
+    },
+    {
+      "id": "PS025",
+      "subject": "Probability and Statistics",
+      "topic": "Bayes' Theorem & Conditional Probability",
+      "difficulty": "Hard",
+      "question": "In Bayesian analysis, if the prior and posterior belong to the same parametric family, the prior is called:",
+      "options": {
+        "A": "Improper prior",
+        "B": "Conjugate prior",
+        "C": "Non-informative prior",
+        "D": "Jeffreys prior"
+      },
+      "correct_answer": "B",
+      "explanation": "Conjugate priors lead to closed-form posteriors. Examples: Beta prior for Binomial likelihood (Beta-Binomial), Gaussian prior for Gaussian likelihood (Gaussian posterior)."
+    },
+    {
+      "id": "PS026",
+      "subject": "Probability and Statistics",
+      "topic": "Key Probability Distributions",
+      "difficulty": "Hard",
+      "question": "The Beta distribution Beta(α,β) is the conjugate prior for which likelihood?",
+      "options": {
+        "A": "Poisson(λ)",
+        "B": "Normal(μ,σ²)",
+        "C": "Binomial(n,p) with p unknown",
+        "D": "Exponential(λ)"
+      },
+      "correct_answer": "C",
+      "explanation": "Beta(α,β) conjugate to Binomial: posterior is Beta(α+k, β+n−k) after k successes in n trials. The Gamma distribution is conjugate to Poisson."
+    },
+    {
+      "id": "PS027",
+      "subject": "Probability and Statistics",
+      "topic": "Key Probability Distributions",
+      "difficulty": "Hard",
+      "question": "If X ~ χ²(m) and Y ~ χ²(n) are independent, then X/m ÷ Y/n follows:",
+      "options": {
+        "A": "t(m+n)",
+        "B": "Beta(m/2, n/2)",
+        "C": "F(m,n) — F-distribution with m and n d.f.",
+        "D": "N(0,1)"
+      },
+      "correct_answer": "C",
+      "explanation": "F(m,n) = (χ²(m)/m) / (χ²(n)/n). The F-statistic in ANOVA and regression testing has this distribution under H₀."
+    },
+    {
+      "id": "PS028",
+      "subject": "Probability and Statistics",
+      "topic": "Expectation, Variance & Moments",
+      "difficulty": "Hard",
+      "question": "The moment generating function (MGF) Mₓ(t) = E[e^{tX}]. The k-th moment E[Xᵏ] equals:",
+      "options": {
+        "A": "Mₓ(0)",
+        "B": "The k-th derivative Mₓ^{(k)}(0)",
+        "C": "k × Mₓ(1)",
+        "D": "ln(Mₓ(k))"
+      },
+      "correct_answer": "B",
+      "explanation": "E[Xᵏ] = dᵏ/dtᵏ E[e^{tX}]|_{t=0} = Mₓ^{(k)}(0). MGFs uniquely determine distributions (when they exist) and are used to prove the CLT."
+    },
+    {
+      "id": "PS029",
+      "subject": "Probability and Statistics",
+      "topic": "Regression, Correlation & Information Theory",
+      "difficulty": "Hard",
+      "question": "The KL divergence D_KL(P||Q) satisfies which property?",
+      "options": {
+        "A": "It is symmetric: D_KL(P||Q) = D_KL(Q||P) always",
+        "B": "It is always non-negative (Gibbs' inequality)",
+        "C": "It is a true metric on distributions",
+        "D": "It is bounded above by 1"
+      },
+      "correct_answer": "B",
+      "explanation": "D_KL(P||Q) = E_P[log(P/Q)] ≥ 0 with equality iff P=Q (Gibbs'/Jensen's inequality). It is NOT symmetric (so not a metric) and is unbounded."
+    },
+    {
+      "id": "PS030",
+      "subject": "Probability and Statistics",
+      "topic": "Regression, Correlation & Information Theory",
+      "difficulty": "Hard",
+      "question": "The mutual information I(X;Y) between random variables equals:",
+      "options": {
+        "A": "H(X) + H(Y)",
+        "B": "H(X) + H(Y) − H(X,Y)",
+        "C": "H(X) − H(Y)",
+        "D": "H(X,Y) only"
+      },
+      "correct_answer": "B",
+      "explanation": "I(X;Y) = H(X)+H(Y)−H(X,Y) = H(X)−H(X|Y) = D_KL(P_{XY}||P_X P_Y). It measures the reduction in uncertainty about X due to knowing Y."
+    },
+    {
+      "id": "PS031",
+      "subject": "Probability and Statistics",
+      "topic": "Regression, Correlation & Information Theory",
+      "difficulty": "Medium",
+      "question": "The entropy H(X) of a discrete distribution is maximised when:",
+      "options": {
+        "A": "X takes only two values",
+        "B": "X follows a uniform distribution over its support",
+        "C": "X has the smallest variance",
+        "D": "X follows a Bernoulli(0.5) distribution"
+      },
+      "correct_answer": "B",
+      "explanation": "For discrete distributions, the uniform distribution maximises entropy: H(X) = log(|X|) when P(X=xᵢ) = 1/|X| for all i. For continuous distributions, the Normal maximises entropy given fixed variance."
+    },
+    {
+      "id": "PS032",
+      "subject": "Probability and Statistics",
+      "topic": "Hypothesis Testing & Inference",
+      "difficulty": "Hard",
+      "question": "The Neyman-Pearson lemma states that the most powerful test for H₀:θ=θ₀ vs H₁:θ=θ₁ is based on:",
+      "options": {
+        "A": "The t-statistic",
+        "B": "The likelihood ratio Λ = p(x;θ₁)/p(x;θ₀) exceeding a threshold",
+        "C": "The sample mean",
+        "D": "The posterior probability ratio"
+      },
+      "correct_answer": "B",
+      "explanation": "The likelihood ratio test is uniformly most powerful (UMP) for simple hypotheses. For composite hypotheses, the generalised likelihood ratio test is commonly used."
+    },
+    {
+      "id": "PS033",
+      "subject": "Probability and Statistics",
+      "topic": "Hypothesis Testing & Inference",
+      "difficulty": "Medium",
+      "question": "The power of a statistical test is defined as:",
+      "options": {
+        "A": "1 − P(Type I error) = 1 − α",
+        "B": "P(reject H₀ | H₀ is false) = 1 − β",
+        "C": "P(Type II error) = β",
+        "D": "The significance level α"
+      },
+      "correct_answer": "B",
+      "explanation": "Power = 1−β = P(correctly rejecting false H₀). Higher power means better detection of true effects. Power depends on effect size, sample size, and α."
+    },
+    {
+      "id": "PS034",
+      "subject": "Probability and Statistics",
+      "topic": "Key Probability Distributions",
+      "difficulty": "Medium",
+      "question": "The memoryless property P(X > s+t | X > s) = P(X > t) uniquely characterises which continuous distribution?",
+      "options": {
+        "A": "Normal",
+        "B": "Gamma",
+        "C": "Exponential",
+        "D": "Beta"
+      },
+      "correct_answer": "C",
+      "explanation": "The exponential distribution is the unique continuous memoryless distribution. Its discrete counterpart is the geometric distribution."
+    },
+    {
+      "id": "PS035",
+      "subject": "Probability and Statistics",
+      "topic": "Key Probability Distributions",
+      "difficulty": "Medium",
+      "question": "If X ~ N(μ₁,σ₁²) and Y ~ N(μ₂,σ₂²) are independent, then X+Y follows:",
+      "options": {
+        "A": "N(μ₁μ₂, σ₁²σ₂²)",
+        "B": "N(μ₁+μ₂, σ₁²+σ₂²)",
+        "C": "N(μ₁−μ₂, σ₁²−σ₂²)",
+        "D": "A Cauchy distribution"
+      },
+      "correct_answer": "B",
+      "explanation": "Normal distributions are closed under addition: if X~N(μ₁,σ₁²) and Y~N(μ₂,σ₂²) independently, then X+Y~N(μ₁+μ₂, σ₁²+σ₂²)."
+    },
+    {
+      "id": "PS036",
+      "subject": "Probability and Statistics",
+      "topic": "Expectation, Variance & Moments",
+      "difficulty": "Medium",
+      "question": "Skewness and kurtosis are the 3rd and 4th standardised central moments. Kurtosis measures:",
+      "options": {
+        "A": "Asymmetry of the distribution",
+        "B": "The location of the distribution",
+        "C": "The tail heaviness / peakedness relative to a normal distribution",
+        "D": "The spread of the distribution"
+      },
+      "correct_answer": "C",
+      "explanation": "Kurtosis = E[(X−μ)⁴]/σ⁴. Normal has kurtosis 3 (excess kurtosis 0). Heavy-tailed distributions have excess kurtosis > 0; light-tailed have < 0."
+    },
+    {
+      "id": "PS037",
+      "subject": "Probability and Statistics",
+      "topic": "Parameter Estimation: MLE & MAP",
+      "difficulty": "Hard",
+      "question": "The MLE for variance σ² of N(μ,σ²) with n samples is (1/n)Σ(xᵢ−x̄)². This estimator is:",
+      "options": {
+        "A": "Unbiased with E[σ̂²]=σ²",
+        "B": "Biased with E[σ̂²]=(n−1)σ²/n < σ²",
+        "C": "The minimum variance unbiased estimator",
+        "D": "The same as the sample variance S²=(1/(n−1))Σ(xᵢ−x̄)²"
+      },
+      "correct_answer": "B",
+      "explanation": "The MLE for variance is biased: E[(1/n)Σ(xᵢ−x̄)²] = (n−1)σ²/n. The unbiased estimator S² uses denominator n−1 (Bessel's correction)."
+    },
+    {
+      "id": "PS038",
+      "subject": "Probability and Statistics",
+      "topic": "Regression, Correlation & Information Theory",
+      "difficulty": "Medium",
+      "question": "The coefficient of determination R² in simple linear regression equals:",
+      "options": {
+        "A": "The square of the Pearson correlation r²",
+        "B": "1 − SSE/SST (proportion of variance explained)",
+        "C": "SSR/SST",
+        "D": "All of the above are equivalent for simple linear regression"
+      },
+      "correct_answer": "D",
+      "explanation": "For simple OLS: R² = r² = 1−SSE/SST = SSR/SST. R² measures the proportion of variance in y explained by x (ranges from 0 to 1 for OLS)."
+    },
+    {
+      "id": "PS039",
+      "subject": "Probability and Statistics",
+      "topic": "Bayes' Theorem & Conditional Probability",
+      "difficulty": "Hard",
+      "question": "A medical test has sensitivity 99% (P(+|D)=0.99) and specificity 95% (P(−|¬D)=0.95), with disease prevalence 1%. Given a positive test, what is P(D|+)?",
+      "options": {
+        "A": "≈ 99%",
+        "B": "≈ 50%",
+        "C": "≈ 17%",
+        "D": "≈ 1%"
+      },
+      "correct_answer": "C",
+      "explanation": "By Bayes: P(D|+) = 0.99×0.01 / (0.99×0.01 + 0.05×0.99) ≈ 0.0099/0.0594 ≈ 16.7%. Low prevalence causes many false positives despite high sensitivity — the base rate fallacy."
+    },
+    {
+      "id": "PS040",
+      "subject": "Probability and Statistics",
+      "topic": "Key Probability Distributions",
+      "difficulty": "Hard",
+      "question": "The Dirichlet distribution Dir(α₁,...,αₖ) is the conjugate prior for the parameters of a:",
+      "options": {
+        "A": "Normal distribution",
+        "B": "Binomial distribution",
+        "C": "Categorical / Multinomial distribution",
+        "D": "Poisson distribution"
+      },
+      "correct_answer": "C",
+      "explanation": "Dirichlet is the multivariate generalisation of Beta. It is conjugate to the Multinomial likelihood: if θ~Dir(α) and x|θ~Multinomial, then θ|x~Dir(α+x)."
+    },
+    {
+      "id": "PS041",
+      "subject": "Probability and Statistics",
+      "topic": "Connections to ML",
+      "difficulty": "Hard",
+      "question": "In Bayesian linear regression, a Gaussian prior N(0, τ²I) on weights β is equivalent (via MAP) to which frequentist approach?",
+      "options": {
+        "A": "LASSO (L1 regularisation)",
+        "B": "Ridge regression (L2 regularisation)",
+        "C": "Elastic Net",
+        "D": "OLS with no regularisation"
+      },
+      "correct_answer": "B",
+      "explanation": "MAP with Gaussian prior: argmax log P(y|β)P(β) = argmin ||y−Xβ||² + (σ²/τ²)||β||². This is exactly ridge regression with λ=σ²/τ². Laplace prior → LASSO."
+    },
+    {
+      "id": "PS042",
+      "subject": "Probability and Statistics",
+      "topic": "Connections to ML",
+      "difficulty": "Hard",
+      "question": "The cross-entropy loss for binary classification with prediction p̂ ∈ (0,1) and true label y ∈ {0,1} is:",
+      "options": {
+        "A": "(y − p̂)²",
+        "B": "−[y log p̂ + (1−y) log(1−p̂)]",
+        "C": "|y − p̂|",
+        "D": "−y log p̂ only"
+      },
+      "correct_answer": "B",
+      "explanation": "Binary cross-entropy = −[y log p̂ + (1−y) log(1−p̂)]. This is the negative log-likelihood of a Bernoulli distribution. Minimising cross-entropy is equivalent to maximum likelihood for logistic regression."
+    },
+    {
+      "id": "PS043",
+      "subject": "Probability and Statistics",
+      "topic": "Connections to ML",
+      "difficulty": "Hard",
+      "question": "Variational inference approximates the intractable posterior p(z|x) by finding q(z) that minimises:",
+      "options": {
+        "A": "KL(p(z|x) || q(z))",
+        "B": "KL(q(z) || p(z|x)) — leads to the ELBO",
+        "C": "The L2 distance ||q−p||₂",
+        "D": "The total variation distance"
+      },
+      "correct_answer": "B",
+      "explanation": "VI minimises KL(q||p) = E_q[log q − log p(z|x)], which is equivalent to maximising the ELBO = E_q[log p(x,z)] − E_q[log q(z)]. KL(p||q) corresponds to expectation propagation."
+    },
+    {
+      "id": "PS044",
+      "subject": "Probability and Statistics",
+      "topic": "Limit Theorems",
+      "difficulty": "Hard",
+      "question": "Hoeffding's inequality provides concentration for:",
+      "options": {
+        "A": "Sums of independent, bounded random variables",
+        "B": "Correlated Gaussian variables",
+        "C": "Heavy-tailed distributions only",
+        "D": "Martingales only"
+      },
+      "correct_answer": "A",
+      "explanation": "Hoeffding's inequality: for independent bounded Xᵢ ∈ [aᵢ,bᵢ], P(|X̄−E[X̄]| ≥ t) ≤ 2exp(−2n²t²/Σ(bᵢ−aᵢ)²). Key tool in PAC learning theory."
+    },
+    {
+      "id": "PS045",
+      "subject": "Probability and Statistics",
+      "topic": "Connections to ML",
+      "difficulty": "Hard",
+      "question": "The EM algorithm for Gaussian Mixture Models alternates between:",
+      "options": {
+        "A": "Gradient descent and Newton's method",
+        "B": "E-step (computing soft cluster assignments / responsibilities) and M-step (updating parameters to maximise expected log-likelihood)",
+        "C": "Sampling the prior and updating the posterior",
+        "D": "PCA dimensionality reduction and K-means"
+      },
+      "correct_answer": "B",
+      "explanation": "E-step: rᵢₖ = P(zᵢ=k|xᵢ,θ) (responsibilities). M-step: update μₖ, Σₖ, πₖ using weighted statistics. EM is guaranteed to increase (not decrease) the log-likelihood at each iteration."
+    },
+    {
+      "id": "PS046",
+      "subject": "Probability and Statistics",
+      "topic": "Key Probability Distributions",
+      "difficulty": "Hard",
+      "question": "The characteristic function of a random variable X is φₓ(t) = E[e^{itX}]. It always exists (unlike the MGF) because:",
+      "options": {
+        "A": "It involves sin and cos, which are always real",
+        "B": "e^{itX} is bounded (|e^{itX}|=1), so the expectation always exists",
+        "C": "It is defined only for discrete X",
+        "D": "It avoids differentiation"
+      },
+      "correct_answer": "B",
+      "explanation": "|e^{itX}|=1 for all real t, so E[e^{itX}] is always finite. The MGF E[e^{tX}] may not exist if X has heavy tails (e.g. Cauchy). The Lévy continuity theorem uses characteristic functions to prove the CLT."
+    },
+    {
+      "id": "PS047",
+      "subject": "Probability and Statistics",
+      "topic": "Regression, Correlation & Information Theory",
+      "difficulty": "Hard",
+      "question": "In multiple linear regression, multicollinearity refers to:",
+      "options": {
+        "A": "Non-linearity between y and the predictors",
+        "B": "High correlation among predictor variables, causing inflated variance in coefficient estimates",
+        "C": "Non-constant variance (heteroskedasticity) in residuals",
+        "D": "Autocorrelation in residuals over time"
+      },
+      "correct_answer": "B",
+      "explanation": "Multicollinearity makes XᵀX nearly singular, inflating (XᵀX)⁻¹ and thus Var(β̂). Detected via Variance Inflation Factor (VIF). Ridge regression is a common remedy."
+    },
+    {
+      "id": "PS048",
+      "subject": "Probability and Statistics",
+      "topic": "Hypothesis Testing & Inference",
+      "difficulty": "Hard",
+      "question": "The likelihood ratio test statistic 2log Λ = 2[logL(θ̂) − logL(θ₀)] follows, under H₀, approximately a:",
+      "options": {
+        "A": "Normal distribution",
+        "B": "χ² distribution with degrees of freedom equal to the number of constrained parameters",
+        "C": "t-distribution",
+        "D": "F-distribution"
+      },
+      "correct_answer": "B",
+      "explanation": "Wilks' theorem: 2log Λ →ᵈ χ²(p) under H₀, where p is the number of parameters constrained by H₀. This justifies likelihood ratio tests for nested models."
+    },
+    {
+      "id": "PS049",
+      "subject": "Probability and Statistics",
+      "topic": "Probability Foundations",
+      "difficulty": "Hard",
+      "question": "The total law of probability P(B) = Σᵢ P(B|Aᵢ)P(Aᵢ) requires {Aᵢ} to be:",
+      "options": {
+        "A": "Independent events",
+        "B": "A partition of the sample space (mutually exclusive and exhaustive)",
+        "C": "Events with equal probability",
+        "D": "Subsets of B"
+      },
+      "correct_answer": "B",
+      "explanation": "{Aᵢ} must partition Ω: mutually exclusive (Aᵢ∩Aⱼ=∅) and exhaustive (∪Aᵢ=Ω). This law enables marginalisation and is the denominator in Bayes' theorem."
+    },
+    {
+      "id": "PS050",
+      "subject": "Probability and Statistics",
+      "topic": "Expectation, Variance & Moments",
+      "difficulty": "Hard",
+      "question": "For random variables X and Y, E[XY] = E[X]E[Y] holds when:",
+      "options": {
+        "A": "X and Y are uncorrelated",
+        "B": "X and Y are independent",
+        "C": "Both A and B — independence implies uncorrelatedness but not vice versa",
+        "D": "X and Y are jointly Gaussian and uncorrelated"
+      },
+      "correct_answer": "C",
+      "explanation": "Independence ⟹ uncorrelated (E[XY]=E[X]E[Y]), but not vice versa. However, for jointly Gaussian variables, uncorrelated ⟺ independent. Option D is a special case where the converse holds."
+    },
+    {
+      "id": "PS051",
+      "subject": "Probability and Statistics",
+      "topic": "Key Probability Distributions",
+      "difficulty": "Hard",
+      "question": "In a Poisson process with rate λ, the inter-arrival times Tᵢ (time between consecutive events) are:",
+      "options": {
+        "A": "i.i.d. Uniform(0, 1/λ)",
+        "B": "i.i.d. Exponential(λ)",
+        "C": "Gamma distributed",
+        "D": "Poisson distributed"
+      },
+      "correct_answer": "B",
+      "explanation": "Inter-arrival times in a Poisson process are i.i.d. Exp(λ). The time to the k-th event follows Gamma(k,λ). This memoryless property is central to queueing theory."
+    },
+    {
+      "id": "PS052",
+      "subject": "Probability and Statistics",
+      "topic": "Regression, Correlation & Information Theory",
+      "difficulty": "Hard",
+      "question": "The Gauss-Markov theorem states that under standard OLS assumptions, the OLS estimator β̂ is:",
+      "options": {
+        "A": "The maximum likelihood estimator",
+        "B": "The Best Linear Unbiased Estimator (BLUE) — minimum variance among all linear unbiased estimators",
+        "C": "The minimum mean squared error estimator",
+        "D": "The Bayesian posterior mean"
+      },
+      "correct_answer": "B",
+      "explanation": "Gauss-Markov: OLS β̂ is BLUE — among all linear unbiased estimators. It does NOT require normality of errors. With normal errors, OLS = MLE and is also the minimum variance unbiased estimator (MVUE)."
+    },
+    {
+      "id": "PS053",
+      "subject": "Probability and Statistics",
+      "topic": "Connections to ML",
+      "difficulty": "Hard",
+      "question": "In a Naive Bayes classifier, assuming feature independence given class, the log posterior is:",
+      "options": {
+        "A": "log P(Y=k) + Σⱼ log P(Xⱼ=xⱼ|Y=k)",
+        "B": "Σⱼ log P(Xⱼ=xⱼ|Y=k) only",
+        "C": "log P(X|Y=k)/P(X)",
+        "D": "P(Y=k) × P(X₁=x₁|Y=k) (no log)"
+      },
+      "correct_answer": "A",
+      "explanation": "log P(Y=k|x) ∝ log P(Y=k) + Σⱼ log P(Xⱼ=xⱼ|Y=k) (by conditional independence). This gives a linear classifier in log-space for distributions in the exponential family."
+    },
+    {
+      "id": "PS054",
+      "subject": "Probability and Statistics",
+      "topic": "Limit Theorems",
+      "difficulty": "Hard",
+      "question": "The Berry-Esseen theorem improves the CLT by providing:",
+      "options": {
+        "A": "Almost sure convergence of X̄ₙ",
+        "B": "A bound on the rate of convergence to normality: sup|Fₙ(x)−Φ(x)| = O(1/√n)",
+        "C": "Convergence of the MLE to the true parameter",
+        "D": "A second-order expansion of the CLT"
+      },
+      "correct_answer": "B",
+      "explanation": "Berry-Esseen gives a quantitative rate: the CDF of the normalised sum converges to Φ(x) uniformly at rate O(1/√n), with the constant involving E[|X|³]/σ³."
+    },
+    {
+      "id": "PS055",
+      "subject": "Probability and Statistics",
+      "topic": "Parameter Estimation: MLE & MAP",
+      "difficulty": "Hard",
+      "question": "Asymptotic normality of the MLE states that √n(θ̂_MLE − θ*) converges in distribution to:",
+      "options": {
+        "A": "N(0, 1)",
+        "B": "N(0, I(θ*)⁻¹) — where I(θ*) is the Fisher information",
+        "C": "N(θ*, 1/n)",
+        "D": "t(n−1)"
+      },
+      "correct_answer": "B",
+      "explanation": "√n(θ̂_MLE−θ*) →ᵈ N(0, I(θ*)⁻¹). The MLE is asymptotically efficient (achieves Cramér-Rao bound). This is used for constructing confidence intervals and hypothesis tests via the Wald, Score, and LRT approaches."
+    },
+    {
+      "id": "ML001",
+      "subject": "Machine Learning",
+      "topic": "Foundations of Machine Learning",
+      "difficulty": "Basic",
+      "question": "The bias-variance tradeoff describes the observation that:",
+      "options": {
+        "A": "Increasing model complexity always reduces both bias and variance",
+        "B": "High-bias models underfit; high-variance models overfit the training data",
+        "C": "Training error is always equal to test error",
+        "D": "More data always eliminates overfitting"
+      },
+      "correct_answer": "B",
+      "explanation": "Bias measures systematic error (underfitting); variance measures sensitivity to training data (overfitting). Total expected error = Bias² + Variance + Irreducible Noise."
+    },
+    {
+      "id": "ML002",
+      "subject": "Machine Learning",
+      "topic": "Foundations of Machine Learning",
+      "difficulty": "Basic",
+      "question": "In supervised learning, the training data consists of:",
+      "options": {
+        "A": "Only feature vectors",
+        "B": "Feature-label pairs (xᵢ, yᵢ)",
+        "C": "Only target labels",
+        "D": "Unlabelled data clusters"
+      },
+      "correct_answer": "B",
+      "explanation": "Supervised learning uses labelled examples {(x₁,y₁),...,(xₙ,yₙ)} to learn a mapping f: X→Y. Unsupervised learning uses only {x₁,...,xₙ} without labels."
+    },
+    {
+      "id": "ML003",
+      "subject": "Machine Learning",
+      "topic": "Foundations of Machine Learning",
+      "difficulty": "Basic",
+      "question": "Overfitting occurs when a model:",
+      "options": {
+        "A": "Has too high a bias and underfits",
+        "B": "Performs well on training data but poorly on unseen test data",
+        "C": "Has too few parameters",
+        "D": "Uses too little training data intentionally"
+      },
+      "correct_answer": "B",
+      "explanation": "An overfit model has memorised training data including noise, resulting in low training error but high generalisation error. It has high variance."
+    },
+    {
+      "id": "ML004",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Basic",
+      "question": "In k-Nearest Neighbours (kNN), increasing k tends to:",
+      "options": {
+        "A": "Increase variance and decrease bias",
+        "B": "Decrease variance and increase bias (smoother decision boundary)",
+        "C": "Have no effect on bias or variance",
+        "D": "Always improve classification accuracy"
+      },
+      "correct_answer": "B",
+      "explanation": "Larger k averages over more neighbours → smoother boundary → lower variance, higher bias. k=1 is maximum variance (memorises data); k=n predicts the majority class always."
+    },
+    {
+      "id": "ML005",
+      "subject": "Machine Learning",
+      "topic": "Model Evaluation & Selection",
+      "difficulty": "Basic",
+      "question": "The F1 score is defined as:",
+      "options": {
+        "A": "(Precision + Recall) / 2",
+        "B": "2 × Precision × Recall / (Precision + Recall)",
+        "C": "TP / (TP + FP)",
+        "D": "Accuracy × Recall"
+      },
+      "correct_answer": "B",
+      "explanation": "F1 is the harmonic mean of Precision and Recall. It is preferred over accuracy for imbalanced datasets. Fβ score generalises this: (1+β²)·P·R / (β²·P + R)."
+    },
+    {
+      "id": "ML006",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Medium",
+      "question": "Logistic regression uses which loss function during training?",
+      "options": {
+        "A": "Mean squared error",
+        "B": "Hinge loss",
+        "C": "Cross-entropy (log loss): −[y log p̂ + (1−y) log(1−p̂)]",
+        "D": "Mean absolute error"
+      },
+      "correct_answer": "C",
+      "explanation": "Logistic regression minimises the binary cross-entropy loss, which is the negative log-likelihood of the Bernoulli model. This has no closed form solution and is solved via gradient descent or Newton's method."
+    },
+    {
+      "id": "ML007",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Medium",
+      "question": "The hard-margin SVM finds the hyperplane that:",
+      "options": {
+        "A": "Minimises training error",
+        "B": "Maximises the geometric margin between the two classes",
+        "C": "Passes through the centroid of each class",
+        "D": "Minimises ||w||₂ without constraints"
+      },
+      "correct_answer": "B",
+      "explanation": "Hard-margin SVM: min ||w||²/2 s.t. yᵢ(wᵀxᵢ+b)≥1. The margin is 2/||w||, so maximising margin ⟺ minimising ||w||. Support vectors are the points on the margin boundaries."
+    },
+    {
+      "id": "ML008",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Medium",
+      "question": "The kernel trick in SVMs allows:",
+      "options": {
+        "A": "Faster computation of the linear kernel",
+        "B": "Implicit mapping to a high-dimensional feature space via k(x,z)=φ(x)ᵀφ(z), without explicit computation of φ",
+        "C": "Reducing the number of support vectors",
+        "D": "Training on unlabelled data"
+      },
+      "correct_answer": "B",
+      "explanation": "The dual SVM involves only dot products xᵢᵀxⱼ, which can be replaced by k(xᵢ,xⱼ) — the kernel trick. This allows infinite-dimensional feature spaces (e.g. RBF kernel) computationally."
+    },
+    {
+      "id": "ML009",
+      "subject": "Machine Learning",
+      "topic": "Regularisation & Generalisation",
+      "difficulty": "Medium",
+      "question": "L1 regularisation (LASSO) encourages weight vectors that are:",
+      "options": {
+        "A": "Dense with many small non-zero weights",
+        "B": "Sparse with many weights exactly zero",
+        "C": "Orthogonal to the data",
+        "D": "The same as L2 regularisation solutions"
+      },
+      "correct_answer": "B",
+      "explanation": "The L1 penalty ||w||₁ has corners at coordinate axes, making the optimum often lie at a vertex where many weights = 0. LASSO performs implicit feature selection."
+    },
+    {
+      "id": "ML010",
+      "subject": "Machine Learning",
+      "topic": "Regularisation & Generalisation",
+      "difficulty": "Medium",
+      "question": "L2 regularisation (Ridge) modifies the loss function by adding:",
+      "options": {
+        "A": "λ||w||₁",
+        "B": "λ||w||₂²",
+        "C": "λ||w||₂",
+        "D": "λ||w||₀"
+      },
+      "correct_answer": "B",
+      "explanation": "Ridge adds λ||w||₂² = λΣwᵢ² to the loss. The closed-form solution is β̂ = (XᵀX+λI)⁻¹Xᵀy. It shrinks weights towards zero but rarely to exactly zero."
+    },
+    {
+      "id": "ML011",
+      "subject": "Machine Learning",
+      "topic": "Unsupervised Learning",
+      "difficulty": "Medium",
+      "question": "The K-means algorithm alternates between:",
+      "options": {
+        "A": "PCA and clustering",
+        "B": "Assignment step (assign each point to the nearest centroid) and update step (recompute centroids)",
+        "C": "Computing all pairwise distances and sorting",
+        "D": "SVD and matrix factorisation"
+      },
+      "correct_answer": "B",
+      "explanation": "K-means minimises Σₖ Σᵢ∈Cₖ ||xᵢ−μₖ||². It converges to a local minimum (not guaranteed global). The objective decreases monotonically at each step."
+    },
+    {
+      "id": "ML012",
+      "subject": "Machine Learning",
+      "topic": "Optimisation for ML",
+      "difficulty": "Medium",
+      "question": "Stochastic Gradient Descent (SGD) uses which gradient estimate per update step?",
+      "options": {
+        "A": "The exact gradient over all n training examples",
+        "B": "The gradient estimated from a single randomly selected sample (or small mini-batch)",
+        "C": "The second-order gradient (Hessian)",
+        "D": "A zero-order (function-value only) estimate"
+      },
+      "correct_answer": "B",
+      "explanation": "SGD approximates ∇L ≈ ∇ℓ(xᵢ) using one (or few) random samples. This is much cheaper per step, introduces noise that helps escape local minima, and is essential for large datasets."
+    },
+    {
+      "id": "ML013",
+      "subject": "Machine Learning",
+      "topic": "SVD, PCA & Dimensionality Reduction",
+      "difficulty": "Medium",
+      "question": "PCA finds the principal directions by solving an eigenproblem on:",
+      "options": {
+        "A": "The raw data matrix X",
+        "B": "The sample covariance matrix Σ̂ = (1/(n−1))XᵀX (mean-centred)",
+        "C": "The kernel matrix K",
+        "D": "The Gram matrix of labels"
+      },
+      "correct_answer": "B",
+      "explanation": "PCA computes eigenvectors of Σ̂ (or equivalently the SVD of mean-centred X). The k-th PC is the direction of the k-th largest variance: Σ̂wₖ = λₖwₖ."
+    },
+    {
+      "id": "ML014",
+      "subject": "Machine Learning",
+      "topic": "Model Evaluation & Selection",
+      "difficulty": "Medium",
+      "question": "Cross-validation is primarily used to:",
+      "options": {
+        "A": "Speed up model training",
+        "B": "Estimate generalisation performance and select hyperparameters on finite data",
+        "C": "Reduce the number of features",
+        "D": "Artificially increase training set size"
+      },
+      "correct_answer": "B",
+      "explanation": "k-fold CV splits data into k folds, training on k−1 and evaluating on 1, rotating. This provides a nearly unbiased estimate of test error and is used for model/hyperparameter selection."
+    },
+    {
+      "id": "ML015",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Medium",
+      "question": "Naive Bayes is a generative classifier because it models:",
+      "options": {
+        "A": "The decision boundary P(Y=k|x) directly",
+        "B": "The joint distribution P(x,y) = P(x|y)P(y) using class-conditional densities",
+        "C": "A discriminant function without probabilistic interpretation",
+        "D": "The margin between classes"
+      },
+      "correct_answer": "B",
+      "explanation": "Generative models learn P(x|y) and P(y), then use Bayes to get P(y|x). Discriminative models (logistic regression, SVM) directly model P(y|x) or the decision boundary."
+    },
+    {
+      "id": "ML016",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Medium",
+      "question": "In a decision tree, information gain for a split measures:",
+      "options": {
+        "A": "The Gini impurity after the split",
+        "B": "The reduction in entropy (parent entropy minus weighted child entropy)",
+        "C": "The number of correctly classified samples",
+        "D": "The depth of the resulting subtrees"
+      },
+      "correct_answer": "B",
+      "explanation": "IG(split) = H(parent) − Σₖ (|Cₖ|/|C|)H(Cₖ). Maximising information gain (ID3, C4.5) or Gini impurity reduction (CART) guides splitting in decision trees."
+    },
+    {
+      "id": "ML017",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Medium",
+      "question": "Random Forests reduce variance compared to a single decision tree by:",
+      "options": {
+        "A": "Training shallower trees",
+        "B": "Training many trees on bootstrap samples with random feature subsets, then averaging predictions",
+        "C": "Pruning each tree more aggressively",
+        "D": "Using a different splitting criterion"
+      },
+      "correct_answer": "B",
+      "explanation": "Two key mechanisms: (1) Bootstrap aggregating (bagging) reduces variance. (2) Random feature subsets at each split decorrelates trees. Averaging uncorrelated estimators reduces variance by factor ≈ 1/T for T trees."
+    },
+    {
+      "id": "ML018",
+      "subject": "Machine Learning",
+      "topic": "Model Evaluation & Selection",
+      "difficulty": "Medium",
+      "question": "ROC-AUC measures:",
+      "options": {
+        "A": "Model accuracy at a specific threshold",
+        "B": "The area under the ROC curve — the probability that a random positive is ranked above a random negative",
+        "C": "The F1 score at optimal threshold",
+        "D": "The precision-recall tradeoff"
+      },
+      "correct_answer": "B",
+      "explanation": "AUC = P(score(positive) > score(negative)). AUC=0.5 is random; AUC=1 is perfect. It is threshold-invariant and class-imbalance robust. Use PR-AUC for very imbalanced data."
+    },
+    {
+      "id": "ML019",
+      "subject": "Machine Learning",
+      "topic": "Foundations of Machine Learning",
+      "difficulty": "Hard",
+      "question": "The VC dimension of the class of linear classifiers (halfspaces) in ℝᵈ is:",
+      "options": {
+        "A": "d",
+        "B": "d+1",
+        "C": "2d",
+        "D": "∞"
+      },
+      "correct_answer": "B",
+      "explanation": "VC dim of halfspaces in ℝᵈ = d+1. In ℝ² any 3 points in general position can be shattered, but no 4. This determines the PAC learning sample complexity."
+    },
+    {
+      "id": "ML020",
+      "subject": "Machine Learning",
+      "topic": "Foundations of Machine Learning",
+      "difficulty": "Hard",
+      "question": "The No Free Lunch (NFL) theorem for machine learning states:",
+      "options": {
+        "A": "More training data always improves performance",
+        "B": "Any algorithm that performs better than average on some problem class must perform worse on another class — no universally best algorithm",
+        "C": "Deep learning always outperforms shallow methods",
+        "D": "Regularisation always improves generalisation"
+      },
+      "correct_answer": "B",
+      "explanation": "NFL (Wolpert, 1996): averaged over all possible problems, all algorithms perform equally. This motivates matching algorithms to problem structure and domain knowledge."
+    },
+    {
+      "id": "ML021",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Hard",
+      "question": "The dual formulation of the soft-margin SVM maximises:",
+      "options": {
+        "A": "Σᵢαᵢ − (1/2)Σᵢ,ⱼ αᵢαⱼyᵢyⱼxᵢᵀxⱼ  subject to  0 ≤ αᵢ ≤ C, Σᵢαᵢyᵢ = 0",
+        "B": "||w||² subject to yᵢ(wᵀxᵢ+b) ≥ 1 − ξᵢ",
+        "C": "Σᵢαᵢ + (1/2)Σᵢ,ⱼ αᵢαⱼyᵢyⱼ xᵢᵀxⱼ",
+        "D": "The hinge loss plus L2 regularisation"
+      },
+      "correct_answer": "A",
+      "explanation": "The dual involves the QP problem over Lagrange multipliers αᵢ. The upper bound C on αᵢ comes from soft-margin slack variables. The primal w = Σᵢ αᵢyᵢxᵢ. Prediction uses sign(Σᵢ αᵢyᵢk(xᵢ,x)+b)."
+    },
+    {
+      "id": "ML022",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Hard",
+      "question": "In AdaBoost, after training each weak learner, which two steps occur?",
+      "options": {
+        "A": "All sample weights are reset equally, and the weak learner is discarded if error > 0.5",
+        "B": "Misclassified samples get higher weights; correctly classified get lower weights; AND the weak learner is discarded if its weighted error ≥ 0.5",
+        "C": "Weights are updated by gradient descent on the loss",
+        "D": "The weak learner is added regardless of its performance"
+      },
+      "correct_answer": "B",
+      "explanation": "AdaBoost: (1) Weight misclassified examples more: wᵢ ← wᵢ exp(αₜ·𝟙[yᵢ≠ĥₜ(xᵢ)]). (2) Discard learner if εₜ ≥ 0.5 (worse than random). Learner weight: αₜ = (1/2)log((1−εₜ)/εₜ)."
+    },
+    {
+      "id": "ML023",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Hard",
+      "question": "In gradient boosting, each new tree is fit to:",
+      "options": {
+        "A": "The original target labels",
+        "B": "The negative gradient of the loss with respect to the current ensemble's prediction (pseudo-residuals)",
+        "C": "A random subset of training features",
+        "D": "The weighted training samples as in AdaBoost"
+      },
+      "correct_answer": "B",
+      "explanation": "Gradient boosting performs functional gradient descent. For squared loss, pseudo-residuals = actual residuals yᵢ−Fₜ(xᵢ). For log loss: rᵢ = yᵢ−p̂ᵢ. XGBoost also uses second-order (Hessian) information."
+    },
+    {
+      "id": "ML024",
+      "subject": "Machine Learning",
+      "topic": "Optimisation for ML",
+      "difficulty": "Hard",
+      "question": "The Adam optimiser combines which two key ideas?",
+      "options": {
+        "A": "SGD with momentum and L2 weight decay",
+        "B": "First moment estimation (momentum) and second moment estimation (RMSProp-style adaptive learning rate)",
+        "C": "Gradient descent and Newton's method",
+        "D": "Mini-batch gradient descent and coordinate descent"
+      },
+      "correct_answer": "B",
+      "explanation": "Adam: mₜ=β₁mₜ₋₁+(1−β₁)g, vₜ=β₂vₜ₋₁+(1−β₂)g², θ←θ−α·m̂ₜ/√(v̂ₜ+ε). Bias-corrected: m̂=m/(1−β₁ᵗ), v̂=v/(1−β₂ᵗ). Typically β₁=0.9, β₂=0.999."
+    },
+    {
+      "id": "ML025",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Hard",
+      "question": "The vanishing gradient problem in deep networks occurs because:",
+      "options": {
+        "A": "The learning rate is too large",
+        "B": "Gradients become exponentially small as they backpropagate through many layers, especially with saturating activations like sigmoid/tanh",
+        "C": "The network has too few parameters",
+        "D": "Batch normalisation fails to scale properly"
+      },
+      "correct_answer": "B",
+      "explanation": "In backprop: ∂L/∂W₁ = ∂L/∂aL · ∏ᵢ W_{i+1}ᵀ · σ'(aᵢ). Sigmoid derivative ≤ 0.25, so with L layers this product → 0 exponentially. Solutions: ReLU, batch norm, residual connections, careful initialisation."
+    },
+    {
+      "id": "ML026",
+      "subject": "Machine Learning",
+      "topic": "Regularisation & Generalisation",
+      "difficulty": "Hard",
+      "question": "Dropout regularisation during neural network training:",
+      "options": {
+        "A": "Sets a random fraction p of activations to zero at each forward pass, acting as training an ensemble of 2ⁿ sub-networks",
+        "B": "Adds Gaussian noise to the weights permanently",
+        "C": "Clips gradient norms to prevent exploding gradients",
+        "D": "Removes the smallest weights at convergence (pruning)"
+      },
+      "correct_answer": "A",
+      "explanation": "With dropout rate p: at inference, all neurons are used but weights scaled by (1−p). It prevents co-adaptation of neurons and approximates ensemble averaging of exponentially many sub-networks."
+    },
+    {
+      "id": "ML027",
+      "subject": "Machine Learning",
+      "topic": "Foundations of Machine Learning",
+      "difficulty": "Hard",
+      "question": "The Universal Approximation Theorem states that:",
+      "options": {
+        "A": "Networks with multiple hidden layers can approximate any function",
+        "B": "A neural network with a single hidden layer of sufficient width can approximate any continuous function on a compact domain to arbitrary precision",
+        "C": "Convolutional networks can approximate any stationary signal",
+        "D": "A depth-3 network can memorise any finite dataset"
+      },
+      "correct_answer": "B",
+      "explanation": "UAT (Hornik et al., 1989): single hidden layer + non-polynomial activation (sigmoid, ReLU) is a universal approximator on compact sets. This justifies NNs theoretically but doesn't say how many neurons or how to train."
+    },
+    {
+      "id": "ML028",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Hard",
+      "question": "Batch normalisation normalises layer inputs during training. Its key benefits include:",
+      "options": {
+        "A": "Eliminates the need for activation functions",
+        "B": "Allows larger learning rates, reduces internal covariate shift, acts as regularisation, and stabilises training",
+        "C": "Completely replaces dropout",
+        "D": "Fixes the output distribution of every layer to exactly N(0,1)"
+      },
+      "correct_answer": "B",
+      "explanation": "BatchNorm: ẑ = (z−μ_B)/σ_B · γ + β (learnable γ,β). It reduces internal covariate shift, smooths the loss landscape, allows larger LR, and has a mild regularisation effect. At test time, uses running statistics."
+    },
+    {
+      "id": "ML029",
+      "subject": "Machine Learning",
+      "topic": "Optimisation for ML",
+      "difficulty": "Hard",
+      "question": "For a convex function with Lipschitz-continuous gradient (constant L), vanilla gradient descent converges in T steps with error:",
+      "options": {
+        "A": "O(1/T) — sublinear rate",
+        "B": "O(1/T²) — achieved by Nesterov accelerated gradient",
+        "C": "O(e^{−T}) — exponential rate",
+        "D": "O(√T) — diverges"
+      },
+      "correct_answer": "A",
+      "explanation": "GD on L-smooth convex functions: f(xₜ)−f* ≤ ||x₀−x*||²L/(2T). Nesterov's accelerated GD achieves O(1/T²). For strongly convex functions, GD achieves linear O((1−μ/L)ᵀ) rate."
+    },
+    {
+      "id": "ML030",
+      "subject": "Machine Learning",
+      "topic": "Foundations of Machine Learning",
+      "difficulty": "Hard",
+      "question": "Structural Risk Minimisation (SRM) balances:",
+      "options": {
+        "A": "Training speed vs. accuracy",
+        "B": "Empirical risk (training error) and model complexity, penalised by VC dimension or Rademacher complexity",
+        "C": "Bias and learning rate",
+        "D": "Number of features and sample size only"
+      },
+      "correct_answer": "B",
+      "explanation": "SRM (Vapnik): select model class Hₙ to minimise empirical risk + complexity penalty. The bound: R(h) ≤ R̂(h) + O(√(VC-dim/n)). This motivates complexity-penalised model selection."
+    },
+    {
+      "id": "ML031",
+      "subject": "Machine Learning",
+      "topic": "Unsupervised Learning",
+      "difficulty": "Hard",
+      "question": "The EM algorithm for Gaussian Mixture Models is guaranteed to:",
+      "options": {
+        "A": "Find the global maximum likelihood",
+        "B": "Converge to a local maximum (or saddle point) of the log-likelihood",
+        "C": "Always correctly identify the number of clusters",
+        "D": "Converge in linear time"
+      },
+      "correct_answer": "B",
+      "explanation": "EM monotonically increases log-likelihood at each iteration and converges to a local maximum (never decreases). Multiple random initialisations are used to search for better solutions."
+    },
+    {
+      "id": "ML032",
+      "subject": "Machine Learning",
+      "topic": "SVD, PCA & Dimensionality Reduction",
+      "difficulty": "Hard",
+      "question": "t-SNE uses which distribution to model pairwise distances in the low-dimensional space, giving heavier tails than the Gaussian used in the high-dimensional space?",
+      "options": {
+        "A": "Gaussian N(0,1)",
+        "B": "Cauchy / Student's t with 1 degree of freedom",
+        "C": "Uniform distribution",
+        "D": "Laplace distribution"
+      },
+      "correct_answer": "B",
+      "explanation": "t-SNE (van der Maaten & Hinton, 2008) uses Cauchy (t with 1 d.f.) in 2D space. The heavier tails allow moderately dissimilar points to be placed further apart, resolving the 'crowding problem' of SNE."
+    },
+    {
+      "id": "ML033",
+      "subject": "Machine Learning",
+      "topic": "Regularisation & Generalisation",
+      "difficulty": "Hard",
+      "question": "The double descent phenomenon in overparameterised models describes:",
+      "options": {
+        "A": "Training loss decreasing in two distinct phases",
+        "B": "Test error first increasing (classical overfitting regime) then decreasing again as model size grows beyond the interpolation threshold",
+        "C": "Validation loss oscillating during training",
+        "D": "Two separate learning rate decay phases"
+      },
+      "correct_answer": "B",
+      "explanation": "For modern overparameterised models (deep nets, kernel machines): beyond the interpolation threshold (where training error = 0), test error decreases again — benign overfitting. Challenges the classical bias-variance picture."
+    },
+    {
+      "id": "ML034",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Hard",
+      "question": "In kernel SVMs with RBF kernel k(x,z) = exp(−γ||x−z||²), increasing γ:",
+      "options": {
+        "A": "Smooths the decision boundary (underfitting)",
+        "B": "Makes the decision boundary more complex and localised (higher variance, more prone to overfitting)",
+        "C": "Has no effect on the decision boundary",
+        "D": "Always increases the margin"
+      },
+      "correct_answer": "B",
+      "explanation": "Large γ → kernel decays quickly → each training point influences only a small region → complex, wiggly boundary. Small γ → kernel is nearly constant → smooth, simple boundary. γ controls the 'reach' of training points."
+    },
+    {
+      "id": "ML035",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Hard",
+      "question": "Which of the following is NOT a valid (positive semi-definite) kernel?",
+      "options": {
+        "A": "Linear kernel: k(x,z) = xᵀz",
+        "B": "RBF kernel: k(x,z) = exp(−||x−z||²/2σ²)",
+        "C": "Polynomial kernel: k(x,z) = (xᵀz + c)^d, c ≥ 0",
+        "D": "k(x,z) = xᵀz − ||x−z||²"
+      },
+      "correct_answer": "D",
+      "explanation": "A valid kernel must yield PSD Gram matrices (Mercer's theorem). Options A–C are valid. Option D: expanding gives 3xᵀz − ||x||² − ||z||², which is not PSD (it can have negative eigenvalues)."
+    },
+    {
+      "id": "ML036",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Hard",
+      "question": "A Gaussian Process (GP) is fully specified by:",
+      "options": {
+        "A": "Its weight matrix and activation function",
+        "B": "A mean function m(x) and a covariance (kernel) function k(x,x')",
+        "C": "The training data alone",
+        "D": "The number of basis functions and regularisation parameter"
+      },
+      "correct_answer": "B",
+      "explanation": "GP: f ~ GP(m(·), k(·,·)). Any finite collection f(x₁),...,f(xₙ) is jointly Gaussian with mean vector [m(xᵢ)] and covariance matrix [k(xᵢ,xⱼ)]. GPs provide principled uncertainty estimates."
+    },
+    {
+      "id": "ML037",
+      "subject": "Machine Learning",
+      "topic": "Regularisation & Generalisation",
+      "difficulty": "Hard",
+      "question": "Elastic Net regularisation combines:",
+      "options": {
+        "A": "L1 and L2 penalties: λ₁||w||₁ + λ₂||w||₂², achieving both sparsity (L1) and stability (L2)",
+        "B": "L1 and L∞ penalties",
+        "C": "L2 penalty and dropout",
+        "D": "L0 and L2 penalties"
+      },
+      "correct_answer": "A",
+      "explanation": "Elastic Net (Zou & Hastie, 2005): min ||y−Xβ||² + λ₁||β||₁ + λ₂||β||₂². Combines LASSO's sparsity with Ridge's grouping effect (correlated features get similar weights). Useful when p >> n."
+    },
+    {
+      "id": "ML038",
+      "subject": "Machine Learning",
+      "topic": "Model Evaluation & Selection",
+      "difficulty": "Hard",
+      "question": "The Akaike Information Criterion (AIC) for a model with k parameters and maximum log-likelihood ℓ̂ is:",
+      "options": {
+        "A": "AIC = 2k − 2ℓ̂  (minimise)",
+        "B": "AIC = k log n − 2ℓ̂",
+        "C": "AIC = 2ℓ̂ − 2k  (maximise)",
+        "D": "AIC = ℓ̂ / k"
+      },
+      "correct_answer": "A",
+      "explanation": "AIC = 2k − 2ln(L̂). We minimise AIC. It estimates the Kullback-Leibler divergence from the true model. BIC = k·ln(n) − 2ℓ̂ penalises complexity more heavily for large n."
+    },
+    {
+      "id": "ML039",
+      "subject": "Machine Learning",
+      "topic": "Model Evaluation & Selection",
+      "difficulty": "Hard",
+      "question": "BIC penalises model complexity more severely than AIC when:",
+      "options": {
+        "A": "n < e² ≈ 7.4",
+        "B": "n > e² ≈ 7.4 (i.e. practically always for real datasets)",
+        "C": "k > n",
+        "D": "Never — BIC and AIC always agree"
+      },
+      "correct_answer": "B",
+      "explanation": "AIC penalty per parameter: 2. BIC penalty: ln(n). Since ln(n) > 2 ⟺ n > e² ≈ 7.4, BIC is more conservative for virtually all real datasets, favouring simpler models more strongly."
+    },
+    {
+      "id": "ML040",
+      "subject": "Machine Learning",
+      "topic": "Optimisation for ML",
+      "difficulty": "Hard",
+      "question": "A saddle point in the neural network loss landscape is a critical point where:",
+      "options": {
+        "A": "The gradient is non-zero",
+        "B": "The loss is at a local minimum",
+        "C": "The gradient is zero AND the Hessian has both positive and negative eigenvalues",
+        "D": "The loss is at a global maximum"
+      },
+      "correct_answer": "C",
+      "explanation": "Saddle points: ∇L=0 but H is indefinite. Deep networks have many more saddle points than local minima (for high-dimensional problems). SGD noise helps escape saddle points. True local minima in deep nets tend to have similar values."
+    },
+    {
+      "id": "ML041",
+      "subject": "Machine Learning",
+      "topic": "Optimisation for ML",
+      "difficulty": "Hard",
+      "question": "In natural gradient descent, the parameter update uses:",
+      "options": {
+        "A": "The Hessian of the loss function (Newton's method)",
+        "B": "The inverse Fisher information matrix as a preconditioner: θ ← θ − η · F(θ)⁻¹∇L",
+        "C": "The gradient of the prior distribution",
+        "D": "Normalised gradients (gradient divided by its norm)"
+      },
+      "correct_answer": "B",
+      "explanation": "Natural gradient accounts for the Riemannian geometry of the parameter space (statistical manifold). F(θ)⁻¹∇L is parameter-invariant. KFAC and NGVI are practical approximations used in deep learning."
+    },
+    {
+      "id": "ML042",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Hard",
+      "question": "The gradient of the cross-entropy loss with respect to the pre-softmax logits zₖ simplifies elegantly to:",
+      "options": {
+        "A": "∂L/∂zₖ = p̂ₖ − yₖ (prediction minus one-hot label)",
+        "B": "∂L/∂zₖ = p̂ₖ(1−p̂ₖ)",
+        "C": "∂L/∂zₖ = −yₖ/p̂ₖ",
+        "D": "∂L/∂zₖ = (p̂ₖ − yₖ)² (squared error form)"
+      },
+      "correct_answer": "A",
+      "explanation": "For softmax + cross-entropy: ∂L/∂zₖ = p̂ₖ − yₖ. This beautiful simplification (same as sigmoid + binary CE) makes backprop efficient. It means gradient flows proportionally to prediction error."
+    },
+    {
+      "id": "ML043",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Hard",
+      "question": "Residual connections (skip connections) in ResNets primarily address:",
+      "options": {
+        "A": "Reducing the number of parameters",
+        "B": "Allowing gradients to flow directly through identity shortcuts, mitigating vanishing gradients and enabling very deep networks",
+        "C": "Implementing self-attention",
+        "D": "Replacing batch normalisation"
+      },
+      "correct_answer": "B",
+      "explanation": "ResNet (He et al., 2015): F(x)+x. At minimum, the identity mapping is easy to learn. Gradients flow directly through skip connections: ∂L/∂xₗ = ∂L/∂xL · ∏(1 + ∂F/∂x) — the '1' prevents vanishing."
+    },
+    {
+      "id": "ML044",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Hard",
+      "question": "In a Variational Autoencoder (VAE), the ELBO (Evidence Lower BOund) that is maximised is:",
+      "options": {
+        "A": "E_q[log p(x|z)] + KL(q(z|x)||p(z))",
+        "B": "E_q[log p(x|z)] − KL(q(z|x)||p(z))",
+        "C": "E_q[log p(z|x)] − H(q)",
+        "D": "−KL(p(z|x)||q(z|x))"
+      },
+      "correct_answer": "B",
+      "explanation": "ELBO = E_q[log p(x|z)] − KL(q(z|x)||p(z)) = log p(x) − KL(q(z|x)||p(z|x)). The first term is reconstruction quality; the second regularises the latent code. Maximising ELBO ⟺ minimising KL to posterior."
+    },
+    {
+      "id": "ML045",
+      "subject": "Machine Learning",
+      "topic": "Unsupervised Learning",
+      "difficulty": "Hard",
+      "question": "DBSCAN clustering is notable for:",
+      "options": {
+        "A": "Requiring the number of clusters K as input",
+        "B": "Discovering clusters of arbitrary shape and labelling low-density points as outliers (noise)",
+        "C": "Only working well with spherical Gaussian clusters",
+        "D": "Minimising within-cluster sum-of-squares"
+      },
+      "correct_answer": "B",
+      "explanation": "DBSCAN (Ester et al., 1996): density-reachability groups core points, border points, and noise. Parameters: ε (neighbourhood radius), minPts (minimum core density). No K needed; discovers arbitrary-shaped clusters."
+    },
+    {
+      "id": "ML046",
+      "subject": "Machine Learning",
+      "topic": "SVD, PCA & Dimensionality Reduction",
+      "difficulty": "Hard",
+      "question": "The fraction of total variance captured by the first k PCs is computed as:",
+      "options": {
+        "A": "Σᵢ₌₁ᵏ λᵢ / Σᵢ₌₁ⁿ λᵢ, where λᵢ are eigenvalues of the covariance matrix",
+        "B": "k/d, where d is the original dimension",
+        "C": "The k-th eigenvalue / trace(Σ)",
+        "D": "The sum of the k largest singular values / trace(Σ)"
+      },
+      "correct_answer": "A",
+      "explanation": "Variance explained by k PCs = Σᵢ₌₁ᵏ λᵢ / Σᵢλᵢ. Since eigenvalues of the covariance matrix = squared singular values of the data matrix / (n−1), the scree plot shows these fractions."
+    },
+    {
+      "id": "ML047",
+      "subject": "Machine Learning",
+      "topic": "Regularisation & Generalisation",
+      "difficulty": "Hard",
+      "question": "The PAC learning framework guarantees, for a finite hypothesis class H, a generalisation bound of the form:",
+      "options": {
+        "A": "P(R(h) − R̂(h) ≤ ε) ≥ 1−δ if n ≥ (1/ε)(log|H| + log(1/δ))",
+        "B": "P(R(h) ≤ ε) ≥ 1−δ if n ≥ ε/δ",
+        "C": "The empirical risk equals the true risk for all n",
+        "D": "The best classifier in H has zero true risk"
+      },
+      "correct_answer": "A",
+      "explanation": "Uniform convergence: n ≥ (1/2ε²)(log|H|+log(2/δ)) guarantees sup_h |R(h)−R̂(h)| ≤ ε with prob ≥1−δ. For infinite H, log|H| is replaced by VC-dim or Rademacher complexity."
+    },
+    {
+      "id": "ML048",
+      "subject": "Machine Learning",
+      "topic": "Optimisation for ML",
+      "difficulty": "Hard",
+      "question": "In mini-batch gradient descent with batch size B, compared to full-batch GD:",
+      "options": {
+        "A": "Each update is O(B/n) cheaper AND noisier; the noise acts as implicit regularisation and helps escape sharp minima",
+        "B": "Convergence is always slower in wall-clock time",
+        "C": "The learning rate must be exactly B times smaller",
+        "D": "The gradient estimate is unbiased but has n/B times higher variance than single-sample SGD"
+      },
+      "correct_answer": "A",
+      "explanation": "Mini-batch GD: cheaper per step (O(B) vs O(n)), but gradient estimate has variance σ²/B. Gradient noise helps escape sharp minima and find flatter minima (better generalisation). Linear scaling rule: LR ∝ B."
+    },
+    {
+      "id": "ML049",
+      "subject": "Machine Learning",
+      "topic": "Regularisation & Generalisation",
+      "difficulty": "Hard",
+      "question": "Early stopping in neural network training:",
+      "options": {
+        "A": "Finds the exact minimum of the training loss",
+        "B": "Acts as implicit L2 regularisation by stopping before the network memorises training noise",
+        "C": "Guarantees convergence to the global minimum",
+        "D": "Is equivalent to increasing the learning rate"
+      },
+      "correct_answer": "B",
+      "explanation": "Early stopping monitors validation loss and stops when it increases, effectively constraining the norm of weights (similar to L2 regularisation). For gradient descent on quadratic loss, it is provably equivalent to ridge regression."
+    },
+    {
+      "id": "ML050",
+      "subject": "Machine Learning",
+      "topic": "Key Classifiers & Regressors",
+      "difficulty": "Hard",
+      "question": "The Gini impurity at a node with class probabilities p₁,...,pₖ is:",
+      "options": {
+        "A": "−Σᵢ pᵢ log pᵢ (entropy)",
+        "B": "1 − Σᵢ pᵢ² = Σᵢ pᵢ(1−pᵢ)",
+        "C": "Σᵢ |pᵢ − 1/k|",
+        "D": "max(pᵢ) − min(pᵢ)"
+      },
+      "correct_answer": "B",
+      "explanation": "Gini = 1 − Σpᵢ² = Σpᵢ(1−pᵢ). It measures expected misclassification rate. For binary: G = 2p(1−p). It is 0 for pure nodes and maximised at 1−1/k for k equal classes."
+    },
+    {
+      "id": "ML051",
+      "subject": "Machine Learning",
+      "topic": "Model Evaluation & Selection",
+      "difficulty": "Hard",
+      "question": "When classes are severely imbalanced (e.g. 99:1 ratio), which metric is most informative for model evaluation?",
+      "options": {
+        "A": "Overall accuracy",
+        "B": "Precision-Recall AUC (PR-AUC) or F1 score",
+        "C": "Mean Squared Error",
+        "D": "Log-likelihood on training data"
+      },
+      "correct_answer": "B",
+      "explanation": "A classifier predicting majority class always achieves 99% accuracy but is useless. PR-AUC and F1 focus on minority class performance. ROC-AUC is also more informative than accuracy but PR-AUC is preferred for severe imbalance."
+    },
+    {
+      "id": "ML052",
+      "subject": "Machine Learning",
+      "topic": "SVD, PCA & Dimensionality Reduction",
+      "difficulty": "Hard",
+      "question": "Kernel PCA extends PCA by:",
+      "options": {
+        "A": "Using the kernel trick to perform PCA in a high-dimensional (possibly infinite) RKHS implicitly",
+        "B": "Applying PCA to the kernel matrix directly without any transformation",
+        "C": "Using the L1 norm instead of L2 for dimensionality reduction",
+        "D": "Performing PCA only on the diagonal elements of the data matrix"
+      },
+      "correct_answer": "A",
+      "explanation": "Kernel PCA: centre the kernel matrix K and compute its eigenvectors. This is equivalent to PCA in the feature space φ(x), allowing non-linear dimensionality reduction. The RBF kernel gives a smooth manifold representation."
+    },
+    {
+      "id": "ML053",
+      "subject": "Machine Learning",
+      "topic": "Foundations of Machine Learning",
+      "difficulty": "Hard",
+      "question": "The Rademacher complexity of a hypothesis class H given n samples is a measure of:",
+      "options": {
+        "A": "The number of parameters in H",
+        "B": "The ability of H to fit random ±1 labels — measuring the richness/expressiveness of H",
+        "C": "The L2 norm of hypotheses in H",
+        "D": "The VC dimension squared"
+      },
+      "correct_answer": "B",
+      "explanation": "R̂ₙ(H) = E_σ[sup_{h∈H} (1/n)Σᵢ σᵢh(xᵢ)], where σᵢ~Uniform({−1,+1}). It directly measures H's capacity to fit noise. Generalisation bound: R(h) ≤ R̂(h) + 2Rₙ(H) + O(√(log(1/δ)/n))."
+    },
+    {
+      "id": "ML054",
+      "subject": "Machine Learning",
+      "topic": "Optimisation for ML",
+      "difficulty": "Hard",
+      "question": "The condition for a point w* to be a local minimum of a twice-differentiable function f is:",
+      "options": {
+        "A": "∇f(w*)=0 (necessary only, could be saddle or maximum)",
+        "B": "∇f(w*)=0 AND ∇²f(w*) is positive definite (sufficient condition)",
+        "C": "∇²f(w*) positive definite alone (no gradient condition needed)",
+        "D": "f(w*) < f(w) for all w in the domain (global minimum)"
+      },
+      "correct_answer": "B",
+      "explanation": "First-order necessary: ∇f(w*)=0 (critical point). Second-order sufficient: ∇²f(w*) ≻ 0. If ∇²f ⪰ 0 (PSD) at a critical point, it could be a saddle point (indefinite) or local min. The conjunction of both gives sufficiency."
+    },
+    {
+      "id": "ML055",
+      "subject": "Machine Learning",
+      "topic": "Unsupervised Learning",
+      "difficulty": "Hard",
+      "question": "In Gaussian Mixture Models with K components and full covariance matrices in d dimensions, the total number of free parameters is:",
+      "options": {
+        "A": "K(d + d²)",
+        "B": "Kd + K·d(d+1)/2 + (K−1)",
+        "C": "Kd²",
+        "D": "K(d+1)"
+      },
+      "correct_answer": "B",
+      "explanation": "Per component: d mean params + d(d+1)/2 covariance params (symmetric matrix). Plus K−1 mixing proportions (sum to 1). Total: Kd + K·d(d+1)/2 + K−1. For K=2, d=2: 2×2 + 2×3 + 1 = 11 params."
+    },
+    {
+      "id": "ML056",
+      "subject": "Machine Learning",
+      "topic": "SVD, PCA & Dimensionality Reduction",
+      "difficulty": "Hard",
+      "question": "The relationship between SVD of the mean-centred data matrix X̃ and PCA of the covariance matrix Σ̂ is:",
+      "options": {
+        "A": "They are completely unrelated",
+        "B": "If X̃ = UΣVᵀ, then Σ̂ = VΛVᵀ where Λ = Σ²/(n−1), and the PCs (eigenvectors of Σ̂) are the columns of V",
+        "C": "PCA eigenvectors are the columns of U (left singular vectors)",
+        "D": "The singular values equal the eigenvalues of Σ̂"
+      },
+      "correct_answer": "B",
+      "explanation": "X̃ᵀX̃/(n−1) = V(Σ²/(n−1))Vᵀ. So PCA eigenvectors = right singular vectors V of X̃; eigenvalues λₖ = σₖ²/(n−1). PC scores = X̃V = UΣ. This equivalence lets us use fast SVD algorithms for PCA."
+    },
+    {
+      "id": "ML057",
+      "subject": "Machine Learning",
+      "topic": "Regularisation & Generalisation",
+      "difficulty": "Hard",
+      "question": "Weight decay in neural network training is equivalent to which Bayesian interpretation?",
+      "options": {
+        "A": "Using a Laplace prior on weights → MAP = L1 regularisation",
+        "B": "Using a Gaussian prior on weights → MAP = L2 regularisation (weight decay)",
+        "C": "Using a Dirichlet prior on softmax outputs",
+        "D": "Performing maximum likelihood estimation with no prior"
+      },
+      "correct_answer": "B",
+      "explanation": "MAP with i.i.d. Gaussian prior w~N(0,τ²I): argmax_w [log P(D|w) + log P(w)] = argmin [loss + (1/2τ²)||w||²]. The term λ||w||² is weight decay, with λ=1/(2τ²). Weight decay shrinks weights towards zero."
+    }
+  ]
+}

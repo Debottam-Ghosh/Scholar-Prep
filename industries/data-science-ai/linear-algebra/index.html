@@ -38,6 +38,9 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear
 .qcard-header:hover{background:#faf8ff}
 .qnum{min-width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;margin-top:1px;background:linear-gradient(135deg,#ede9fe,#ddd6fe);color:#5b21b6}
 .q-text{font-size:14px;color:#1e1b4b;line-height:1.6;flex:1}
+.q-copy-btn{width:30px;height:30px;border-radius:10px;border:1px solid #ddd6fe;background:none !important;background-color:transparent !important;background-image:none !important;color:#6d5dd3;display:inline-flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;flex-shrink:0;transition:all 0.2s;appearance:none;-webkit-appearance:none;box-shadow:none}
+.q-copy-btn:hover{background:none !important;background-color:transparent !important;transform:translateY(-1px) scale(1.02);border-color:#a78bfa;box-shadow:none}
+.q-copy-btn:active,.q-copy-btn:focus,.q-copy-btn:focus-visible{background:none !important;background-color:transparent !important;outline:2px solid #a78bfa;outline-offset:1px;box-shadow:none}
 .arrow{font-size:12px;color:#a0a0b0;flex-shrink:0;margin-top:5px;transition:transform 0.3s ease}
 .arrow.open{transform:rotate(90deg);color:#7c6dea}
 .qcard-body{padding:0 16px 16px 56px;display:none;animation:fadeIn 0.3s ease}
@@ -47,6 +50,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear
 .followup{font-size:13px;color:#4b5563;padding:8px 12px;background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-radius:10px;margin-bottom:6px;line-height:1.5;border-left:3px solid #a78bfa;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:8px}
 .followup:hover{background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-left-color:#7c6dea}
 .followup-text{flex:1}
+.followup .q-copy-btn{width:26px;height:26px;border-radius:8px;font-size:13px;margin-left:6px;background:none !important;background-color:transparent !important;background-image:none !important;box-shadow:none}
 .fu-practice{margin-top:4px;margin-bottom:10px}
 .hint-label{font-size:11px;font-weight:600;color:#1d4ed8;text-transform:uppercase;letter-spacing:0.08em;margin-top:12px;margin-bottom:8px}
 .hint{font-size:13px;color:#4b5563;padding:8px 12px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:10px;line-height:1.5;border-left:3px solid #60a5fa}
@@ -88,6 +92,14 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear
 .eval-loading{display:flex;align-items:center;gap:10px;color:#64748b;font-size:13px;margin-top:12px}
 .eval-spinner{width:16px;height:16px;border:2.5px solid #e2e8f0;border-top-color:#7c6dea;border-radius:50%;animation:spin 0.7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+.copy-toast{position:fixed;left:50%;right:auto;bottom:20px;padding:11px 14px;border-radius:12px;background:linear-gradient(135deg,#1e1b4b,#4c1d95);color:#fff;font-size:13px;font-weight:700;box-shadow:0 12px 28px rgba(76,29,149,0.3);opacity:0;transform:translate(-50%,12px) scale(0.96);pointer-events:none;transition:all 0.25s;z-index:9999}
+.copy-toast.show{opacity:1;transform:translate(-50%,0) scale(1)}
+.ask-mentor-btn{position:fixed;right:24px;bottom:24px;z-index:10000;display:flex;align-items:center;gap:10px;padding:14px 18px;border:none;border-radius:999px;background:linear-gradient(135deg,#7c6dea,#a78bfa);color:#fff;cursor:pointer;box-shadow:0 14px 30px rgba(124,109,234,0.32);transition:transform 0.2s ease,box-shadow 0.2s ease}
+.ask-mentor-btn:hover{transform:translateY(-1px);box-shadow:0 18px 36px rgba(124,109,234,0.42)}
+.ask-mentor-btn:active{transform:translateY(0) scale(0.98)}
+.ask-mentor-btn .ask-mentor-icon{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.18);font-size:20px;flex-shrink:0}
+.ask-mentor-btn .ask-mentor-text{font-size:14px;font-weight:700;letter-spacing:0.01em;white-space:nowrap}
+@media(max-width:640px){.ask-mentor-btn{right:14px;bottom:14px;padding:12px 14px}.ask-mentor-btn .ask-mentor-text{font-size:13px}}
 </style>
 
 <div class="container">
@@ -110,12 +122,56 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear
 <div id="qbank"></div>
 </div>
 
+  <button class="ask-mentor-btn" id="askMentorBtn" type="button" title="Ask Mentor"><span class="ask-mentor-icon">💬</span><span class="ask-mentor-text">Ask Mentor</span></button>
+
 <script>
 const SUBJECT = 'Linear Algebra';
 let data = [];
 let currentTopic = 'all';
 const difficultyOptions = ['basic', 'medium', 'hard'];
 let activeDifficulties = new Set(difficultyOptions);
+let copyToastTimer = null;
+
+function escapeForAttr(text) {
+  return String(text || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\r?\n/g, ' ');
+}
+
+function ensureCopyToast() {
+  let toast = document.getElementById('copyToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'copyToast';
+    toast.className = 'copy-toast';
+    toast.textContent = 'Copied!';
+    document.body.appendChild(toast);
+  }
+  return toast;
+}
+
+function showCopyToast() {
+  const toast = ensureCopyToast();
+  toast.classList.add('show');
+  clearTimeout(copyToastTimer);
+  copyToastTimer = setTimeout(() => toast.classList.remove('show'), 1100);
+}
+
+async function copyText(event, text) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (err) {
+    const tmp = document.createElement('textarea');
+    tmp.value = text;
+    document.body.appendChild(tmp);
+    tmp.select();
+    document.execCommand('copy');
+    document.body.removeChild(tmp);
+  }
+  showCopyToast();
+}
 
 async function loadData() {
   const res = await fetch('../data/questions_data_updated.json');
@@ -212,9 +268,10 @@ function renderQuestions(){
         fuHtml += `<div class="followup-label">Follow-up probes</div>`;
         visibleFollowups.forEach((fobj, fi) => {
           const fText = fobj.text;
+          const fCopy = escapeForAttr(fText);
           const fDiff = fobj.d || 'medium';
           const fuPractId = `fupract-${si}-${qi}-${fi}`;
-          fuHtml += `<div class="followup" onclick="openPractice('${fuPractId}',null)"><span class="followup-text">↳ ${fText}</span><span class="difficulty ${colors[fDiff] || colors.medium}">${fDiff}</span></div>`;
+          fuHtml += `<div class="followup" onclick="openPractice('${fuPractId}',null)"><span class="followup-text">↳ ${fText}</span><button type="button" class="q-copy-btn" title="Copy follow-up" onclick="copyText(event,'${fCopy}')">📋</button><span class="difficulty ${colors[fDiff] || colors.medium}">${fDiff}</span></div>`;
           fuHtml += `<div class="fu-practice"><div class="practice-area" id="${fuPractId}" data-question="${fText.replace(/"/g,'&quot;')}" data-subject="${SUBJECT}"><textarea placeholder="Type your answer here..."></textarea><div class="practice-buttons"><button class="practice-submit" onclick="submitPractice('${fuPractId}')">Submit Answer</button><button class="mic-btn" onclick="toggleVoice('${fuPractId}')">🎤 Speak</button></div><div class="mic-status" id="mic-status-${fuPractId}"></div><div class="eval-container"></div></div></div>`;
         });
       }
@@ -223,10 +280,12 @@ function renderQuestions(){
       const hintBtnHtml = item.hint ? `<button class="hint-btn" onclick="document.getElementById('${hintId}').classList.toggle('visible')">💡Hint</button>` : '';
       const hintContentHtml = item.hint ? `<div class="hint-content" id="${hintId}"><div class="hint-label">Professor's note</div><div class="hint">${item.hint}</div></div>` : '';
       const practiceHtml = `<div class="practice-area visible" id="${practiceId}" data-question="${item.q.replace(/"/g,'&quot;')}" data-subject="${SUBJECT}"><textarea placeholder="Type your answer here..."></textarea><div class="practice-buttons"><button class="practice-submit" onclick="submitPractice('${practiceId}')">Submit Answer</button><button class="mic-btn" onclick="toggleVoice('${practiceId}')">🎤 Speak</button>${hintBtnHtml}</div>${hintContentHtml}<div class="mic-status" id="mic-status-${practiceId}"></div><div class="eval-container"></div></div>`;
+      const qCopy = escapeForAttr(item.q);
       card.innerHTML = `
         <div class="qcard-header" onclick="toggle('${bodyId}','${arrowId}')">
           <div class="qnum" style="background:${numBg[ci]};color:${numColors[ci]}">${qIndex}</div>
           <div class="q-text">${item.q}</div>
+          <button type="button" class="q-copy-btn" title="Copy question" onclick="copyText(event,'${qCopy}')">📋</button>
           <div class="difficulty ${colors[item.d]}">${item.d}</div>
           <div class="arrow" id="${arrowId}">▶</div>
         </div>
@@ -427,6 +486,14 @@ function safeParseJSON(text) {
   if (match) { try { return JSON.parse(match[1].trim()); } catch(e) {} }
   throw new Error('Could not parse API response as JSON');
 }
+
+function openMentorWindow() {
+  const mentorUrl = new URL('../mentor/index.html', window.location.href);
+  mentorUrl.searchParams.set('subject', 'Linear Algebra');
+  window.open(mentorUrl.toString(), '_blank');
+}
+
+document.getElementById('askMentorBtn').addEventListener('click', openMentorWindow);
 
 loadData();
 </script>
