@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ask Mentor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script>
     window.MathJax = {
       tex: {
@@ -15,329 +20,524 @@
   </script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --bg-a: #f8faff;
-      --bg-b: #eef2ff;
-      --panel: rgba(255,255,255,0.82);
-      --panel-border: rgba(148,163,184,0.18);
-      --text: #111827;
+      --bg-a: #f0f2ff;
+      --bg-b: #e8ecff;
+      --panel: rgba(255,255,255,0.88);
+      --panel-border: rgba(148,163,184,0.2);
+      --text: #0f172a;
       --muted: #64748b;
       --accent: #6366f1;
       --accent-2: #8b5cf6;
-      --user: linear-gradient(135deg, #6366f1, #8b5cf6);
-      --bot: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,244,255,0.95));
-      --shadow: 0 24px 60px rgba(99,102,241,0.18);
+      --accent-3: #06b6d4;
+      --user-grad: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      --bot-bg: rgba(255,255,255,0.97);
+      --shadow-lg: 0 24px 64px rgba(99,102,241,0.16);
+      --shadow-card: 0 4px 24px rgba(99,102,241,0.10);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+
+      /* Section color palette */
+      --col-intuition:   #f59e0b;
+      --col-steps:       #10b981;
+      --col-math:        #6366f1;
+      --col-takeaways:   #ec4899;
+      --col-default:     #06b6d4;
     }
+
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
       min-height: 100vh;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(99,102,241,0.12), transparent 34%),
-        radial-gradient(circle at 92% 12%, rgba(139,92,246,0.14), transparent 24%),
-        linear-gradient(135deg, var(--bg-a), var(--bg-b));
+        radial-gradient(ellipse at 0% 0%, rgba(99,102,241,0.14) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 0%, rgba(139,92,246,0.12) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 100%, rgba(6,182,212,0.08) 0%, transparent 50%),
+        linear-gradient(160deg, #f0f2ff 0%, #e8ecff 100%);
       overflow-x: hidden;
       overflow-y: auto;
     }
+
+    /* ─── Scrollbar ─── */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.25); border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.45); }
+
+    /* ─── Shell ─── */
     .shell {
       min-height: 100vh;
       height: 100vh;
       display: flex;
       flex-direction: column;
-      padding: 22px;
-      gap: 16px;
+      padding: 20px;
+      gap: 14px;
     }
+
+    /* ─── Hero ─── */
     .hero {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 18px 20px;
-      border-radius: 22px;
+      padding: 16px 20px;
+      border-radius: var(--radius-xl);
       background: var(--panel);
       border: 1px solid var(--panel-border);
-      backdrop-filter: blur(16px);
-      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-lg);
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
+    .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
     .brand-mark {
-      width: 52px;
-      height: 52px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      width: 50px; height: 50px;
+      border-radius: 16px;
+      background: var(--user-grad);
       color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      box-shadow: 0 14px 28px rgba(99,102,241,0.28);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 8px 24px rgba(99,102,241,0.32);
       flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .brand-mark::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 60%);
     }
     .brand-copy { min-width: 0; }
     .eyebrow {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 3px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 2px;
     }
-    h1 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
-    .subtitle {
-      font-size: 0.92rem;
-      color: var(--muted);
-      margin-top: 4px;
-      line-height: 1.5;
-    }
+    h1 { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.2; }
+    .subtitle { font-size: 0.8rem; color: var(--muted); margin-top: 3px; }
     .close-btn {
-      border: none;
-      border-radius: 999px;
-      padding: 11px 16px;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 10px 24px rgba(99,102,241,0.22);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      flex-shrink: 0;
+      border: none; border-radius: 99px;
+      padding: 10px 18px; font-size: 12px; font-weight: 700;
+      cursor: pointer; color: #fff; font-family: inherit;
+      background: var(--user-grad);
+      box-shadow: 0 8px 20px rgba(99,102,241,0.26);
+      transition: transform 0.18s, box-shadow 0.18s;
+      flex-shrink: 0; letter-spacing: 0.01em;
     }
-    .close-btn:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(99,102,241,0.28); }
+    .close-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(99,102,241,0.32); }
+
+    /* ─── Chat Frame ─── */
     .chat-frame {
-      flex: 1;
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-      border-radius: 28px;
+      flex: 1; min-height: 0;
+      display: flex; flex-direction: column;
+      border-radius: var(--radius-xl);
       background: var(--panel);
       border: 1px solid var(--panel-border);
-      backdrop-filter: blur(16px);
-      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-lg);
       overflow: hidden;
     }
+
+    /* ─── Messages ─── */
     .messages {
-      flex: 1;
-      min-height: 0;
+      flex: 1; min-height: 0;
       overflow-y: auto;
-      padding: 22px;
-      padding-bottom: 26px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+      padding: 24px;
+      padding-bottom: 28px;
+      display: flex; flex-direction: column;
+      gap: 16px;
       scroll-behavior: smooth;
       overscroll-behavior: contain;
     }
+
+    /* ─── Intro ─── */
     .intro-panel {
-      width: min(920px, 100%);
+      width: min(900px, 100%);
       margin: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 28px;
-      padding: 12px 0;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 24px;
+      padding: 16px 0;
     }
     .intro-icon {
-      width: 220px;
-      height: 220px;
+      width: 200px; height: 200px;
       object-fit: contain;
-      filter: drop-shadow(0 14px 24px rgba(99,102,241,0.18));
+      filter: drop-shadow(0 16px 28px rgba(99,102,241,0.2));
     }
     .intro-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
       color: #000;
-      text-align: center;
-      line-height: 1.2;
-      padding: 0 18px;
+      text-align: center; line-height: 1.15;
+      padding: 0 16px;
     }
     .intro-cards {
       width: 100%;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      gap: 12px;
     }
     .intro-card {
-      border: 1px solid rgba(99,102,241,0.18);
-      border-radius: 18px;
-      background:
-        radial-gradient(circle at 88% 14%, rgba(99,102,241,0.08), transparent 46%),
-        linear-gradient(140deg, rgba(255,255,255,0.95), rgba(240,244,255,0.92));
-      padding: 16px 16px;
-      box-shadow:
-        0 14px 28px rgba(99,102,241,0.10),
-        inset 0 1px 0 rgba(255,255,255,0.85);
-      color: #111827;
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 1.45;
-      opacity: 0;
-      transform: translateY(10px) scale(0.985);
-      animation: introReveal 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      border: 1px solid rgba(99,102,241,0.16);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(140deg, rgba(255,255,255,0.96), rgba(238,242,255,0.9));
+      padding: 15px;
+      box-shadow: 0 8px 24px rgba(99,102,241,0.08), inset 0 1px 0 rgba(255,255,255,0.9);
+      font-size: 13px; font-weight: 600; line-height: 1.45;
+      opacity: 0; transform: translateY(10px) scale(0.985);
+      animation: introReveal 0.45s cubic-bezier(0.2,0.8,0.2,1) forwards;
       cursor: default;
     }
     .intro-card:nth-child(1) { animation-delay: 0.06s; }
     .intro-card:nth-child(2) { animation-delay: 0.20s; }
     .intro-card:nth-child(3) { animation-delay: 0.34s; }
     @keyframes introReveal {
-      from {
-        opacity: 0;
-        transform: translateY(10px) scale(0.985);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+      from { opacity: 0; transform: translateY(10px) scale(0.985); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
     }
+
+    /* ─── Message Row ─── */
     .message {
-      display: flex;
-      gap: 10px;
-      align-items: flex-end;
-      max-width: min(880px, 100%);
+      display: flex; gap: 10px; align-items: flex-end;
+      max-width: min(860px, 100%);
+      animation: msgIn 0.3s cubic-bezier(0.2,0.8,0.2,1) both;
+    }
+    @keyframes msgIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     .message.user { align-self: flex-end; flex-direction: row-reverse; }
+    .message.bot  { align-self: flex-start; }
+
     .avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 10px 22px rgba(99,102,241,0.2);
-      flex-shrink: 0;
+      width: 34px; height: 34px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 11px; font-weight: 800;
+      background: var(--user-grad);
+      box-shadow: 0 6px 18px rgba(99,102,241,0.22);
+      flex-shrink: 0; letter-spacing: 0.01em;
     }
+    .avatar.bot-av { background: linear-gradient(135deg, #0ea5e9, #6366f1); }
+
+    /* ─── Bubble ─── */
     .bubble {
-      padding: 14px 16px;
-      border-radius: 18px;
-      line-height: 1.65;
-      font-size: 14px;
-      white-space: pre-wrap;
+      padding: 13px 16px;
+      border-radius: var(--radius-lg);
+      line-height: 1.65; font-size: 14px;
       word-break: break-word;
-      box-shadow: 0 10px 26px rgba(15,23,42,0.06);
-    }
-    .bubble .md-h1,
-    .bubble .md-h2,
-    .bubble .md-h3 {
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      line-height: 1.25;
-      margin: 6px 0 8px;
-    }
-    .bubble .md-h1 { font-size: 1.28rem; }
-    .bubble .md-h2 { font-size: 1.16rem; }
-    .bubble .md-h3 { font-size: 1.06rem; }
-    .bubble strong { font-weight: 800; }
-    .bubble em { font-style: italic; }
-    .math-block {
-      margin: 8px 0;
-      overflow-x: auto;
-    }
-    .math-inline {
-      white-space: normal;
+      box-shadow: 0 4px 16px rgba(15,23,42,0.06);
     }
     .message.user .bubble {
-      background: var(--user);
+      background: var(--user-grad);
       color: #fff;
-      border-bottom-right-radius: 6px;
+      border-bottom-right-radius: 5px;
+      white-space: pre-wrap;
     }
     .message.bot .bubble {
-      background: var(--bot);
+      background: var(--bot-bg);
       color: var(--text);
-      border: 1px solid rgba(99,102,241,0.12);
-      border-bottom-left-radius: 6px;
+      border: 1px solid rgba(99,102,241,0.10);
+
+      border-bottom-left-radius: 5px;
+      padding: 0; overflow: hidden;
     }
+    .bubble-plain {
+      padding: 13px 16px;
+      white-space: pre-wrap;
+    }
+
+    /* ─── Markdown in bubbles ─── */
+    .md-h1, .md-h2, .md-h3 {
+      font-weight: 800; letter-spacing: -0.015em; line-height: 1.25;
+      margin: 8px 0 6px;
+    }
+    .md-h1 { font-size: 1.22rem; }
+    .md-h2 { font-size: 1.10rem; }
+    .md-h3 { font-size: 1.00rem; }
+    strong { font-weight: 700; }
+    em { font-style: italic; }
+
+    /* ─── Premium Card ─── */
+    .premium-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 16px 20px 14px;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 60%, #06b6d4 100%);
+      position: relative; overflow: hidden;
+    }
+    .card-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .card-header-eyebrow {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.7); margin-bottom: 4px;
+      position: relative;
+    }
+    .premium-title {
+      font-size: 1.15rem; font-weight: 800;
+      letter-spacing: -0.02em; color: #fff;
+      position: relative; line-height: 1.25;
+    }
+
+    /* ─── Tabs ─── */
+    .tabs-bar {
+      display: flex; gap: 0;
+      background: rgba(248,250,252,0.9);
+      border-bottom: 1px solid rgba(99,102,241,0.10);
+      padding: 10px 16px 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs-bar::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      border: none; background: none;
+      padding: 8px 14px 10px;
+      font: inherit; font-size: 12.5px; font-weight: 600;
+      cursor: pointer; color: var(--muted);
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      transition: color 0.18s, background 0.18s;
+      display: flex; align-items: center; gap: 6px;
+      white-space: nowrap; flex-shrink: 0;
+      position: relative; letter-spacing: 0.01em;
+    }
+    .tab-btn .tab-icon {
+      width: 18px; height: 18px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      transition: background 0.18s;
+    }
+    .tab-btn::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2.5px; border-radius: 2px 2px 0 0;
+      background: transparent; transition: background 0.18s;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--text); font-weight: 700; }
+
+    /* Section-specific tab active colors */
+    .tab-btn[data-section="intuition"].active::after { background: var(--col-intuition); }
+    .tab-btn[data-section="intuition"].active .tab-icon { background: rgba(245,158,11,0.15); }
+    .tab-btn[data-section="step"].active::after { background: var(--col-steps); }
+    .tab-btn[data-section="step"].active .tab-icon { background: rgba(16,185,129,0.15); }
+    .tab-btn[data-section="math"].active::after { background: var(--col-math); }
+    .tab-btn[data-section="math"].active .tab-icon { background: rgba(99,102,241,0.15); }
+    .tab-btn[data-section="takeaway"].active::after { background: var(--col-takeaways); }
+    .tab-btn[data-section="takeaway"].active .tab-icon { background: rgba(236,72,153,0.15); }
+    .tab-btn[data-section="default"].active::after { background: var(--col-default); }
+    .tab-btn[data-section="default"].active .tab-icon { background: rgba(6,182,212,0.15); }
+
+    /* ─── Tab Body ─── */
+    .tab-body {
+      background: #fff; min-height: 80px;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: tabFadeIn 0.2s ease both; }
+    @keyframes tabFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    .tab-section {
+      padding: 18px 20px;
+    }
+    .tab-section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .tab-section-label .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+    }
+
+    /* ─── Math Block ─── */
+    .math-block {
+      margin: 12px 0;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #f8f7ff 0%, #f0f4ff 100%);
+      border: 1px solid rgba(99,102,241,0.18);
+      padding: 16px 18px;
+      position: relative; overflow: hidden;
+    }
+    .math-block::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, #6366f1, #8b5cf6);
+      border-radius: 2px 0 0 2px;
+    }
+    .math-block .mjx-chtml,
+    .math-block .MathJax {
+      font-size: 1.08em !important;
+    }
+    .math-block-label {
+      font-size: 9.5px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #6366f1;
+      margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+    }
+    .math-block-label::before { content: '∑'; font-size: 13px; }
+    .math-inline {
+      white-space: normal;
+      color: #4f46e5;
+      font-style: normal;
+    }
+
+    /* ─── Code Block ─── */
+    .code-block-wrap {
+      margin: 10px 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(15,23,42,0.12);
+    }
+    .code-block-header {
+      background: #1e2435;
+      padding: 8px 14px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .code-block-lang {
+      font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em;
+      color: #94a3b8; text-transform: uppercase;
+    }
+    .copy-btn {
+      border: 1px solid rgba(148,163,184,0.25);
+      border-radius: 5px; background: rgba(255,255,255,0.08);
+      color: #94a3b8; font-size: 10.5px; font-weight: 600;
+      padding: 3px 9px; cursor: pointer; font-family: inherit;
+      transition: all 0.15s;
+    }
+    .copy-btn:hover { background: rgba(255,255,255,0.14); color: #e2e8f0; }
+    .copy-btn.copied { color: #34d399; border-color: rgba(52,211,153,0.3); }
+    .code-block-wrap pre {
+      margin: 0; border-radius: 0;
+    }
+    .code-block-wrap pre code {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 12.5px !important; line-height: 1.6 !important;
+    }
+
+    /* ─── Key Fact Block ─── */
+    .key-fact {
+      display: flex; gap: 10px; align-items: flex-start;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      margin: 8px 0;
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 1px solid rgba(234,179,8,0.25);
+    }
+    .key-fact .kf-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .key-fact .kf-text { font-size: 13px; line-height: 1.55; font-weight: 500; }
+
+    /* ─── Takeaway List ─── */
+    .takeaway-list { list-style: none; display: flex; flex-direction: column; gap: 8px; padding: 0; margin: 0; }
+    .takeaway-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; line-height: 1.55;
+    }
+    .takeaway-list li .check {
+      width: 18px; height: 18px; border-radius: 5px;
+      background: linear-gradient(135deg, #ec4899, #f43f5e);
+      color: #fff; font-size: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+
+    /* ─── Step List ─── */
+    .step-list { counter-reset: step; list-style: none; display: flex; flex-direction: column; gap: 12px; padding: 0; margin: 0; }
+    .step-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 13px; line-height: 1.6;
+      counter-increment: step;
+    }
+    .step-list li .step-num {
+      width: 22px; height: 22px; border-radius: 7px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff; font-size: 11px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .step-list li .step-num::before { content: counter(step); }
+
+    /* ─── Composer ─── */
     .composer {
-      position: sticky;
-      bottom: 0;
-      z-index: 5;
-      padding: 18px;
-      border-top: 1px solid rgba(148,163,184,0.18);
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(10px);
+      position: sticky; bottom: 0; z-index: 5;
+      padding: 16px 18px;
+      border-top: 1px solid rgba(148,163,184,0.14);
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
     .composer-inner {
-      display: flex;
-      gap: 12px;
-      align-items: flex-end;
-      padding: 12px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.8);
-      border: 1px solid rgba(148,163,184,0.16);
-      box-shadow: 0 12px 28px rgba(99,102,241,0.08);
+      display: flex; gap: 10px; align-items: flex-end;
+      padding: 10px 14px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(148,163,184,0.18);
+      box-shadow: 0 8px 24px rgba(99,102,241,0.08);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .composer-inner:focus-within {
+      border-color: rgba(99,102,241,0.4);
+      box-shadow: 0 8px 24px rgba(99,102,241,0.14), 0 0 0 3px rgba(99,102,241,0.07);
     }
     textarea {
-      flex: 1;
-      border: none;
-      resize: none;
-      min-height: 56px;
-      max-height: 180px;
-      font: inherit;
-      font-size: 14px;
-      line-height: 1.5;
-      color: var(--text);
-      background: transparent;
-      outline: none;
-      padding: 10px 8px;
+      flex: 1; border: none; resize: none;
+      min-height: 52px; max-height: 180px;
+      font: inherit; font-size: 14px; line-height: 1.5;
+      color: var(--text); background: transparent; outline: none;
+      padding: 8px 6px;
     }
     textarea::placeholder { color: #94a3b8; }
     .send-btn {
-      width: 48px;
-      height: 48px;
-      border: none;
-      border-radius: 16px;
-      cursor: pointer;
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 10px 22px rgba(99,102,241,0.24);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      width: 44px; height: 44px; border: none;
+      border-radius: 14px; cursor: pointer; color: #fff; font-family: inherit;
+      background: var(--user-grad);
+      box-shadow: 0 8px 20px rgba(99,102,241,0.28);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px;
+      transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
       flex-shrink: 0;
     }
-    .send-btn:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(99,102,241,0.28); }
-    .send-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-    .typing {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 13px;
-      font-style: italic;
+    .send-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(99,102,241,0.34); }
+    .send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* ─── Typing ─── */
+    .typing-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 16px; color: var(--muted);
+      font-size: 13px; font-style: italic;
     }
-    .spinner {
-      width: 14px;
-      height: 14px;
-      border: 2px solid rgba(99,102,241,0.18);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
+    .typing-dots {
+      display: flex; gap: 4px; align-items: center;
     }
+    .typing-dots span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      animation: typingPulse 1.2s ease-in-out infinite;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingPulse {
+      0%, 60%, 100% { opacity: 0.25; transform: scale(0.8); }
+      30% { opacity: 1; transform: scale(1); }
+    }
+
     @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── Responsive ─── */
     @media (max-width: 900px) {
       .intro-cards { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
-      .shell { padding: 14px; gap: 12px; }
-      .messages { padding: 16px; }
-      .messages { padding-bottom: 22px; }
-      .composer { padding: 14px; }
+      .shell { padding: 12px; gap: 10px; }
+      .messages { padding: 14px; }
+      .composer { padding: 12px 14px; }
       .bubble { font-size: 13px; }
-      .intro-panel { padding: 8px 0; gap: 14px; }
     }
   </style>
 </head>
@@ -351,7 +551,7 @@
           <div class="intro-cards">
             <div class="intro-card">Got some doubt on a topic!</div>
             <div class="intro-card">Help me with some interview hacks</div>
-            <div class="intro-card">Stresses about long term career prospect...</div>
+            <div class="intro-card">Stressed about long term career prospects...</div>
           </div>
         </div>
       </div>
@@ -374,72 +574,430 @@
     const history = [];
     const GROQ_MODELS = ['llama-3.3-70b-versatile', 'llama-3.1-70b-versatile', 'llama-3.1-8b-instant', 'gemma2-9b-it'];
 
-    const systemPrompt = `You are Mentor, a warm, human, and highly capable teaching assistant for ${subjectLabel}.\n\nYour job is to teach, not just answer. Use a student-friendly tone that feels patient, natural, and supportive.\n\nRules for every answer:\n- Explain the main idea clearly before going into detail\n- Break the answer into small, understandable steps\n- Use intuitive examples and analogies\n- Be detailed enough that the student can actually learn from the response\n- If the question is ambiguous, say what assumption you are using\n- Mention common mistakes or misconceptions when helpful\n- Keep the tone encouraging, warm, and human\n- Prefer substance over brevity, unless the student asks for a short answer\n- End with a helpful takeaway or a next-step suggestion\n- Give mathematical formulae in latex\n\nWhen appropriate, you can ask a follow-up question back to the student to personalize the help.`;
+    const systemPrompt = `You are Mentor, a warm, human, and highly capable teaching assistant for ${subjectLabel}.\n\nYour job is to teach, not just answer. Use a student-friendly tone that feels patient, natural, and supportive.\n\nRules for every answer:\n- Explain the main idea clearly before going into detail\n- Break the answer into small, understandable steps\n- Use intuitive examples and analogies\n- Be detailed enough that the student can actually learn from the response\n- If the question is ambiguous, say what assumption you are using\n- Mention common mistakes or misconceptions when helpful\n- Keep the tone encouraging, warm, and human\n- Prefer substance over brevity, unless the student asks for a short answer\n- End with a helpful takeaway or a next-step suggestion\n- Give mathematical formulae in latex\n\nWhen appropriate, you can ask a follow-up question back to the student to personalize the help.\n\nIMPORTANT: Always respond in the following structured JSON format:\n\nCRITICAL:\n- Output VALID JSON only\n- Escape all newlines as \\\\n\n- Do not break strings across lines\n- Do not include explanations outside JSON\n\n{\n  "title": "Topic name",\n  "sections": [\n    {\n      "heading": "Intuition",\n      "content": "Explain simply..."\n    },\n    {\n      "heading": "Step-by-Step",\n      "content": "Detailed explanation..."\n    },\n    {\n      "heading": "Mathematics",\n      "content": "Use STRICT LaTeX:\\n  - Always wrap math in $$...$$ (block) or $...$ (inline)\\n  - Use proper syntax like:\\n    $$P(X = k) = \\\\binom{n}{k} p^k (1-p)^{n-k}$$\\n  - Never omit variables"\n    },\n    {\n      "heading": "Key Takeaways",\n      "content": "Summary points"\n    }\n  ]\n}\n\nRules:\n- Always follow this structure\n- Use LaTeX inside $$ $$ for math\n- Keep sections meaningful\n- No extra text outside JSON`;
 
+    /* ── Escape HTML ── */
     function escapeHtml(text) {
       const div = document.createElement('div');
       div.textContent = text;
       return div.innerHTML;
     }
 
+    /* ── Section type detector ── */
+    function detectSectionType(heading) {
+      const h = heading.toLowerCase();
+      if (h.includes('intuit') || h.includes('concept') || h.includes('overview') || h.includes('idea'))
+        return 'intuition';
+      if (h.includes('step') || h.includes('how') || h.includes('process') || h.includes('guide') || h.includes('detail'))
+        return 'step';
+      if (h.includes('math') || h.includes('formula') || h.includes('equation') || h.includes('proof') || h.includes('derivat'))
+        return 'math';
+      if (h.includes('takeaway') || h.includes('summary') || h.includes('key') || h.includes('conclusion') || h.includes('tip'))
+        return 'takeaway';
+      return 'default';
+    }
+
+    const SECTION_META = {
+      intuition:  { icon: '💡', color: '#f59e0b', label: 'Intuition' },
+      step:       { icon: '📋', color: '#10b981', label: 'Steps'     },
+      math:       { icon: '∑',  color: '#6366f1', label: 'Math'      },
+      takeaway:   { icon: '✅', color: '#ec4899', label: 'Takeaways' },
+      default:    { icon: '📌', color: '#06b6d4', label: 'Details'   }
+    };
+
+    function repairJsonText(text) {
+      let result = '';
+      let inString = false;
+      let escaped = false;
+
+      for (const ch of text) {
+        if (inString) {
+          if (escaped) {
+            result += ch;
+            escaped = false;
+            continue;
+          }
+
+          if (ch === '\\') {
+            result += ch;
+            escaped = true;
+            continue;
+          }
+
+          if (ch === '"') {
+            result += ch;
+            inString = false;
+            continue;
+          }
+
+          if (ch === '\n') {
+            result += '\\n';
+            continue;
+          }
+
+          if (ch === '\r') {
+            continue;
+          }
+
+          if (ch === '\t') {
+            result += ' ';
+            continue;
+          }
+
+          result += ch;
+          continue;
+        }
+
+        result += ch;
+        if (ch === '"') {
+          inString = true;
+        }
+      }
+
+      return result.replace(/,\s*([}\]])/g, '$1');
+    }
+
+    function parseStructuredPayload(raw) {
+      if (!raw) return null;
+
+      if (typeof raw === 'object') {
+        return raw;
+      }
+
+      const source = String(raw).trim();
+      const jsonMatch = source.match(/\{[\s\S]*\}/);
+      if (!jsonMatch) return null;
+
+      const candidate = jsonMatch[0];
+
+      try {
+        return JSON.parse(candidate);
+      } catch (firstError) {
+        try {
+          return JSON.parse(repairJsonText(candidate));
+        } catch (secondError) {
+          return null;
+        }
+      }
+    }
+
+    function normalizeStructuredResponse(data) {
+      const parsed = typeof data === 'string' ? parseStructuredPayload(data) : data;
+      if (!parsed || typeof parsed !== 'object') return null;
+
+      if (Array.isArray(parsed.sections) && parsed.sections.length) {
+        return {
+          title: String(parsed.title || parsed.heading || 'Mentor Response'),
+          sections: parsed.sections
+            .filter(Boolean)
+            .map((sec, index) => ({
+              heading: String(sec.heading || sec.title || `Section ${index + 1}`),
+              content: typeof sec.content === 'string'
+                ? sec.content
+                : (sec.content == null ? '' : String(sec.content))
+            }))
+        };
+      }
+
+      if (Object.prototype.hasOwnProperty.call(parsed, 'heading') ||
+          Object.prototype.hasOwnProperty.call(parsed, 'content')) {
+        return {
+          title: String(parsed.title || parsed.heading || 'Mentor Response'),
+          sections: [{
+            heading: String(parsed.heading || parsed.title || 'Details'),
+            content: typeof parsed.content === 'string'
+              ? parsed.content
+              : (parsed.content == null ? '' : String(parsed.content))
+          }]
+        };
+      }
+
+      if (Array.isArray(parsed)) {
+        const sections = parsed
+          .filter(Boolean)
+          .map((item, index) => ({
+            heading: String(item.heading || item.title || `Section ${index + 1}`),
+            content: typeof item.content === 'string'
+              ? item.content
+              : (item.content == null ? '' : String(item.content))
+          }));
+
+        if (sections.length) {
+          return {
+            title: 'Mentor Response',
+            sections
+          };
+        }
+      }
+
+      return null;
+    }
+
+    /* ── Format rich text ── */
     function formatRichText(text) {
-      let safe = escapeHtml(text);
+      if (!text) return '';
 
-      // Markdown-like headings
+      text = String(text)
+        .replace(/\r\n/g, '\n')
+        .replace(/\\n/g, '\n')
+        .replace(/\\t/g, ' ');
+
+      const mathBlocks = [];
+      // Extract block math
+      text = text.replace(/\$\$([\s\S]+?)\$\$/g, (_, eq) => {
+        mathBlocks.push({ type: 'block', eq });
+        return `@@MATH_${mathBlocks.length - 1}@@`;
+      });
+      // Extract inline math
+      text = text.replace(/(^|[^\\])\$([^$\n]+?)\$/g, (_, p1, eq) => {
+        mathBlocks.push({ type: 'inline', eq });
+        return `${p1}@@MATH_${mathBlocks.length - 1}@@`;
+      });
+
+      // Escape HTML
+      let safe = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
+      // Code blocks (```lang\ncode```)
+      safe = safe.replace(/```(\w*)\n?([\s\S]+?)```/g, (_, lang, code) => {
+        const l = lang || 'code';
+        const id = 'cb_' + Math.random().toString(36).slice(2,7);
+        const hCode = escapeHtml(code.trim());
+        return `<div class="code-block-wrap">
+          <div class="code-block-header">
+            <span class="code-block-lang">${l}</span>
+            <button class="copy-btn" id="${id}" onclick="copyCode(this,'${id}')">Copy</button>
+          </div>
+          <pre><code class="language-${l}">${hCode}</code></pre>
+        </div>`;
+      });
+
+      // Headings
       safe = safe.replace(/^###\s+(.+)$/gm, '<div class="md-h3">$1</div>');
-      safe = safe.replace(/^##\s+(.+)$/gm, '<div class="md-h2">$1</div>');
-      safe = safe.replace(/^#\s+(.+)$/gm, '<div class="md-h1">$1</div>');
+      safe = safe.replace(/^##\s+(.+)$/gm,  '<div class="md-h2">$1</div>');
+      safe = safe.replace(/^#\s+(.+)$/gm,   '<div class="md-h1">$1</div>');
 
-      // Display math: $$ ... $$
-      safe = safe.replace(/\$\$([\s\S]+?)\$\$/g, '<div class="math-block">\\[$1\\]</div>');
-
-      // Inline math: $ ... $
-      safe = safe.replace(/(^|[^\\])\$([^$\n]+?)\$/g, '$1<span class="math-inline">\\($2\\)</span>');
-
-      // Bold and italic
+      // Bold / italic
       safe = safe.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>');
       safe = safe.replace(/(^|\s)\*([^*\n]+?)\*(?=\s|$|[.,!?;:])/g, '$1<em>$2</em>');
 
-      // New lines
-      safe = safe.replace(/\n/g, '<br>');
+      // Line breaks and lists
+      const lines = safe.split('\n');
+      let rendered = '';
+      let listType = null;
+      let listItems = [];
+
+      const flushList = () => {
+        if (!listType || listItems.length === 0) return;
+
+        if (listType === 'bullet') {
+          rendered += `<ul class="takeaway-list">` +
+            listItems.map(item => `<li><span class="check">✓</span><span>${item}</span></li>`).join('') +
+            `</ul>`;
+        } else {
+          rendered += `<ol class="step-list">` +
+            listItems.map(item => `<li><span class="step-num"></span><span>${item}</span></li>`).join('') +
+            `</ol>`;
+        }
+
+        listType = null;
+        listItems = [];
+      };
+
+      lines.forEach(line => {
+        const trimmed = line.trim();
+
+        if (!trimmed) {
+          flushList();
+          rendered += '<br>';
+          return;
+        }
+
+        const bulletMatch = trimmed.match(/^[-*•]\s+(.*)$/);
+        const numberMatch = trimmed.match(/^\d+[.)]\s+(.*)$/);
+
+        if (bulletMatch) {
+          if (listType && listType !== 'bullet') flushList();
+          listType = 'bullet';
+          listItems.push(bulletMatch[1]);
+          return;
+        }
+
+        if (numberMatch) {
+          if (listType && listType !== 'number') flushList();
+          listType = 'number';
+          listItems.push(numberMatch[1]);
+          return;
+        }
+
+        flushList();
+        rendered += `${line}<br>`;
+      });
+
+      flushList();
+      safe = rendered;
+
+      // Restore math
+      mathBlocks.forEach((m, i) => {
+        if (m.type === 'block') {
+          safe = safe.replace(`@@MATH_${i}@@`,
+            `<div class="math-block"><div class="math-block-label">Formula</div>\\[${m.eq}\\]</div>`);
+        } else {
+          safe = safe.replace(`@@MATH_${i}@@`,
+            `<span class="math-inline">\\(${m.eq}\\)</span>`);
+        }
+      });
 
       return safe;
     }
 
-    function addMessage(role, text, loading = false) {
-      if (introPanelEl && introPanelEl.isConnected) {
-        introPanelEl.remove();
+    /* ── Format a single section content ── */
+    function formatSectionContent(type, content) {
+      const meta = SECTION_META[type] || SECTION_META.default;
+      const formatted = formatRichText(content);
+
+      // Wrap in styled section
+      let inner = '';
+      if (type === 'takeaway') {
+        inner = formatted;
+      } else if (type === 'step') {
+        inner = formatted;
+      } else {
+        inner = formatted;
       }
+
+      return `<div class="tab-section">
+        <div class="tab-section-label" style="color:${meta.color}">
+          <span class="dot" style="background:${meta.color}"></span>
+          ${meta.label.toUpperCase()}
+        </div>
+        ${inner}
+      </div>`;
+    }
+
+    /* ── Render structured response ── */
+    function renderStructuredResponse(data) {
+      const normalized = normalizeStructuredResponse(data);
+      if (!normalized) {
+        return `<div class="bubble-plain">${formatRichText(typeof data === 'string' ? data : JSON.stringify(data, null, 2))}</div>`;
+      }
+
+      let tabs = '';
+      let contents = '';
+
+      normalized.sections.forEach((sec, i) => {
+        const type = detectSectionType(sec.heading);
+        const meta = SECTION_META[type] || SECTION_META.default;
+        const activeClass = i === 0 ? 'active' : '';
+
+        tabs += `<button class="tab-btn ${activeClass}" data-section="${type}" onclick="switchTab(this)">
+          <span class="tab-icon" style="font-size:12px">${meta.icon}</span>
+          ${sec.heading}
+        </button>`;
+
+        contents += `<div class="tab-content ${activeClass}" data-tab-idx="${i}">
+          ${formatSectionContent(type, sec.content)}
+        </div>`;
+      });
+
+      if (normalized.sections.length === 1) {
+        return `<div class="premium-card">
+        <div class="card-header">
+          <div class="card-header-eyebrow">${subjectLabel}</div>
+          <div class="premium-title">${escapeHtml(normalized.title || '')}</div>
+        </div>
+        ${contents}
+      </div>`;
+      }
+
+      return `<div class="premium-card">
+        <div class="card-header">
+          <div class="card-header-eyebrow">${subjectLabel}</div>
+          <div class="premium-title">${escapeHtml(normalized.title || '')}</div>
+        </div>
+        <div class="tabs-bar">${tabs}</div>
+        <div class="tab-body">${contents}</div>
+      </div>`;
+    }
+
+    /* ── Switch tab (scoped to nearest premium-card) ── */
+    function switchTab(btn) {
+      const card = btn.closest('.premium-card');
+      card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      card.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      const idx = Array.from(card.querySelectorAll('.tab-btn')).indexOf(btn);
+      const target = card.querySelectorAll('.tab-content')[idx];
+      if (target) target.classList.add('active');
+      if (window.MathJax) window.MathJax.typesetPromise([card]).catch(() => {});
+      if (typeof hljs !== 'undefined') {
+        card.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
+      }
+    }
+
+    /* ── Copy code ── */
+    function copyCode(btn) {
+      const pre = btn.closest('.code-block-wrap').querySelector('code');
+      navigator.clipboard.writeText(pre.textContent).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+
+    /* ── Auto grow textarea ── */
+    function autoGrow() {
+      inputEl.style.height = 'auto';
+      inputEl.style.height = Math.min(inputEl.scrollHeight, 160) + 'px';
+    }
+    inputEl.addEventListener('input', autoGrow);
+    inputEl.addEventListener('keydown', evt => {
+      if (evt.key === 'Enter' && !evt.shiftKey) { evt.preventDefault(); sendMessage(); }
+    });
+
+    /* ── Add message ── */
+    function addMessage(role, text, loading = false) {
+      if (introPanelEl && introPanelEl.isConnected) introPanelEl.remove();
+
       const row = document.createElement('div');
       row.className = `message ${role}`;
+
       if (role === 'bot') {
-        row.innerHTML = `<div class="avatar">🧠</div><div class="bubble">${loading ? '<span class="typing"><span class="spinner"></span>Preparing the best answer possible for you...</span>' : formatRichText(text)}</div>`;
+        if (loading) {
+          row.innerHTML = `<div class="avatar bot-av">🧠</div>
+            <div class="bubble">
+              <div class="typing-row">
+                <div class="typing-dots"><span></span><span></span><span></span></div>
+                Preparing the best answer…
+              </div>
+            </div>`;
+        } else {
+          row.innerHTML = `<div class="avatar bot-av">🧠</div>
+            <div class="bubble">${renderStructuredResponse(text)}</div>`;
+        }
       } else {
-        row.innerHTML = `<div class="avatar">You</div><div class="bubble">${formatRichText(text)}</div>`;
+        row.innerHTML = `<div class="avatar">You</div>
+          <div class="bubble">${formatRichText(text)}</div>`;
       }
+
       messagesEl.appendChild(row);
       messagesEl.scrollTop = messagesEl.scrollHeight;
 
-      if (!loading && window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
-        window.MathJax.typesetPromise([row]).catch(() => {});
+      if (!loading) {
+        if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+          window.MathJax.typesetPromise([row]).catch(() => {});
+        }
+        if (typeof hljs !== 'undefined') {
+          row.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
+        }
       }
 
       return row;
     }
 
-    function autoGrow() {
-      inputEl.style.height = 'auto';
-      inputEl.style.height = Math.min(inputEl.scrollHeight, 160) + 'px';
-    }
-
-    inputEl.addEventListener('input', autoGrow);
-    inputEl.addEventListener('keydown', evt => {
-      if (evt.key === 'Enter' && !evt.shiftKey) {
-        evt.preventDefault();
-        sendMessage();
-      }
-    });
-
+    /* ── Send message ── */
     async function sendMessage() {
       const text = inputEl.value.trim();
       if (!text || sendBtn.disabled) return;
@@ -456,11 +1014,13 @@
           temperature: 0.7,
           max_tokens: 1200
         });
-        const reply = response?.choices?.[0]?.message?.content?.trim();
+        let raw = response?.choices?.[0]?.message?.content?.trim();
+        let parsed = parseStructuredPayload(raw);
+
         loadingRow.remove();
-        if (reply) {
-          history.push({ role: 'assistant', content: reply });
-          addMessage('bot', reply);
+        if (raw) {
+          history.push({ role: 'assistant', content: raw });
+          addMessage('bot', parsed || raw);
         } else {
           addMessage('bot', 'I could not generate a response right now. Please try again.');
         }
@@ -473,6 +1033,7 @@
       }
     }
 
+    /* ── Groq with fallback ── */
     async function callGroqWithFallback(body) {
       let lastErr;
       for (const model of GROQ_MODELS) {
