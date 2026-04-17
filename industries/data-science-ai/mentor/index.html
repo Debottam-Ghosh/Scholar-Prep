@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/icons/favicon.png">
   <title>Ask Mentor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,7 +75,9 @@
       height: 100vh;
       display: flex;
       flex-direction: column;
-      padding: 20px;
+      width: min(1320px, 100%);
+      margin: 0 auto;
+      padding: clamp(16px, 2.4vw, 28px) clamp(18px, 4.2vw, 56px);
       gap: 14px;
     }
 
@@ -176,26 +179,68 @@
       text-align: center; line-height: 1.15;
       padding: 0 16px;
     }
+    .intro-title .prep-highlight { color: #ff0000; }
     .intro-cards {
       width: 100%;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(4, minmax(0, 198px));
+      gap: 22px;
+      align-items: stretch;
+      justify-content: center;
     }
     .intro-card {
-      border: 1px solid rgba(99,102,241,0.16);
-      border-radius: var(--radius-lg);
-      background: linear-gradient(140deg, rgba(255,255,255,0.96), rgba(238,242,255,0.9));
-      padding: 15px;
-      box-shadow: 0 8px 24px rgba(99,102,241,0.08), inset 0 1px 0 rgba(255,255,255,0.9);
-      font-size: 13px; font-weight: 600; line-height: 1.45;
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 88% 14%, rgba(99,102,241,0.14), transparent 48%),
+        linear-gradient(155deg, rgba(255,255,255,0.98), rgba(240,245,255,0.95));
+      padding: 16px 14px;
+      min-height: 132px;
+      box-shadow:
+        0 12px 28px rgba(99,102,241,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.94);
+      font-size: 14.2px;
+      font-weight: 600;
+      line-height: 1.5;
       opacity: 0; transform: translateY(10px) scale(0.985);
       animation: introReveal 0.45s cubic-bezier(0.2,0.8,0.2,1) forwards;
-      cursor: default;
+      cursor: pointer;
+      color: var(--text);
+      font-family: inherit;
+      text-align: left;
+      letter-spacing: 0.01em;
+      transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+      position: relative;
+      overflow: hidden;
+    }
+    .intro-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(99,102,241,0.12), rgba(6,182,212,0.1));
+      opacity: 0;
+      transition: opacity 0.22s;
+      pointer-events: none;
+    }
+    .intro-card:hover {
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 18px 38px rgba(99,102,241,0.18), inset 0 1px 0 rgba(255,255,255,0.92);
+      border-color: rgba(99,102,241,0.42);
+    }
+    .intro-card:hover::after { opacity: 1; }
+    .intro-card.active {
+      border-color: rgba(99,102,241,0.5);
+      box-shadow: 0 14px 32px rgba(99,102,241,0.18), 0 0 0 2px rgba(99,102,241,0.15);
+    }
+    .intro-card:focus-visible {
+      outline: none;
+      border-color: rgba(99,102,241,0.62);
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.2), 0 14px 32px rgba(99,102,241,0.18);
     }
     .intro-card:nth-child(1) { animation-delay: 0.06s; }
     .intro-card:nth-child(2) { animation-delay: 0.20s; }
     .intro-card:nth-child(3) { animation-delay: 0.34s; }
+    .intro-card:nth-child(4) { animation-delay: 0.48s; }
     @keyframes introReveal {
       from { opacity: 0; transform: translateY(10px) scale(0.985); }
       to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -288,72 +333,86 @@
       letter-spacing: -0.02em; color: #fff;
       position: relative; line-height: 1.25;
     }
-
-    /* ─── Tabs ─── */
-    .tabs-bar {
-      display: flex; gap: 0;
-      background: rgba(248,250,252,0.9);
-      border-bottom: 1px solid rgba(99,102,241,0.10);
-      padding: 10px 16px 0;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .tabs-bar::-webkit-scrollbar { display: none; }
-    .tab-btn {
-      border: none; background: none;
-      padding: 8px 14px 10px;
-      font: inherit; font-size: 12.5px; font-weight: 600;
-      cursor: pointer; color: var(--muted);
-      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-      transition: color 0.18s, background 0.18s;
-      display: flex; align-items: center; gap: 6px;
-      white-space: nowrap; flex-shrink: 0;
-      position: relative; letter-spacing: 0.01em;
-    }
-    .tab-btn .tab-icon {
-      width: 18px; height: 18px; border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
+    .card-header-meta {
+      position: relative;
+      margin-top: 6px;
       font-size: 11px;
-      transition: background 0.18s;
+      font-weight: 600;
+      color: rgba(255,255,255,0.86);
+      letter-spacing: 0.01em;
     }
-    .tab-btn::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 2.5px; border-radius: 2px 2px 0 0;
-      background: transparent; transition: background 0.18s;
-    }
-    .tab-btn:hover { color: var(--text); }
-    .tab-btn.active { color: var(--text); font-weight: 700; }
 
-    /* Section-specific tab active colors */
-    .tab-btn[data-section="intuition"].active::after { background: var(--col-intuition); }
-    .tab-btn[data-section="intuition"].active .tab-icon { background: rgba(245,158,11,0.15); }
-    .tab-btn[data-section="step"].active::after { background: var(--col-steps); }
-    .tab-btn[data-section="step"].active .tab-icon { background: rgba(16,185,129,0.15); }
-    .tab-btn[data-section="math"].active::after { background: var(--col-math); }
-    .tab-btn[data-section="math"].active .tab-icon { background: rgba(99,102,241,0.15); }
-    .tab-btn[data-section="takeaway"].active::after { background: var(--col-takeaways); }
-    .tab-btn[data-section="takeaway"].active .tab-icon { background: rgba(236,72,153,0.15); }
-    .tab-btn[data-section="default"].active::after { background: var(--col-default); }
-    .tab-btn[data-section="default"].active .tab-icon { background: rgba(6,182,212,0.15); }
-
-    /* ─── Tab Body ─── */
-    .tab-body {
-      background: #fff; min-height: 80px;
+    /* ─── Vertical Sections ─── */
+    .section-stack {
+      background: #fff;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; animation: tabFadeIn 0.2s ease both; }
-    @keyframes tabFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-
-    .tab-section {
-      padding: 18px 20px;
+    .section-accordion {
+      border-radius: 14px;
+      border: 1px solid var(--sec-border, rgba(148,163,184,0.24));
+      background: var(--sec-bg, rgba(248,250,252,0.88));
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(15,23,42,0.06);
+      transition: border-color 0.18s, box-shadow 0.18s;
     }
-    .tab-section-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; margin-bottom: 10px;
-      display: flex; align-items: center; gap: 8px;
+    .section-accordion[open] {
+      border-color: var(--sec-border-open, rgba(99,102,241,0.4));
+      box-shadow: 0 10px 22px rgba(99,102,241,0.11);
     }
-    .tab-section-label .dot {
-      width: 6px; height: 6px; border-radius: 50%;
+    .section-summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      background: var(--sec-head-bg, rgba(255,255,255,0.68));
+      border-bottom: 1px solid transparent;
+    }
+    .section-accordion[open] .section-summary {
+      border-bottom-color: var(--sec-border, rgba(148,163,184,0.24));
+    }
+    .section-summary::-webkit-details-marker { display: none; }
+    .section-summary-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .section-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      background: var(--sec-pill, rgba(99,102,241,0.18));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .section-heading-text {
+      font-size: 13px;
+      font-weight: 800;
+      color: #1e293b;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+    }
+    .section-caret {
+      color: #475569;
+      font-size: 12px;
+      transform: rotate(-90deg);
+      transition: transform 0.18s;
+      flex-shrink: 0;
+    }
+    .section-accordion[open] .section-caret { transform: rotate(0deg); }
+    .section-content {
+      padding: 14px 14px 16px;
+      font-size: 13.5px;
+      line-height: 1.65;
     }
 
     /* ─── Math Block ─── */
@@ -363,25 +422,16 @@
       background: linear-gradient(135deg, #f8f7ff 0%, #f0f4ff 100%);
       border: 1px solid rgba(99,102,241,0.18);
       padding: 16px 18px;
-      position: relative; overflow: hidden;
-    }
-    .math-block::before {
-      content: '';
-      position: absolute; left: 0; top: 0; bottom: 0;
-      width: 3px;
-      background: linear-gradient(180deg, #6366f1, #8b5cf6);
-      border-radius: 2px 0 0 2px;
+      overflow-x: auto;
+      overflow-y: hidden;
     }
     .math-block .mjx-chtml,
     .math-block .MathJax {
       font-size: 1.08em !important;
     }
-    .math-block-label {
-      font-size: 9.5px; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: #6366f1;
-      margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+    .math-block mjx-container[display="true"] {
+      min-width: max-content;
     }
-    .math-block-label::before { content: '∑'; font-size: 13px; }
     .math-inline {
       white-space: normal;
       color: #4f46e5;
@@ -485,6 +535,109 @@
       border-color: rgba(99,102,241,0.4);
       box-shadow: 0 8px 24px rgba(99,102,241,0.14), 0 0 0 3px rgba(99,102,241,0.07);
     }
+    .mode-switcher {
+      position: relative;
+      flex-shrink: 0;
+      align-self: center;
+    }
+    .mode-chip {
+      border: 1px solid rgba(99,102,241,0.28);
+      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(6,182,212,0.12));
+      color: #1e293b;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 9px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1;
+      transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+      white-space: nowrap;
+      max-width: 176px;
+    }
+    .mode-chip:hover {
+      transform: translateY(-1px);
+      border-color: rgba(99,102,241,0.46);
+      box-shadow: 0 8px 20px rgba(99,102,241,0.14);
+    }
+    .mode-chip:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.18), 0 8px 20px rgba(99,102,241,0.14);
+    }
+    .mode-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #6366f1;
+      box-shadow: 0 0 0 4px rgba(99,102,241,0.14);
+      flex-shrink: 0;
+    }
+    .mode-chip-label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .mode-caret {
+      font-size: 10px;
+      opacity: 0.75;
+      margin-left: 1px;
+    }
+    .mode-switcher.open .mode-caret {
+      transform: rotate(180deg);
+    }
+    .mode-menu {
+      position: absolute;
+      left: 0;
+      bottom: calc(100% + 10px);
+      min-width: 190px;
+      border-radius: 14px;
+      border: 1px solid rgba(99,102,241,0.18);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 20px 38px rgba(15,23,42,0.14);
+      padding: 8px;
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 40;
+    }
+    .mode-switcher.open .mode-menu {
+      display: flex;
+      animation: modeMenuIn 0.2s ease both;
+    }
+    @keyframes modeMenuIn {
+      from { opacity: 0; transform: translateY(6px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .mode-option {
+      border: 1px solid rgba(148,163,184,0.24);
+      border-radius: 10px;
+      background: #fff;
+      color: #1e293b;
+      font: inherit;
+      font-size: 12.5px;
+      font-weight: 650;
+      text-align: left;
+      cursor: pointer;
+      padding: 9px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: border-color 0.16s, transform 0.16s, box-shadow 0.16s;
+    }
+    .mode-option:hover {
+      transform: translateY(-1px);
+      border-color: rgba(99,102,241,0.38);
+      box-shadow: 0 8px 16px rgba(99,102,241,0.11);
+    }
+    .mode-option.selected {
+      border-color: rgba(99,102,241,0.56);
+      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(6,182,212,0.12));
+      box-shadow: 0 6px 16px rgba(99,102,241,0.14);
+    }
     textarea {
       flex: 1; border: none; resize: none;
       min-height: 52px; max-height: 180px;
@@ -527,6 +680,60 @@
       30% { opacity: 1; transform: scale(1); }
     }
 
+    /* ─── Toast ─── */
+    .mode-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%) translateY(12px);
+      background: rgba(15,23,42,0.92);
+      color: #f8fafc;
+      border: 1px solid rgba(148,163,184,0.28);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      box-shadow: 0 10px 26px rgba(15,23,42,0.26);
+      z-index: 80;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      max-width: min(92vw, 620px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .mode-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .explain-selection-btn {
+      position: fixed;
+      z-index: 90;
+      border: 1px solid rgba(99,102,241,0.3);
+      background: linear-gradient(135deg, rgba(99,102,241,0.96), rgba(6,182,212,0.96));
+      color: #fff;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 6px 12px;
+      box-shadow: 0 10px 24px rgba(30,41,59,0.24);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 8px);
+      transition: opacity 0.16s ease, transform 0.16s ease;
+      white-space: nowrap;
+    }
+    .explain-selection-btn.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+    }
+
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ─── Responsive ─── */
@@ -538,6 +745,9 @@
       .messages { padding: 14px; }
       .composer { padding: 12px 14px; }
       .bubble { font-size: 13px; }
+      .composer-inner { align-items: center; }
+      .mode-chip { max-width: 140px; padding: 8px 10px; }
+      .mode-menu { min-width: 166px; }
     }
   </style>
 </head>
@@ -547,22 +757,33 @@
       <div class="messages" id="messages">
         <div class="intro-panel" id="introPanel">
           <img class="intro-icon" src="../../../icons/mentor.png" alt="" />
-          <div class="intro-title">How's your prep going?</div>
+          <div class="intro-title">How's your <span class="prep-highlight">prep</span> going?</div>
           <div class="intro-cards">
-            <div class="intro-card">Got some doubt on a topic!</div>
-            <div class="intro-card">Help me with some interview hacks</div>
-            <div class="intro-card">Stressed about long term career prospects...</div>
+            <button type="button" class="intro-card" data-mode="deepdive">Deep dive into this</button>
+            <button type="button" class="intro-card" data-mode="interviewready">How to answer this in an interview</button>
+            <button type="button" class="intro-card" data-mode="followups">Follow-up questions that can be asked after this</button>
+            <button type="button" class="intro-card" data-mode="quickrevision">Key points to remember for quick revision</button>
           </div>
         </div>
       </div>
       <div class="composer">
         <div class="composer-inner">
+          <div class="mode-switcher" id="modeSwitcher">
+            <button class="mode-chip" id="modeChip" type="button" aria-expanded="false" aria-controls="modeMenu">
+              <span class="mode-dot" id="modeDot"></span>
+              <span class="mode-chip-label" id="modeChipLabel">Deep dive</span>
+              <span class="mode-caret">▾</span>
+            </button>
+            <div class="mode-menu" id="modeMenu"></div>
+          </div>
           <textarea id="promptInput" placeholder="Ask anything about the topic..." rows="1"></textarea>
           <button class="send-btn" id="sendBtn" type="button" onclick="sendMessage()">➤</button>
         </div>
       </div>
     </div>
   </div>
+  <div class="mode-toast" id="modeToast" aria-live="polite"></div>
+  <button type="button" class="explain-selection-btn" id="explainSelectionBtn">✦Explain</button>
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -571,10 +792,48 @@
     const introPanelEl = document.getElementById('introPanel');
     const inputEl = document.getElementById('promptInput');
     const sendBtn = document.getElementById('sendBtn');
+    const modeSwitcherEl = document.getElementById('modeSwitcher');
+    const modeChipEl = document.getElementById('modeChip');
+    const modeChipLabelEl = document.getElementById('modeChipLabel');
+    const modeDotEl = document.getElementById('modeDot');
+    const modeMenuEl = document.getElementById('modeMenu');
+    const modeToastEl = document.getElementById('modeToast');
+    const explainSelectionBtnEl = document.getElementById('explainSelectionBtn');
+    const modeCards = Array.from(document.querySelectorAll('.intro-card[data-mode]'));
     const history = [];
-    const GROQ_MODELS = ['llama-3.3-70b-versatile', 'llama-3.1-70b-versatile', 'llama-3.1-8b-instant', 'gemma2-9b-it'];
+    const GROQ_MODELS = [
+      'llama-3.3-70b-versatile',
+      'llama-3.1-8b-instant',
+      'gemma2-9b-it',
+      'meta-llama/llama-4-scout-17b-16e-instruct',
+      'meta-llama/llama-4-maverick-17b-128e-instruct',
+      'deepseek-r1-distill-llama-70b'
+    ];
+    const MODE_OPTIONS = [
+      { id: 'deepdive', label: 'Deep dive', icon: '🧠', color: '#6366f1' },
+      { id: 'interviewready', label: 'Interview-ready', icon: '🎯', color: '#10b981' },
+      { id: 'followups', label: 'Follow-ups', icon: '❓', color: '#ec4899' },
+      { id: 'quickrevision', label: 'Quick revision', icon: '⚡', color: '#f59e0b' }
+    ];
+    let activeMode = 'deepdive';
+    let toastTimer = null;
+    let explainSelectedText = '';
 
-    const systemPrompt = `You are Mentor, a warm, human, and highly capable teaching assistant for ${subjectLabel}.\n\nYour job is to teach, not just answer. Use a student-friendly tone that feels patient, natural, and supportive.\n\nRules for every answer:\n- Explain the main idea clearly before going into detail\n- Break the answer into small, understandable steps\n- Use intuitive examples and analogies\n- Be detailed enough that the student can actually learn from the response\n- If the question is ambiguous, say what assumption you are using\n- Mention common mistakes or misconceptions when helpful\n- Keep the tone encouraging, warm, and human\n- Prefer substance over brevity, unless the student asks for a short answer\n- End with a helpful takeaway or a next-step suggestion\n- Give mathematical formulae in latex\n\nWhen appropriate, you can ask a follow-up question back to the student to personalize the help.\n\nIMPORTANT: Always respond in the following structured JSON format:\n\nCRITICAL:\n- Output VALID JSON only\n- Escape all newlines as \\\\n\n- Do not break strings across lines\n- Do not include explanations outside JSON\n\n{\n  "title": "Topic name",\n  "sections": [\n    {\n      "heading": "Intuition",\n      "content": "Explain simply..."\n    },\n    {\n      "heading": "Step-by-Step",\n      "content": "Detailed explanation..."\n    },\n    {\n      "heading": "Mathematics",\n      "content": "Use STRICT LaTeX:\\n  - Always wrap math in $$...$$ (block) or $...$ (inline)\\n  - Use proper syntax like:\\n    $$P(X = k) = \\\\binom{n}{k} p^k (1-p)^{n-k}$$\\n  - Never omit variables"\n    },\n    {\n      "heading": "Key Takeaways",\n      "content": "Summary points"\n    }\n  ]\n}\n\nRules:\n- Always follow this structure\n- Use LaTeX inside $$ $$ for math\n- Keep sections meaningful\n- No extra text outside JSON`;
+    const BASE_SYSTEM_PROMPT = `You are Mentor, a warm but brutally clear expert for Data Science interview prep.\n\nYou must produce practical, high-quality, interview-usable answers.\n\nGlobal rules:\n- If the question is ambiguous, state assumptions explicitly\n- Avoid fluff and generic motivational text\n- Use precise technical language where needed\n- Keep content high signal and readable with line breaks\n- If code is needed, ALWAYS output fenced code blocks with the correct language tag\n- For mathematical text, STRICTLY use LaTeX only: inline $...$ and block $$...$$\n\nFormatting rules:\n- Output VALID JSON only\n- No markdown fences around the JSON itself\n- Do not output any text outside JSON\n- Escape newlines as \\n\nJSON schema (strict):\n{\n  "title": "Short topic from user's exact question",\n  "sections": [\n    {"heading": "...", "content": "..."}\n  ]\n}`;
+
+    const MODE_PROMPT_MAP = {
+      deepdive: `Mode: Deep dive\n\nReturn exactly 1 section with heading exactly: "Deep dive"\n\nStyle requirements:\n- Explain from first principles\n- Assume zero prior knowledge\n- Cover all related subtopics and intuition\n- Provide examples wherever helpful\n- Be comprehensive but readable\n- For math, use strict LaTeX only: inline $...$ and block $$...$$\n- If code is required, use fenced code blocks with correct language tags`,
+      interviewready: `Mode: Interview-ready\n\nReturn exactly 1 section with heading exactly: "Interview-ready"\n\nStyle requirements:\n- Provide a precise, structured answer exactly as the user should speak in an interview\n- Use line-by-line format with concise, confident statements\n- Avoid unnecessary explanations\n- Keep the response directly usable as spoken interview content\n- For math, use strict LaTeX only: inline $...$ and block $$...$$\n- If code is required, use fenced code blocks with correct language tags`,
+      followups: `Mode: Follow-ups\n\nReturn exactly 1 section with heading exactly: "Follow-ups"\n\nStyle requirements:\n- Generate only follow-up questions\n- Use strictly numbered format (1., 2., 3., ...)\n- Do not include answers\n- Keep each question sharp and interview-relevant`,
+      quickrevision: `Mode: Quick revision\n\nReturn exactly 1 section with heading exactly: "Quick revision"\n\nStyle requirements:\n- Provide crisp bullet points only\n- Include only key facts, formulas, and takeaways\n- Optimize for fast recall during exams\n- Keep items short and high signal\n- For formulas, use strict LaTeX only: inline $...$ and block $$...$$`
+    };
+
+    function buildSystemPrompt(modeId) {
+      const modePrompt = MODE_PROMPT_MAP[modeId] || MODE_PROMPT_MAP.deepdive;
+      return `${BASE_SYSTEM_PROMPT}\n\n${modePrompt}`;
+    }
+
+    const EXPLANATION_SYSTEM_PROMPT = `You are Mentor. The user has selected a specific text span and wants a direct explanation.\n\nInstructions:\n- Ignore all mode-specific section instructions\n- Explain only the selected text deeply but clearly\n- Use concise bullets where helpful\n- Support markdown bold and LaTeX math when relevant\n\nOutput rules:\n- Output VALID JSON only\n- No markdown fences\n- No text outside JSON\n- Escape newlines as \\n\nRequired JSON schema:\n{\n  "title": "Explanation",\n  "sections": [\n    {\n      "heading": "Explanation",\n      "content": "Detailed explanation of selected text"\n    }\n  ]\n}`;
 
     /* ── Escape HTML ── */
     function escapeHtml(text) {
@@ -665,36 +924,131 @@
       }
 
       const source = String(raw).trim();
-      const jsonMatch = source.match(/\{[\s\S]*\}/);
-      if (!jsonMatch) return null;
+      const unfenced = source
+        .replace(/^```json\s*/i, '')
+        .replace(/^```\s*/i, '')
+        .replace(/\s*```$/, '')
+        .trim();
 
-      const candidate = jsonMatch[0];
-
-      try {
-        return JSON.parse(candidate);
-      } catch (firstError) {
+      function tryParse(value) {
         try {
-          return JSON.parse(repairJsonText(candidate));
-        } catch (secondError) {
+          return JSON.parse(value);
+        } catch (_) {
           return null;
         }
       }
+
+      function extractFirstJsonBlock(text) {
+        const start = text.search(/[\[{]/);
+        if (start < 0) return null;
+
+        const opener = text[start];
+        const closer = opener === '{' ? '}' : ']';
+        let depth = 0;
+        let inString = false;
+        let escaped = false;
+
+        for (let i = start; i < text.length; i++) {
+          const ch = text[i];
+
+          if (inString) {
+            if (escaped) {
+              escaped = false;
+              continue;
+            }
+            if (ch === '\\') {
+              escaped = true;
+              continue;
+            }
+            if (ch === '"') {
+              inString = false;
+            }
+            continue;
+          }
+
+          if (ch === '"') {
+            inString = true;
+            continue;
+          }
+
+          if (ch === opener) depth++;
+          if (ch === closer) {
+            depth--;
+            if (depth === 0) {
+              return text.slice(start, i + 1);
+            }
+          }
+        }
+
+        return null;
+      }
+
+      if (unfenced.startsWith('"') && unfenced.endsWith('"')) {
+        try {
+          const unwrapped = JSON.parse(unfenced);
+          return parseStructuredPayload(unwrapped);
+        } catch (_) {
+          // Ignore and continue with standard extraction.
+        }
+      }
+
+      const direct = tryParse(unfenced);
+      if (direct && typeof direct === 'object') return direct;
+      if (typeof direct === 'string') return parseStructuredPayload(direct);
+
+      // Handle heavily escaped JSON strings that are not valid direct JSON.
+      const unescaped = unfenced
+        .replace(/\\\"/g, '"')
+        .replace(/\\n/g, '\n')
+        .replace(/\\t/g, '\t');
+
+      const directUnescaped = tryParse(unescaped);
+      if (directUnescaped && typeof directUnescaped === 'object') return directUnescaped;
+      if (typeof directUnescaped === 'string') return parseStructuredPayload(directUnescaped);
+
+      const candidateSearchSpace = [unfenced, unescaped];
+      for (const text of candidateSearchSpace) {
+        const candidate = extractFirstJsonBlock(text);
+        if (!candidate) continue;
+
+        const parsedCandidate = tryParse(candidate) || tryParse(repairJsonText(candidate));
+        if (parsedCandidate && typeof parsedCandidate === 'object') {
+          return parsedCandidate;
+        }
+      }
+
+      return null;
     }
 
     function normalizeStructuredResponse(data) {
       const parsed = typeof data === 'string' ? parseStructuredPayload(data) : data;
+
+      if (typeof parsed === 'string') {
+        return normalizeStructuredResponse(parseStructuredPayload(parsed));
+      }
+
       if (!parsed || typeof parsed !== 'object') return null;
 
-      if (Array.isArray(parsed.sections) && parsed.sections.length) {
+      const wrapped = parsed.response || parsed.data || parsed.result || parsed.answer;
+      if (wrapped && (typeof wrapped === 'object' || typeof wrapped === 'string')) {
+        return normalizeStructuredResponse(wrapped);
+      }
+
+      let sectionsSource = parsed.sections || parsed.Sections || parsed.sectionList || parsed.items;
+      if (!Array.isArray(sectionsSource) && sectionsSource && typeof sectionsSource === 'object') {
+        sectionsSource = Object.values(sectionsSource);
+      }
+
+      if (Array.isArray(sectionsSource) && sectionsSource.length) {
         return {
           title: String(parsed.title || parsed.heading || 'Mentor Response'),
-          sections: parsed.sections
+          sections: sectionsSource
             .filter(Boolean)
             .map((sec, index) => ({
               heading: String(sec.heading || sec.title || `Section ${index + 1}`),
               content: typeof sec.content === 'string'
                 ? sec.content
-                : (sec.content == null ? '' : String(sec.content))
+                : (sec.content == null ? '' : (typeof sec.content === 'object' ? JSON.stringify(sec.content, null, 2) : String(sec.content)))
             }))
         };
       }
@@ -709,6 +1063,22 @@
               ? parsed.content
               : (parsed.content == null ? '' : String(parsed.content))
           }]
+        };
+      }
+
+      // Last-resort conversion: turn object keys into titled sections.
+      const objectEntries = Object.entries(parsed)
+        .filter(([key]) => key !== 'title')
+        .filter(([, value]) => value != null)
+        .map(([key, value]) => ({
+          heading: String(key),
+          content: typeof value === 'string' ? value : JSON.stringify(value, null, 2)
+        }));
+
+      if (objectEntries.length) {
+        return {
+          title: String(parsed.title || 'Mentor Response'),
+          sections: objectEntries
         };
       }
 
@@ -731,6 +1101,295 @@
       }
 
       return null;
+    }
+
+    function recoverStructuredFromText(rawText) {
+      const text = String(rawText || '').trim();
+      if (!text) return null;
+
+      // Try to salvage sections even from truncated JSON.
+      const sectionMatches = [...text.matchAll(/"heading"\s*:\s*"([^"]+)"\s*,\s*"content"\s*:\s*"([\s\S]*?)(?="\s*}\s*,|"\s*}\s*]|"\s*}\s*$)/g)];
+      if (sectionMatches.length) {
+        const sections = sectionMatches.map((m) => ({
+          heading: (m[1] || 'Details').trim(),
+          content: (m[2] || '').replace(/\\n/g, '\n').replace(/\\"/g, '"').trim()
+        }));
+
+        const titleMatch = text.match(/"title"\s*:\s*"([^"]+)/);
+        return {
+          title: titleMatch ? titleMatch[1].trim() : 'Mentor Response',
+          sections
+        };
+      }
+
+      // Markdown-like fallback.
+      const blocks = text.split(/\n(?=#+\s|\*\*[^*]+\*\*\s*$|\d+[.)]\s)/).map(s => s.trim()).filter(Boolean);
+      if (blocks.length >= 2) {
+        const sections = blocks.map((b, i) => {
+          const lines = b.split('\n').filter(Boolean);
+          const first = lines[0] || `Section ${i + 1}`;
+          const heading = first
+            .replace(/^#+\s*/, '')
+            .replace(/^\*\*(.+)\*\*$/, '$1')
+            .replace(/^\d+[.)]\s*/, '')
+            .trim();
+          return {
+            heading: heading || `Section ${i + 1}`,
+            content: lines.slice(1).join('\n').trim() || b
+          };
+        });
+
+        return { title: 'Mentor Response', sections };
+      }
+
+      return null;
+    }
+
+    function extractFollowUpSectionContent(rawText) {
+      const text = String(rawText || '');
+      if (!text) return '';
+
+      const exactSectionMatch = text.match(/"heading"\s*:\s*"Questions that can be asked as follow-ups"[\s\S]*?"content"\s*:\s*"([\s\S]*?)"\s*[,}\]]/i)
+        || text.match(/Questions that can be asked as follow-ups[\s\S]*?"content"\s*:\s*"([\s\S]*)$/i);
+
+      if (exactSectionMatch && exactSectionMatch[1]) {
+        return exactSectionMatch[1]
+          .replace(/\\n/g, '\n')
+          .replace(/\\"/g, '"')
+          .trim();
+      }
+
+      const qaPairs = [];
+      const qaRegex = /(?:^|\n)\s*(?:[-*]|\d+[.)])?\s*(?:Q(?:uestion)?\s*[:\-]?\s*)?([^\n?]{8,180}\?)\s*(?:\n|$)\s*(?:A(?:nswer)?\s*[:\-]?\s*)?([^\n]{3,260})/gi;
+      let m;
+      while ((m = qaRegex.exec(text)) !== null) {
+        const q = String(m[1] || '').trim();
+        const a = String(m[2] || '').trim();
+        if (q && a) qaPairs.push(`- **${q}**\n${a}`);
+        if (qaPairs.length >= 8) break;
+      }
+
+      return qaPairs.join('\n');
+    }
+
+    function ensureModeSections(structured, modeId, rawText) {
+      if (!structured || !Array.isArray(structured.sections)) return structured;
+      const expectedHeading = {
+        deepdive: 'Deep dive',
+        interviewready: 'Interview-ready',
+        followups: 'Follow-ups',
+        quickrevision: 'Quick revision'
+      }[modeId] || 'Deep dive';
+
+      const first = structured.sections[0];
+      if (!first) {
+        return {
+          title: structured.title || 'Mentor Response',
+          sections: [{ heading: expectedHeading, content: String(rawText || '').trim() || 'No content returned.' }]
+        };
+      }
+
+      return {
+        title: structured.title || 'Mentor Response',
+        sections: [{ heading: expectedHeading, content: first.content || '' }]
+      };
+    }
+
+    function isLikelyTruncated(rawText, finishReason) {
+      const t = String(rawText || '').trim();
+      if (!t) return true;
+      if (finishReason === 'length') return true;
+
+      const openCurly = (t.match(/\{/g) || []).length;
+      const closeCurly = (t.match(/\}/g) || []).length;
+      const openSquare = (t.match(/\[/g) || []).length;
+      const closeSquare = (t.match(/\]/g) || []).length;
+
+      return openCurly > closeCurly || openSquare > closeSquare;
+    }
+
+    function getMode(modeId) {
+      return MODE_OPTIONS.find(mode => mode.id === modeId) || MODE_OPTIONS[0];
+    }
+
+    function getModeMenuOrder() {
+      const selected = getMode(activeMode);
+      const others = MODE_OPTIONS.filter(mode => mode.id !== selected.id);
+      return [...others, selected];
+    }
+
+    function renderModeMenu() {
+      const ordered = getModeMenuOrder();
+      modeMenuEl.innerHTML = ordered.map(mode => {
+        const selectedClass = mode.id === activeMode ? 'selected' : '';
+        return `<button type="button" class="mode-option ${selectedClass}" data-mode="${mode.id}">
+          <span>${mode.icon}</span>
+          <span>${mode.label}</span>
+        </button>`;
+      }).join('');
+    }
+
+    function updateModeChip() {
+      const mode = getMode(activeMode);
+      modeChipLabelEl.textContent = mode.label;
+      modeDotEl.style.background = mode.color;
+      modeDotEl.style.boxShadow = `0 0 0 4px ${mode.color}2b`;
+      modeCards.forEach(card => {
+        card.classList.toggle('active', card.dataset.mode === activeMode);
+      });
+    }
+
+    function setMode(modeId) {
+      if (!MODE_OPTIONS.some(mode => mode.id === modeId)) return;
+      const previousMode = activeMode;
+      activeMode = modeId;
+      if (previousMode !== modeId) {
+        history.length = 0;
+      }
+      updateModeChip();
+      renderModeMenu();
+    }
+
+    function compactPromptContent(content, limit = 1400) {
+      const text = String(content ?? '').trim();
+      if (text.length <= limit) return text;
+      return `${text.slice(0, limit - 1)}…`;
+    }
+
+    function buildPromptMessages() {
+      const recentHistory = history.slice(-4).map((message) => ({
+        role: message.role,
+        content: compactPromptContent(message.content, message.role === 'assistant' ? 1200 : 1800)
+      }));
+
+      return [{ role: 'system', content: buildSystemPrompt(activeMode) }, ...recentHistory];
+    }
+
+    function buildMessagesForRequest(systemPrompt, includeHistory = true, pendingUserText = '') {
+      if (!includeHistory) {
+        return [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: String(pendingUserText || '').trim() }
+        ].filter(msg => msg.content);
+      }
+
+      const recentHistory = history.slice(-4).map((message) => ({
+        role: message.role,
+        content: compactPromptContent(message.content, message.role === 'assistant' ? 1200 : 1800)
+      }));
+
+      return [{ role: 'system', content: systemPrompt }, ...recentHistory];
+    }
+
+    function showModeToast(text) {
+      if (!modeToastEl) return;
+      modeToastEl.textContent = text;
+      modeToastEl.classList.add('show');
+
+      if (toastTimer) {
+        clearTimeout(toastTimer);
+      }
+
+      toastTimer = setTimeout(() => {
+        modeToastEl.classList.remove('show');
+      }, 2300);
+    }
+
+    function hideExplainSelectionButton() {
+      explainSelectionBtnEl.classList.remove('show');
+    }
+
+    function getCurrentSelectedMessageText() {
+      const selection = window.getSelection();
+      if (!selection || selection.isCollapsed || selection.rangeCount === 0) return '';
+
+      const selected = selection.toString().trim();
+      if (!selected || selected.length < 2) return '';
+
+      const range = selection.getRangeAt(0);
+      const container = range.commonAncestorContainer.nodeType === 3
+        ? range.commonAncestorContainer.parentNode
+        : range.commonAncestorContainer;
+
+      if (!container || !messagesEl.contains(container)) return '';
+      return selected;
+    }
+
+    function updateExplainSelectionButton() {
+      const selection = window.getSelection();
+      if (!selection || selection.isCollapsed || selection.rangeCount === 0) {
+        hideExplainSelectionButton();
+        explainSelectedText = '';
+        return;
+      }
+
+      const selected = getCurrentSelectedMessageText();
+      if (!selected) {
+        hideExplainSelectionButton();
+        explainSelectedText = '';
+        return;
+      }
+
+      const range = selection.getRangeAt(0);
+      const container = range.commonAncestorContainer.nodeType === 3
+        ? range.commonAncestorContainer.parentNode
+        : range.commonAncestorContainer;
+
+      if (!messagesEl.contains(container)) {
+        hideExplainSelectionButton();
+        explainSelectedText = '';
+        return;
+      }
+
+      const rect = range.getBoundingClientRect();
+      if (!rect || (!rect.width && !rect.height)) {
+        hideExplainSelectionButton();
+        explainSelectedText = '';
+        return;
+      }
+
+      explainSelectedText = selected.slice(0, 700);
+
+      const top = Math.max(10, rect.top - 34);
+      const left = Math.max(12, Math.min(window.innerWidth - 12, rect.left + rect.width / 2));
+      explainSelectionBtnEl.style.top = `${top}px`;
+      explainSelectionBtnEl.style.left = `${left}px`;
+      explainSelectionBtnEl.classList.add('show');
+    }
+
+    function coerceExplanationResponse(raw, parsed) {
+      const structured = parsed || normalizeStructuredResponse(raw) || recoverStructuredFromText(raw);
+      if (structured && Array.isArray(structured.sections) && structured.sections.length) {
+        const explanationContent = structured.sections
+          .map((s) => String(s.content || '').trim())
+          .filter(Boolean)
+          .join('\n\n');
+
+        return {
+          title: 'Explanation',
+          sections: [{
+            heading: 'Explanation',
+            content: explanationContent || String(raw || '').trim()
+          }]
+        };
+      }
+
+      return {
+        title: 'Explanation',
+        sections: [{
+          heading: 'Explanation',
+          content: String(raw || '').replace(/```json|```/gi, '').trim()
+        }]
+      };
+    }
+
+    function toggleModeMenu(forceState) {
+      const shouldOpen = typeof forceState === 'boolean'
+        ? forceState
+        : !modeSwitcherEl.classList.contains('open');
+
+      modeSwitcherEl.classList.toggle('open', shouldOpen);
+      modeChipEl.setAttribute('aria-expanded', String(shouldOpen));
     }
 
     /* ── Format rich text ── */
@@ -843,7 +1502,7 @@
       mathBlocks.forEach((m, i) => {
         if (m.type === 'block') {
           safe = safe.replace(`@@MATH_${i}@@`,
-            `<div class="math-block"><div class="math-block-label">Formula</div>\\[${m.eq}\\]</div>`);
+            `<div class="math-block">\\[${m.eq}\\]</div>`);
         } else {
           safe = safe.replace(`@@MATH_${i}@@`,
             `<span class="math-inline">\\(${m.eq}\\)</span>`);
@@ -853,29 +1512,67 @@
       return safe;
     }
 
-    /* ── Format a single section content ── */
-    function formatSectionContent(type, content) {
-      const meta = SECTION_META[type] || SECTION_META.default;
-      const formatted = formatRichText(content);
+    function preprocessSectionContent(heading, content) {
+      let text = String(content ?? '').replace(/\r\n/g, '\n').trim();
+      if (!text) return text;
 
-      // Wrap in styled section
-      let inner = '';
-      if (type === 'takeaway') {
-        inner = formatted;
-      } else if (type === 'step') {
-        inner = formatted;
-      } else {
-        inner = formatted;
+      const headingLower = String(heading || '').toLowerCase();
+      const isFollowUp = headingLower.includes('follow-up') || headingLower.includes('follow up');
+
+      if (isFollowUp) {
+        text = text.replace(/\n{3,}/g, '\n\n');
+
+        text = text.replace(
+          /(?:^|\n)\s*(?:[-*]\s*)?(?:\d+[.)]\s*)?(?:Q(?:uestion)?\s*[:\-]\s*)?([^\n?]+\?)\s*(?:A(?:nswer)?\s*[:\-]\s*)?([^\n]+)/gi,
+          (_m, q, a) => `\n- **${String(q).trim()}**\n${String(a || '').trim()}`
+        );
+
+        const lines = text.split('\n');
+        const normalized = [];
+
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i].trim();
+          if (!line) continue;
+
+          const qMatch = line.match(/^(?:[-*]\s*)?\*\*(.+\?)\*\*$/);
+          if (qMatch) {
+            normalized.push(`- **${qMatch[1].trim()}**`);
+            const next = (lines[i + 1] || '').trim();
+            if (next) {
+              normalized.push(
+                next
+                  .replace(/^(?:A(?:nswer)?\s*[:\-]\s*)/i, '')
+                  .replace(/\*\*/g, '')   // REMOVE any bold from answers
+                  .trim()
+              );
+              i += 1;
+            }
+            continue;
+          }
+
+          normalized.push(line);
+        }
+
+        text = normalized.join('\n');
       }
 
-      return `<div class="tab-section">
-        <div class="tab-section-label" style="color:${meta.color}">
-          <span class="dot" style="background:${meta.color}"></span>
-          ${meta.label.toUpperCase()}
-        </div>
-        ${inner}
-      </div>`;
+      const isDenseParagraph = !/\n/.test(text) && !/^\s*(?:[-*]|\d+[.)])\s+/.test(text);
+      if (isDenseParagraph && text.length > 240) {
+        const sentences = text.split(/(?<=[.!?])\s+(?=[A-Z(])/).map(s => s.trim()).filter(Boolean);
+        if (sentences.length >= 3) {
+          text = sentences.map(s => `- ${s}`).join('\n');
+        }
+      }
+
+      return text;
     }
+
+    const SECTION_THEME = [
+      { bg: '#f8f8ff', border: '#c7d2fe', borderOpen: '#a5b4fc', headBg: '#eef2ff', pill: '#c7d2fe', icon: '①' },
+      { bg: '#f1fbf8', border: '#99f6e4', borderOpen: '#5eead4', headBg: '#def7ee', pill: '#99f6e4', icon: '②' },
+      { bg: '#fff7ef', border: '#fed7aa', borderOpen: '#fdba74', headBg: '#ffedd5', pill: '#fdba74', icon: '③' },
+      { bg: '#fdf2f8', border: '#fbcfe8', borderOpen: '#f9a8d4', headBg: '#fce7f3', pill: '#f9a8d4', icon: '④' }
+    ];
 
     /* ── Render structured response ── */
     function renderStructuredResponse(data) {
@@ -884,57 +1581,35 @@
         return `<div class="bubble-plain">${formatRichText(typeof data === 'string' ? data : JSON.stringify(data, null, 2))}</div>`;
       }
 
-      let tabs = '';
-      let contents = '';
-
       normalized.sections.forEach((sec, i) => {
-        const type = detectSectionType(sec.heading);
-        const meta = SECTION_META[type] || SECTION_META.default;
-        const activeClass = i === 0 ? 'active' : '';
-
-        tabs += `<button class="tab-btn ${activeClass}" data-section="${type}" onclick="switchTab(this)">
-          <span class="tab-icon" style="font-size:12px">${meta.icon}</span>
-          ${sec.heading}
-        </button>`;
-
-        contents += `<div class="tab-content ${activeClass}" data-tab-idx="${i}">
-          ${formatSectionContent(type, sec.content)}
-        </div>`;
+        sec._theme = SECTION_THEME[i % SECTION_THEME.length];
       });
 
-      if (normalized.sections.length === 1) {
-        return `<div class="premium-card">
-        <div class="card-header">
-          <div class="card-header-eyebrow">${subjectLabel}</div>
-          <div class="premium-title">${escapeHtml(normalized.title || '')}</div>
-        </div>
-        ${contents}
-      </div>`;
-      }
+      const sectionsHtml = normalized.sections.map(sec => {
+        const theme = sec._theme || SECTION_THEME[0];
+        const prettyContent = preprocessSectionContent(sec.heading, sec.content);
+        return `<details class="section-accordion" open style="--sec-bg:${theme.bg};--sec-border:${theme.border};--sec-border-open:${theme.borderOpen};--sec-head-bg:${theme.headBg};--sec-pill:${theme.pill};">
+          <summary class="section-summary">
+            <div class="section-summary-left">
+              <span class="section-badge">${theme.icon}</span>
+              <span class="section-heading-text">${escapeHtml(sec.heading)}</span>
+            </div>
+            <span class="section-caret">▾</span>
+          </summary>
+          <div class="section-content">${formatRichText(prettyContent)}</div>
+        </details>`;
+      }).join('');
+
+      const modeLabel = escapeHtml(getMode(activeMode).label);
 
       return `<div class="premium-card">
         <div class="card-header">
-          <div class="card-header-eyebrow">${subjectLabel}</div>
+          <div class="card-header-eyebrow">SUBJECT: DATA SCIENCE</div>
           <div class="premium-title">${escapeHtml(normalized.title || '')}</div>
+          <div class="card-header-meta">Mode: ${modeLabel}</div>
         </div>
-        <div class="tabs-bar">${tabs}</div>
-        <div class="tab-body">${contents}</div>
+        <div class="section-stack">${sectionsHtml}</div>
       </div>`;
-    }
-
-    /* ── Switch tab (scoped to nearest premium-card) ── */
-    function switchTab(btn) {
-      const card = btn.closest('.premium-card');
-      card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      card.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      const idx = Array.from(card.querySelectorAll('.tab-btn')).indexOf(btn);
-      const target = card.querySelectorAll('.tab-content')[idx];
-      if (target) target.classList.add('active');
-      if (window.MathJax) window.MathJax.typesetPromise([card]).catch(() => {});
-      if (typeof hljs !== 'undefined') {
-        card.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
-      }
     }
 
     /* ── Copy code ── */
@@ -955,6 +1630,73 @@
     inputEl.addEventListener('input', autoGrow);
     inputEl.addEventListener('keydown', evt => {
       if (evt.key === 'Enter' && !evt.shiftKey) { evt.preventDefault(); sendMessage(); }
+    });
+
+    modeChipEl.addEventListener('click', () => {
+      toggleModeMenu();
+    });
+
+    modeMenuEl.addEventListener('click', evt => {
+      const option = evt.target.closest('.mode-option[data-mode]');
+      if (!option) return;
+      setMode(option.dataset.mode);
+      toggleModeMenu(false);
+      inputEl.focus();
+    });
+
+    modeCards.forEach(card => {
+      card.addEventListener('click', () => {
+        setMode(card.dataset.mode);
+        toggleModeMenu(false);
+        inputEl.focus();
+      });
+    });
+
+    document.addEventListener('click', evt => {
+      if (!modeSwitcherEl.contains(evt.target)) {
+        toggleModeMenu(false);
+      }
+    });
+
+    document.addEventListener('keydown', evt => {
+      if (evt.key === 'Escape') toggleModeMenu(false);
+    });
+
+    messagesEl.addEventListener('mouseup', () => {
+      setTimeout(updateExplainSelectionButton, 0);
+    });
+
+    messagesEl.addEventListener('keyup', () => {
+      setTimeout(updateExplainSelectionButton, 0);
+    });
+
+    document.addEventListener('selectionchange', () => {
+      setTimeout(updateExplainSelectionButton, 0);
+    });
+
+    messagesEl.addEventListener('scroll', hideExplainSelectionButton);
+    window.addEventListener('scroll', hideExplainSelectionButton, true);
+
+    explainSelectionBtnEl.addEventListener('mousedown', (evt) => {
+      // Keep current selection intact until click handler reads it.
+      evt.preventDefault();
+    });
+
+    explainSelectionBtnEl.addEventListener('click', () => {
+      const selected = (getCurrentSelectedMessageText() || explainSelectedText).trim();
+      hideExplainSelectionButton();
+      if (!selected || sendBtn.disabled) {
+        showModeToast('Select some output text first, then tap ✦Explain.');
+        return;
+      }
+
+      const selection = window.getSelection();
+      if (selection) selection.removeAllRanges();
+
+      sendMessage(`Explain ${selected}`, {
+        forceExplanation: true,
+        includeHistory: false
+      });
     });
 
     /* ── Add message ── */
@@ -998,35 +1740,73 @@
     }
 
     /* ── Send message ── */
-    async function sendMessage() {
-      const text = inputEl.value.trim();
+    async function sendMessage(overrideText = null, options = {}) {
+      const text = (overrideText == null ? inputEl.value : String(overrideText)).trim();
       if (!text || sendBtn.disabled) return;
-      history.push({ role: 'user', content: text });
+
+      const forceExplanation = !!options.forceExplanation;
+      const includeHistory = options.includeHistory !== false;
+      const requestSystemPrompt = forceExplanation ? EXPLANATION_SYSTEM_PROMPT : buildSystemPrompt(activeMode);
+
+      hideExplainSelectionButton();
+
+      if (includeHistory) {
+        history.push({ role: 'user', content: text });
+      }
       addMessage('user', text);
-      inputEl.value = '';
-      autoGrow();
+      if (overrideText == null) {
+        inputEl.value = '';
+        autoGrow();
+      }
       sendBtn.disabled = true;
       const loadingRow = addMessage('bot', '', true);
 
       try {
-        const response = await callGroqWithFallback({
-          messages: [{ role: 'system', content: systemPrompt }, ...history],
-          temperature: 0.7,
-          max_tokens: 1200
+        let response = await callGroqWithFallback({
+          messages: buildMessagesForRequest(requestSystemPrompt, includeHistory, text),
+          temperature: 0.5,
+          max_tokens: 4200
         });
+
         let raw = response?.choices?.[0]?.message?.content?.trim();
-        let parsed = parseStructuredPayload(raw);
+        let finishReason = response?.choices?.[0]?.finish_reason;
+
+        if (isLikelyTruncated(raw, finishReason)) {
+          response = await callGroqWithFallback({
+            messages: [
+              ...buildMessagesForRequest(requestSystemPrompt, includeHistory, text),
+              { role: 'user', content: 'Your previous output was cut off. Re-send the ENTIRE answer from scratch as one complete valid JSON object. Do not truncate.' }
+            ],
+            temperature: 0.4,
+            max_tokens: 5200
+          });
+          raw = response?.choices?.[0]?.message?.content?.trim();
+          finishReason = response?.choices?.[0]?.finish_reason;
+        }
+
+        let parsed = normalizeStructuredResponse(raw) || recoverStructuredFromText(raw);
+        if (forceExplanation) {
+          parsed = coerceExplanationResponse(raw, parsed);
+        } else {
+          parsed = ensureModeSections(parsed, activeMode, raw);
+        }
 
         loadingRow.remove();
         if (raw) {
-          history.push({ role: 'assistant', content: raw });
-          addMessage('bot', parsed || raw);
+          if (includeHistory) {
+            history.push({ role: 'assistant', content: raw });
+          }
+          addMessage('bot', parsed || { title: 'Mentor Response', sections: [{ heading: 'Details', content: String(raw).replace(/```json|```/gi, '').trim() }] });
         } else {
           addMessage('bot', 'I could not generate a response right now. Please try again.');
         }
       } catch (err) {
         loadingRow.remove();
-        addMessage('bot', 'Sorry, I hit an error while talking to the model. Please try again in a moment.');
+        const msg = String(err?.message || 'Unknown model error');
+        const friendly = msg.includes('model_not_supported') || msg.toLowerCase().includes('not supported')
+          ? 'The current model configuration is not supported by your Groq account. I tried multiple fallbacks but none were accepted. Please update model names or API key access.'
+          : 'Sorry, I hit an error while talking to the model. Please try again in a moment.';
+        addMessage('bot', friendly);
       } finally {
         sendBtn.disabled = false;
         inputEl.focus();
@@ -1049,17 +1829,27 @@
           }
           if (!response.ok) {
             const errData = await response.json().catch(() => ({}));
-            throw new Error(errData.error?.message || `API error ${response.status}`);
+            const errCode = errData?.error?.code || '';
+            const errMessage = errData?.error?.message || `API error ${response.status}`;
+
+            if (response.status === 400 && (errCode === 'model_not_supported' || /not supported/i.test(errMessage))) {
+              lastErr = new Error(`model_not_supported: ${model}`);
+              continue;
+            }
+
+            throw new Error(errMessage);
           }
           return await response.json();
         } catch (err) {
           lastErr = err;
-          if (!String(err.message || '').includes('Rate limited')) throw err;
+          const errText = String(err?.message || '');
+          if (!errText.includes('Rate limited') && !errText.includes('model_not_supported')) throw err;
         }
       }
       throw lastErr;
     }
 
+    setMode(activeMode);
     inputEl.focus();
   </script>
 </body>
